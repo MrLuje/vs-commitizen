@@ -1,0 +1,30 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:vs_commitizen.vs"
+             xmlns:Controls="clr-namespace:vs_commitizen.vs2015.Controls" x:Class="vs_commitizen.vs.VsCommitizenView" 
+             x:Name="CtrlCommitizen"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="300">
+    <Grid>
+        <Label Content="Type of changes :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="120" 
+                  ItemsSource="{Binding CommitTypes, ElementName=CtrlCommitizen}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="Name" />
+        <Label Content="Scope :" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="Denote the scope of this change (optional)" Height="24" Margin="10,89,25,0" VerticalAlignment="Top"/>
+        <Label Content="Subject :" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="Write a short, imperative tense description of the change" Height="24" Margin="10,144,25,0" VerticalAlignment="Top"/>
+        <Label Content="Body :" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="Provide a longer description of the change (optional)" Height="75" Margin="10,199,25,0" VerticalAlignment="Top"
+                                  AcceptReturn="true"/>
+        <Label Content="Breaking changes :" HorizontalAlignment="Left" Margin="10,279,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="List any breaking changes (optional)" Height="24" Margin="10,305,25,0" VerticalAlignment="Top"/>
+        <Label Content="Closes :" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="List any issues closed by this change (optional). E.g.: #31, #34" Height="24" Margin="10,360,25,0" VerticalAlignment="Top"/>
+        <Button Content="Commit" HorizontalAlignment="Left" Margin="10,396,0,0" VerticalAlignment="Top" Width="75" />
+    </Grid>
+</UserControl>

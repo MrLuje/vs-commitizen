@@ -1,0 +1,239 @@
+RESTRICTION: == net461
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    Microsoft.AspNet.WebApi.Client (5.2.2)
+      Newtonsoft.Json (>= 6.0.4)
+    Microsoft.AspNet.WebApi.Core (5.2.2)
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+    Microsoft.IdentityModel.Clients.ActiveDirectory (3.13.5)
+      System.Collections (>= 4.0.11)
+      System.Collections.Concurrent (>= 4.0.12)
+      System.Diagnostics.Debug (>= 4.0.11)
+      System.Globalization (>= 4.0.11)
+      System.IO (>= 4.1)
+      System.Linq (>= 4.1)
+      System.Net.Http (>= 4.0.1)
+      System.Net.Primitives (>= 4.0.11)
+      System.Reflection (>= 4.1)
+      System.Reflection.Extensions (>= 4.0.1)
+      System.Runtime (>= 4.1)
+      System.Runtime.Extensions (>= 4.1)
+      System.Runtime.InteropServices (>= 4.1)
+      System.Runtime.Serialization.Json (>= 4.0.2)
+      System.Runtime.Serialization.Primitives (>= 4.1.1)
+      System.Text.Encoding (>= 4.0.11)
+      System.Text.Encoding.Extensions (>= 4.0.11)
+      System.Text.RegularExpressions (>= 4.0.12)
+      System.Threading (>= 4.0.11)
+      System.Threading.Tasks (>= 4.0.11)
+      System.Xml.ReaderWriter (>= 4.0.11)
+      System.Xml.XDocument (>= 4.0.11)
+    Microsoft.VisualStudio.CoreUtility (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.Threading (>= 15.4.4)
+    Microsoft.VisualStudio.ImageCatalog (15.6.27413) - copy_local: false
+    Microsoft.VisualStudio.Imaging (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.CoreUtility (>= 15.6.27413)
+      Microsoft.VisualStudio.ImageCatalog (>= 15.6.27413)
+      Microsoft.VisualStudio.Utilities (>= 15.6.27413)
+    Microsoft.VisualStudio.OLE.Interop (7.10.6071) - copy_local: false
+    Microsoft.VisualStudio.SDK.EmbedInteropTypes (15.0.10)
+    Microsoft.VisualStudio.Services.Client (15.112.1)
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Newtonsoft.Json (>= 8.0.3)
+    Microsoft.VisualStudio.Services.InteractiveClient (15.112.1)
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Microsoft.IdentityModel.Clients.ActiveDirectory (>= 3.13.5)
+      Microsoft.VisualStudio.Services.Client (15.112.1)
+      Newtonsoft.Json (>= 8.0.3)
+      System.IdentityModel.Tokens.Jwt (>= 4.0.2.206221351)
+      WindowsAzure.ServiceBus (>= 3.3.2)
+    Microsoft.VisualStudio.Shell.15.0 (15.0.26606) - copy_local: false
+      Microsoft.VisualStudio.Imaging (>= 15.0.26606)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.SDK.EmbedInteropTypes (>= 15.0.9)
+      Microsoft.VisualStudio.Shell.Framework (>= 15.0.26606)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime (>= 15.0.26606)
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
+      Microsoft.VisualStudio.Shell.Interop.9.0 (>= 9.0.30729)
+      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Threading (>= 15.3.23)
+      Microsoft.VisualStudio.Utilities (>= 15.0.26606)
+    Microsoft.VisualStudio.Shell.Framework (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.CoreUtility (>= 15.6.27413)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.Utilities (>= 15.6.27413)
+    Microsoft.VisualStudio.Shell.Interop (7.10.6071)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
+    Microsoft.VisualStudio.Shell.Interop.10.0 (10.0.30319)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+    Microsoft.VisualStudio.Shell.Interop.11.0 (11.0.61030)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.Shell.Interop.10.0 (>= 10.0.30319)
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
+    Microsoft.VisualStudio.Shell.Interop.12.0 (12.0.30110)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.Shell.Interop.10.0 (>= 10.0.30319)
+      Microsoft.VisualStudio.Shell.Interop.11.0 (>= 11.0.61030)
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
+    Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime (15.0.26606) - copy_local: false
+      Microsoft.VisualStudio.SDK.EmbedInteropTypes (>= 15.0.9)
+    Microsoft.VisualStudio.Shell.Interop.8.0 (8.0.50727)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.TextManager.Interop.8.0 (>= 8.0.50727)
+    Microsoft.VisualStudio.Shell.Interop.9.0 (9.0.30729) - copy_local: false
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
+      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
+    Microsoft.VisualStudio.TextManager.Interop (7.10.6070) - copy_local: false
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+    Microsoft.VisualStudio.TextManager.Interop.8.0 (8.0.50727)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
+    Microsoft.VisualStudio.Threading (15.6.31) - copy_local: false
+      Microsoft.VisualStudio.Threading.Analyzers (>= 15.6.31)
+      Microsoft.VisualStudio.Validation (>= 15.3.15)
+    Microsoft.VisualStudio.Threading.Analyzers (15.6.31) - copy_local: false
+    Microsoft.VisualStudio.Utilities (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.Threading (>= 15.4.4)
+      StreamJsonRpc (>= 1.2.8)
+    Microsoft.VisualStudio.Validation (15.3.32) - copy_local: false
+    Microsoft.VSSDK.BuildTools (15.5.100)
+    Microsoft.Win32.Primitives (4.0.1)
+    Newtonsoft.Json (11.0.1)
+    StreamJsonRpc (1.3.23) - copy_local: false
+      Microsoft.VisualStudio.Threading (>= 15.3.20)
+      Newtonsoft.Json (>= 6.0.6)
+    System.Collections (4.0.11)
+    System.Collections.Concurrent (4.0.12)
+    System.Diagnostics.Debug (4.0.11)
+    System.Diagnostics.DiagnosticSource (4.0)
+    System.Globalization (4.0.11)
+    System.IdentityModel.Tokens.Jwt (4.0.2.206221351)
+    System.IO (4.1)
+    System.Linq (4.1)
+    System.Net.Http (4.1)
+      Microsoft.Win32.Primitives (>= 4.0.1)
+      System.Diagnostics.DiagnosticSource (>= 4.0)
+      System.Security.Cryptography.X509Certificates (>= 4.1)
+    System.Net.Primitives (4.0.11)
+    System.Reflection (4.1)
+    System.Reflection.Extensions (4.0.1)
+    System.Runtime (4.1)
+    System.Runtime.Extensions (4.1)
+    System.Runtime.InteropServices (4.1)
+    System.Runtime.Serialization.Json (4.0.2)
+    System.Runtime.Serialization.Primitives (4.1.1)
+    System.Security.Cryptography.Algorithms (4.2)
+      System.Security.Cryptography.Primitives (>= 4.0)
+    System.Security.Cryptography.Encoding (4.0)
+    System.Security.Cryptography.Primitives (4.0)
+    System.Security.Cryptography.X509Certificates (4.1)
+      System.Security.Cryptography.Algorithms (>= 4.2)
+      System.Security.Cryptography.Encoding (>= 4.0)
+    System.Text.Encoding (4.0.11)
+    System.Text.Encoding.Extensions (4.0.11)
+    System.Text.RegularExpressions (4.1)
+    System.Threading (4.0.11)
+    System.Threading.Tasks (4.0.11)
+    System.Xml.ReaderWriter (4.0.11)
+    System.Xml.XDocument (4.0.11)
+    WindowsAzure.ServiceBus (3.3.2)
+
+GROUP vs14
+RESTRICTION: == net461
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    Microsoft.AspNet.WebApi.Client (5.2.4) - copy_local: false, redirects: force
+      Newtonsoft.Json (>= 6.0.4)
+    Microsoft.AspNet.WebApi.Core (5.2.4) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.4)
+    Microsoft.IdentityModel.Clients.ActiveDirectory (3.19.1) - copy_local: false, redirects: force
+    Microsoft.IdentityModel.Logging (5.2.1) - copy_local: false, redirects: force
+    Microsoft.IdentityModel.Tokens (5.2.1) - copy_local: false, redirects: force
+      Microsoft.IdentityModel.Logging (>= 5.2.1)
+      Newtonsoft.Json (>= 10.0.1)
+    Microsoft.TeamFoundationServer.Client (14.102) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Microsoft.VisualStudio.Services.Client (14.102)
+      Newtonsoft.Json (>= 6.0.8)
+    Microsoft.TeamFoundationServer.ExtendedClient (14.102) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Microsoft.AspNet.WebApi.Core (>= 5.2.2)
+      Microsoft.IdentityModel.Clients.ActiveDirectory (>= 2.16.204221202)
+      Microsoft.TeamFoundationServer.Client (14.102)
+      Microsoft.VisualStudio.Services.Client (14.102)
+      Microsoft.VisualStudio.Services.InteractiveClient (14.102)
+      Newtonsoft.Json (>= 6.0.8)
+      System.IdentityModel.Tokens.Jwt (>= 4.0)
+    Microsoft.VisualStudio.Services.Client (14.102) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Newtonsoft.Json (>= 6.0.8)
+    Microsoft.VisualStudio.Services.InteractiveClient (14.102) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Microsoft.IdentityModel.Clients.ActiveDirectory (>= 2.16.204221202)
+      Microsoft.VisualStudio.Services.Client (14.102)
+      Newtonsoft.Json (>= 6.0.8)
+      System.IdentityModel.Tokens.Jwt (>= 4.0)
+      WindowsAzure.ServiceBus (>= 2.5.1)
+    Newtonsoft.Json (11.0.1) - copy_local: false, redirects: force
+    System.IdentityModel.Tokens.Jwt (5.2.1) - copy_local: false, redirects: force
+      Microsoft.IdentityModel.Tokens (>= 5.2.1)
+      Newtonsoft.Json (>= 10.0.1)
+    WindowsAzure.ServiceBus (4.1.7) - copy_local: false, redirects: force
+
+GROUP vs15
+RESTRICTION: == net461
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    Microsoft.AspNet.WebApi.Client (5.2.4) - copy_local: false, redirects: force
+      Newtonsoft.Json (>= 6.0.4)
+    Microsoft.AspNet.WebApi.Core (5.2.4) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.4)
+    Microsoft.IdentityModel.Clients.ActiveDirectory (3.19.1) - copy_local: false, redirects: force
+    Microsoft.IdentityModel.Logging (5.2.1) - copy_local: false, redirects: force
+    Microsoft.IdentityModel.Tokens (5.2.1) - copy_local: false, redirects: force
+      Microsoft.IdentityModel.Logging (>= 5.2.1)
+      Newtonsoft.Json (>= 10.0.1)
+    Microsoft.TeamFoundation.DistributedTask.Common (15.112.1) - copy_local: false, redirects: force
+      Microsoft.Tpl.Dataflow (>= 4.5.24)
+      Microsoft.VisualStudio.Services.Client (15.112.1)
+      Newtonsoft.Json (>= 8.0.3)
+    Microsoft.TeamFoundationServer.Client (15.112.1) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Microsoft.TeamFoundation.DistributedTask.Common (15.112.1)
+      Microsoft.VisualStudio.Services.Client (15.112.1)
+      Newtonsoft.Json (>= 8.0.3)
+    Microsoft.TeamFoundationServer.ExtendedClient (15.112.1) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Microsoft.AspNet.WebApi.Core (>= 5.2.2)
+      Microsoft.IdentityModel.Clients.ActiveDirectory (>= 3.13.5)
+      Microsoft.TeamFoundationServer.Client (15.112.1)
+      Microsoft.VisualStudio.Services.Client (15.112.1)
+      Microsoft.VisualStudio.Services.InteractiveClient (15.112.1)
+      Newtonsoft.Json (>= 8.0.3)
+      System.IdentityModel.Tokens.Jwt (>= 4.0.2.206221351)
+    Microsoft.Tpl.Dataflow (4.5.24) - copy_local: false, redirects: force
+    Microsoft.VisualStudio.Services.Client (15.112.1) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Newtonsoft.Json (>= 8.0.3)
+    Microsoft.VisualStudio.Services.InteractiveClient (15.112.1) - copy_local: false, redirects: force
+      Microsoft.AspNet.WebApi.Client (>= 5.2.2)
+      Microsoft.IdentityModel.Clients.ActiveDirectory (>= 3.13.5)
+      Microsoft.VisualStudio.Services.Client (15.112.1)
+      Newtonsoft.Json (>= 8.0.3)
+      System.IdentityModel.Tokens.Jwt (>= 4.0.2.206221351)
+      WindowsAzure.ServiceBus (>= 3.3.2)
+    Newtonsoft.Json (11.0.1) - copy_local: false, redirects: force
+    System.IdentityModel.Tokens.Jwt (5.2.1) - copy_local: false, redirects: force
+      Microsoft.IdentityModel.Tokens (>= 5.2.1)
+      Newtonsoft.Json (>= 10.0.1)
+    WindowsAzure.ServiceBus (4.1.7) - copy_local: false, redirects: force

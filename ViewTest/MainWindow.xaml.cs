@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace vs_commitizen
+namespace ViewTest
 {
     /// <summary>
-    /// Interaction logic for VsCommitizenView.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class VsCommitizenView : UserControl
+    public partial class MainWindow : Window
     {
-        public VsCommitizenView()
+        public MainWindow()
         {
             InitializeComponent();
         }

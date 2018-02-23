@@ -44,6 +44,8 @@ namespace vs_commitizen
             // any Visual Studio service because at this point the package object is created but
             // not sited yet inside Visual Studio environment. The place to do all the other
             // initialization is the Initialize method.
+
+            Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, $"Entering constructor for: {0}", this.ToString()));
         }
 
         #region Package Members
