@@ -10,5 +10,7 @@
 
         public string Name { get; }
         public string Description { get; }
+
+        public string DisplayString => $"{this.Name} - {this.Description}";
     }
 }

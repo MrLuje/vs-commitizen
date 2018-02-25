@@ -73,9 +73,17 @@
     <Compile Include="Base\TeamExplorerBaseNavigationLink.cs" />
     <Compile Include="Base\TeamExplorerBasePage.cs" />
     <Compile Include="Base\TeamExplorerBaseSection.cs" />
+    <Compile Include="VsCommitizenNavigationItem.cs" />
+    <Compile Include="VsCommitizenPage.cs" />
+    <Compile Include="GitChangesSection.cs" />
     <Compile Include="VsCommitizenSection.cs" />
     <Compile Include="VsCommitizenView.xaml.cs">
       <DependentUpon>VsCommitizenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VSPackage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VSPackage.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +289,13 @@
     <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hant\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="VSPackage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">

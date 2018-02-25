@@ -69,6 +69,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Git_icon.svg.png" />
     <Content Include="Resources\ToolWindow1Command.png" />
     <Content Include="Resources\VsCommitizenPackage.ico" />
     <VSCTCompile Include="VsCommitizenPackage.vsct">

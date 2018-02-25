@@ -9,22 +9,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="300">
     <Grid>
-        <Label Content="Type of changes :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="120" 
+        <Label Content="Type of changes :" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <ComboBox Margin="0,26,25,0" VerticalAlignment="Top" 
                   ItemsSource="{Binding CommitTypes, ElementName=CtrlCommitizen}"
-                  DisplayMemberPath="Name"
+                  DisplayMemberPath="DisplayString"
                   SelectedValuePath="Name" />
-        <Label Content="Scope :" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
-        <Controls:TextBoxWithHint HintText="Denote the scope of this change (optional)" Height="24" Margin="10,89,25,0" VerticalAlignment="Top"/>
-        <Label Content="Subject :" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top"/>
-        <Controls:TextBoxWithHint HintText="Write a short, imperative tense description of the change" Height="24" Margin="10,144,25,0" VerticalAlignment="Top"/>
-        <Label Content="Body :" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top"/>
-        <Controls:TextBoxWithHint HintText="Provide a longer description of the change (optional)" Height="75" Margin="10,199,25,0" VerticalAlignment="Top"
+        <Label Content="Scope :" HorizontalAlignment="Left" Margin="0,53,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="Denote the scope of this change (optional)" Height="24" Margin="0,79,25,0" VerticalAlignment="Top"/>
+        <Label Content="Subject :" HorizontalAlignment="Left" Margin="0,108,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="Write a short, imperative tense description of the change" Height="24" Margin="0,134,25,0" VerticalAlignment="Top"/>
+        <Label Content="Body :" HorizontalAlignment="Left" Margin="0,163,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="Provide a longer description of the change (optional)" Height="75" Margin="0,189,25,0" VerticalAlignment="Top"
                                   AcceptReturn="true"/>
-        <Label Content="Breaking changes :" HorizontalAlignment="Left" Margin="10,279,0,0" VerticalAlignment="Top"/>
-        <Controls:TextBoxWithHint HintText="List any breaking changes (optional)" Height="24" Margin="10,305,25,0" VerticalAlignment="Top"/>
-        <Label Content="Closes :" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top"/>
-        <Controls:TextBoxWithHint HintText="List any issues closed by this change (optional). E.g.: #31, #34" Height="24" Margin="10,360,25,0" VerticalAlignment="Top"/>
-        <Button Content="Commit" HorizontalAlignment="Left" Margin="10,396,0,0" VerticalAlignment="Top" Width="75" />
+        <Label Content="Breaking changes :" HorizontalAlignment="Left" Margin="0,269,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="List any breaking changes (optional)" Height="24" Margin="0,295,25,0" VerticalAlignment="Top"/>
+        <Label Content="Closes :" HorizontalAlignment="Left" Margin="0,324,0,0" VerticalAlignment="Top"/>
+        <Controls:TextBoxWithHint HintText="List any issues closed by this change (optional). E.g.: #31, #34" Height="24" Margin="0,350,25,0" VerticalAlignment="Top"/>
+        <Button Content="Commit" HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="75" />
     </Grid>
 </UserControl>

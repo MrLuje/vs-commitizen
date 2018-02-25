@@ -70,8 +70,17 @@
       <Link>Controls\TextBoxWithHint.xaml.cs</Link>
       <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\GitChangesSection.cs">
+      <Link>GitChangesSection.cs</Link>
+    </Compile>
     <Compile Include="..\vs-commitizen.vs2015\Models\CommitType.cs">
       <Link>Models\CommitType.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenNavigationItem.cs">
+      <Link>VsCommitizenNavigationItem.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenPage.cs">
+      <Link>VsCommitizenPage.cs</Link>
     </Compile>
     <Compile Include="..\vs-commitizen.vs2015\VsCommitizenSection.cs">
       <Link>VsCommitizenSection.cs</Link>
@@ -79,6 +88,12 @@
     <Compile Include="..\vs-commitizen.vs2015\VsCommitizenView.xaml.cs">
       <Link>VsCommitizenView.xaml.cs</Link>
       <DependentUpon>VsCommitizenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\VSPackage.Designer.cs">
+      <Link>VSPackage.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VSPackage.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -290,6 +305,14 @@
     <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hant\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\vs-commitizen.vs2015\VSPackage.resx">
+      <Link>VSPackage.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">

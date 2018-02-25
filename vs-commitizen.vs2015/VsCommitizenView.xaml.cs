@@ -38,5 +38,7 @@ namespace vs_commitizen.vs
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         public event PropertyChangedEventHandler PropertyChanged;
+
+
     }
 }
