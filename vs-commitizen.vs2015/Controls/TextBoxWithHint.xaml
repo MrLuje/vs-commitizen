@@ -12,11 +12,11 @@
         <!-- overlay with hint text -->
         <TextBlock Margin="5,0,5,0" Text="{Binding Path=HintText}" 
                    Foreground="LightSteelBlue" 
-                   Visibility="{Binding ElementName=txtSearchBox, Path=Text.IsEmpty, Converter={StaticResource MyBoolToVisibilityConverter}}"
+                   Visibility="{Binding ElementName=txtInputBox, Path=Text.IsEmpty, Converter={StaticResource MyBoolToVisibilityConverter}}"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Center" />
         <!-- enter term here -->
-        <TextBox Name="txtSearchBox" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+        <TextBox Name="txtInputBox" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                  AcceptsReturn="{Binding Path=AcceptReturn}"/>
     </Grid>
 </UserControl>

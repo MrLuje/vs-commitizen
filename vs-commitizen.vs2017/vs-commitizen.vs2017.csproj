@@ -7,7 +7,7 @@
     <ProjectGuid>{93748016-5AA8-4D74-887E-64959D8D2496}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>vs_commitizen.vs2017</RootNamespace>
+    <RootNamespace>vs_commitizen.vs</RootNamespace>
     <AssemblyName>vs-commitizen.vs2017</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,6 +35,9 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Git.Controls">
+      <HintPath>..\lib\vs2017\Microsoft.TeamFoundation.Git.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -49,6 +52,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBase.cs">
@@ -70,11 +74,20 @@
       <Link>Controls\TextBoxWithHint.xaml.cs</Link>
       <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Extensions\StringExtensions.cs">
+      <Link>Extensions\StringExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\vs-commitizen.vs2015\GitChangesSection.cs">
       <Link>GitChangesSection.cs</Link>
     </Compile>
     <Compile Include="..\vs-commitizen.vs2015\Models\CommitType.cs">
       <Link>Models\CommitType.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Models\NavigationCommitModel.cs">
+      <Link>Models\NavigationCommitModel.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Models\NavigationDataType.cs">
+      <Link>Models\NavigationDataType.cs</Link>
     </Compile>
     <Compile Include="..\vs-commitizen.vs2015\VsCommitizenNavigationItem.cs">
       <Link>VsCommitizenNavigationItem.cs</Link>

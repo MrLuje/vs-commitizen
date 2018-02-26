@@ -1,14 +1,8 @@
 ﻿using Microsoft.TeamFoundation.Controls;
-using Microsoft.TeamFoundation.Controls.WPF.TeamExplorer;
 using Microsoft.VisualStudio.Shell;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using vs_commitizen.vs;
-using vs_commitizen.vs2017;
 
 namespace vs_commitizen.vs2015
 {

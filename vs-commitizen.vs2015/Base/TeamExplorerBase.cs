@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.Controls;
+using vs_commitizen.vs.Models;
 
 namespace vs_commitizen.vs
 {
@@ -62,6 +63,33 @@ namespace vs_commitizen.vs
         }
 
         private Dictionary<string, Guid> _notifications = new Dictionary<string, Guid>();
+
+        private static Dictionary<NavigationDataType, object> NavigationContext = new Dictionary<NavigationDataType, object>();
+        
+        /// <summary>
+        /// Add value in the navigation context
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public static void AddNavigationValue(NavigationDataType key, object value)
+        {
+            NavigationContext.Add(key, value);
+        }
+
+        /// <summary>
+        /// Get & remove value from context
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static T PopNavigationValue<T>(NavigationDataType key)
+        {
+            if (!NavigationContext.ContainsKey(key)) return default(T);
+            var value = (T)NavigationContext[key];
+            NavigationContext.Remove(key);
+
+            return value;
+        }
 
         /// <summary>
         /// Show a notification in the Team Explorer window.

@@ -4,13 +4,13 @@
     {
         public CommitType(string name, string description)
         {
-            Name = name;
+            Type = name;
             Description = description;
         }
 
-        public string Name { get; }
+        public string Type { get; }
         public string Description { get; }
 
-        public string DisplayString => $"{this.Name} - {this.Description}";
+        public string DisplayString => $"{this.Type} - {this.Description}";
     }
 }
