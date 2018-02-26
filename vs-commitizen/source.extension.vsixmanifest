@@ -3,7 +3,10 @@
     <Metadata>
         <Identity Id="vs_commitizen.2fc59511-a96a-4e09-9f02-8a868a5426ea" Version="1.0.0.0" Language="en-US" Publisher="MrLuje" />
         <DisplayName>VsCommitizen</DisplayName>
-        <Description>Empty VSIX Project.</Description>
+        <Description xml:space="preserve">This extension adds commitizen support.</Description>
+        <MoreInfo>https://github.com/MrLuje/vs-commitizen</MoreInfo>
+        <Icon>Resources\Git_icon.svg.png</Icon>
+        <Tags>git commitizen changelog conventional-changelog</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,16.0]" />

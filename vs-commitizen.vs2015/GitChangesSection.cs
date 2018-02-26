@@ -80,7 +80,6 @@ namespace vs_commitizen.vs2015
 
             if (!commitData.AutoCommit) return;
 
-
             var changesExt = GetService<Microsoft.TeamFoundation.Git.Controls.Extensibility.IChangesExt2>();
             var hasPendingChanges = changesExt.IncludedChanges.Count > 0 || changesExt.UntrackedFiles.Count > 0;
 
