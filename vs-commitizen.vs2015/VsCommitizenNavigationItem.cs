@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.Shell;
 using System;
 using System.ComponentModel.Composition;
+using System.Drawing;
 using vs_commitizen.vs;
 
 namespace vs_commitizen.vs2015
@@ -17,6 +18,7 @@ namespace vs_commitizen.vs2015
         {
             this.Text = "VsCommitizen";
             this.Image = VSPackage.Git_icon_svg;
+            this.ArgbColor = Color.Red.ToArgb();
         }
 
         public override void Execute()

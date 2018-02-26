@@ -10,7 +10,7 @@ namespace vs_commitizen.vs
     /// <summary>
     /// Team Explorer base navigation item class.
     /// </summary>
-    public class TeamExplorerBaseNavigationItem : TeamExplorerBase, ITeamExplorerNavigationItem
+    public class TeamExplorerBaseNavigationItem : TeamExplorerBase, ITeamExplorerNavigationItem2
     {
         /// <summary>
         /// Constructor.
@@ -21,6 +21,13 @@ namespace vs_commitizen.vs
         }
 
         #region ITeamExplorerNavigationItem
+
+        public int ArgbColor
+        {
+            get { return m_argbColor; }
+            set { m_argbColor = value; RaisePropertyChanged("ArgbColor"); }
+        }
+        private int m_argbColor;
 
         /// <summary>
         /// Get/set the item text.
@@ -51,6 +58,10 @@ namespace vs_commitizen.vs
             set { m_isVisible = value; RaisePropertyChanged("IsVisible"); }
         }
         private bool m_isVisible = true;
+
+        public bool IsEnabled => true;
+
+        public object Icon => null;
 
         /// <summary>
         /// Invalidate the item state.
