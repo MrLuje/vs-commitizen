@@ -6,21 +6,27 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using vs_commitizen.vs;
+using vs_commitizen.vs.Models;
 
 namespace vs_commitizen.vs2015
 {
+    /// <summary>
+    /// Add a CommitCz button on the GitChanges page
+    /// </summary>
     [TeamExplorerSection(GitChangeSection.SectionId, TeamExplorerPageIds.GitChanges, 30)]
     public class GitChangeSection : TeamExplorerBaseSection
     {
         private const string SectionId = "18850AAF-B79F-4522-A7E5-93843AA153DA";
+        private Button commitButton;
 
         public VsCommitizenView CommitizenSection => this.SectionContent as VsCommitizenView;
 
         public GitChangeSection()
         {
-            this.Title = "Commit";
             this.IsVisible = false;
             this.IsExpanded = false;
             this.IsBusy = false;
@@ -30,7 +36,7 @@ namespace vs_commitizen.vs2015
         {
             var teamExplorer = GetService<ITeamExplorer>();
             var page = teamExplorer.CurrentPage as TeamExplorerPageBase;
-            //page.PropertyChanged += TeamExplorerPageBasePropertyChanged;
+            page.PropertyChanged += TeamExplorerPageBasePropertyChanged;
 
             var service = GetService<TeamExplorerViewModel>();
             var pages = new List<ITeamExplorerPage>();
@@ -40,8 +46,9 @@ namespace vs_commitizen.vs2015
             var commitPage = pages.FirstOrDefault(p => p.GetId() == Guid.Parse(TeamExplorerPageIds.GitChanges));
             var view = commitPage.PageContent as UserControl;
             var labeledTextBox = view.FindName("commentTextBox") as LabeledTextBox;
+            var commitTextBox = labeledTextBox.FindName("textBox") as TextBox;
 
-            var commitButton = view.FindName("commitButton") as Button;
+            commitButton = view.FindName("commitButton") as Button;
             var commitGrid = commitButton.Parent as Grid;
 
             var commitCzButton = new Button();
@@ -53,6 +60,29 @@ namespace vs_commitizen.vs2015
 
             // Place the button on the right of the Commit button
             Grid.SetColumn(commitCzButton, 1);
+        }
+
+        private void TeamExplorerPageBasePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var page = (TeamExplorerPageBase)sender;
+
+            // Wait for section to be not busy
+            if (page.IsBusy)
+                return;
+
+            var commitData = PopNavigationValue<NavigationCommitModel>(NavigationDataType.CommitData);
+            if (commitData == null) return;
+
+            var model = page.Model;
+            var commentProperty = model.GetType().GetProperty("Comment");
+
+            commentProperty.SetValue(model, commitData.Comment);
+
+            if (!commitData.AutoCommit) return;
+
+            var peer = new ButtonAutomationPeer(commitButton);
+            var invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
         }
     }
 }
