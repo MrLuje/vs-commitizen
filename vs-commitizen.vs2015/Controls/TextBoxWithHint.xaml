@@ -17,6 +17,7 @@
                    VerticalAlignment="Center" />
         <!-- enter term here -->
         <TextBox Name="txtInputBox" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                 AcceptsReturn="{Binding Path=AcceptReturn}"/>
+                 AcceptsReturn="{Binding Path=AcceptReturn, RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}"
+                 Text="{Binding Path=Text, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" />
     </Grid>
 </UserControl>
