@@ -105,6 +105,15 @@ namespace vs_commitizen.vs
             {
                 new CommitType("feat", "A new feature"),
                 new CommitType("fix", "A bug fix"),
+                new CommitType("docs", "Documentation only changes"),
+                new CommitType("style", "Changes that do not affect the meaning of the code (formatting, etc)"),
+                new CommitType("refactor", "A code change that neither fixes a bug nor adds a feature"),
+                new CommitType("perf", "A code change that improves performance"),
+                new CommitType("test", "Adding missing tests or correcting existing tests"),
+                new CommitType("build", "Changes that affect the build system or external dependencies (example scopes: gulp, etc)"),
+                new CommitType("ci", "Changes to our CI configuration files and scripts (example scopes: Travis, etc)"),
+                new CommitType("chore", "Other changes that don't modify src or test files"),
+                new CommitType("revert", "Reverts a previous commit")
             };
             this.OnCommit = new RelayCommand(Commit, CanCommit);
             this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
