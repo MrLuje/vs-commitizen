@@ -3,6 +3,8 @@ using Microsoft.TeamFoundation.Controls.WPF.TeamExplorer;
 using System;
 using vs_commitizen.vs;
 using vs_commitizen.vs.Models;
+using vs_commitizen.vs.Extensions;
+using System.Linq;
 
 namespace vs_commitizen.vs2015
 {
@@ -25,6 +27,7 @@ namespace vs_commitizen.vs2015
         public override void Loaded(object sender, SectionLoadedEventArgs e)
         {
             var teamExplorer = GetService<ITeamExplorer>();
+            var page = teamExplorer.CurrentPage as TeamExplorerBasePage;
 
             this.CommitizenSection.CommitExecuted += (s, ee) =>
             {
@@ -32,7 +35,7 @@ namespace vs_commitizen.vs2015
                 {
                     AutoCommit = true, //TODO: add an option for this
                     Comment = CommitizenSection.GetComment()
-                }); 
+                });
 
                 teamExplorer.NavigateToPage(Guid.Parse(TeamExplorerPageIds.GitChanges), null);
             };

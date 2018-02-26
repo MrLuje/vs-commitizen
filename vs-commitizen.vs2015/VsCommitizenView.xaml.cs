@@ -9,6 +9,7 @@ using System.Windows.Input;
 using vs_commitizen.vs.Models;
 using vs_commitizen.vs.Extensions;
 using System.Text.RegularExpressions;
+using vs_commitizen.vs.Interfaces;
 
 namespace vs_commitizen.vs
 {
@@ -84,6 +85,18 @@ namespace vs_commitizen.vs
             }
         }
 
+        private bool _hasGitPendingChanges;
+        public bool HasGitPendingChanges
+        {
+            get => _hasGitPendingChanges;
+            set
+            {
+                _hasGitPendingChanges = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(OnCommit));
+            }
+        }
+
         public VsCommitizenView()
         {
             InitializeComponent();
@@ -94,6 +107,7 @@ namespace vs_commitizen.vs
                 new CommitType("fix", "A bug fix"),
             };
             this.OnCommit = new RelayCommand(Commit, CanCommit);
+            this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
 
             this.DataContext = this;
         }
@@ -108,6 +122,7 @@ namespace vs_commitizen.vs
         {
             if (this.cbType.SelectedIndex < 0) return false;
             if (string.IsNullOrWhiteSpace(this.tbxSubject.Text)) return false;
+            if (!this.HasGitPendingChanges) return false;
 
             return true;
         }
@@ -120,20 +135,26 @@ namespace vs_commitizen.vs
         public string GetComment()
         {
             var hasScope = !string.IsNullOrWhiteSpace(this.Scope);
-            var scope = hasScope ? $"({this.Scope.Trim()})" : string.Empty;
+            var scope = hasScope ? $"({this.Scope.SafeTrim()})" : string.Empty;
             var commitType = (this.cbType.SelectedItem as CommitType).Type;
 
-            var head = $"{commitType}{scope}: {this.Subject.Trim()}"; //TODO: control the size
-            var body = string.Join("\n", this.Body.Trim().ChunkBySize(100));
+            var head = $"{commitType}{scope}: {this.Subject.SafeTrim()}"; //TODO: add a max size check
+            var body = string.Join("\n", this.Body.SafeTrim().ChunkBySize(100));
 
             var hasBreakingChanges = !string.IsNullOrEmpty(this.BreakingChanges);
-            var breakingChanges = this.BreakingChanges.Trim();
-            breakingChanges = hasBreakingChanges ? "BREAKING CHANGES: " + Regex.Replace(this.BreakingChanges, "^BREAKING CHANGES: ", string.Empty, RegexOptions.IgnoreCase) : string.Empty;
-            breakingChanges = hasBreakingChanges ? string.Join("\n", breakingChanges.ChunkBySize(100)) : string.Empty;
+            var breakingChanges = this.BreakingChanges.SafeTrim();
+            if (hasBreakingChanges)
+            {
+                breakingChanges = "BREAKING CHANGES: " + Regex.Replace(this.BreakingChanges, "^BREAKING CHANGES: ", string.Empty, RegexOptions.IgnoreCase);
+                breakingChanges = string.Join("\n", breakingChanges.ChunkBySize(100));
+            }
 
-            var issues = !string.IsNullOrWhiteSpace(this.IssuesAffected) ? string.Join("\n", this.IssuesAffected.Trim().ChunkBySize(100)) : string.Empty;
+            var issues = !string.IsNullOrWhiteSpace(this.IssuesAffected) ? string.Join("\n", this.IssuesAffected.SafeTrim().ChunkBySize(100)) : string.Empty;
 
-            var comment = $"{head}\n\n{body}\n\n{breakingChanges}\n\n{issues}";
+            var comment = string.Empty;
+            comment += $"{head}\n\n{body}\n\n";
+            if (!string.IsNullOrEmpty(breakingChanges)) comment += $"{breakingChanges}\n\n";
+            if (!string.IsNullOrEmpty(issues)) comment += $"{issues}\n\n";
             return comment;
         }
 
@@ -149,10 +170,5 @@ namespace vs_commitizen.vs
                 OnPropertyChanged();
             }
         }
-    }
-
-    internal interface ICommentBuilder
-    {
-        string GetComment();
     }
 }
