@@ -5,6 +5,20 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vs-commitizen", "vs-commitizen\vs-commitizen.csproj", "{8382BF18-B8BC-4C54-9826-8D9D20CD868D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vs-commitizen.vs2015", "vs-commitizen.vs2015\vs-commitizen.vs2015.csproj", "{D0418A0A-CB31-47C5-ACC7-3493406469CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vs-commitizen.vs2017", "vs-commitizen.vs2017\vs-commitizen.vs2017.csproj", "{93748016-5AA8-4D74-887E-64959D8D2496}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{942BEB9A-F3B2-40AF-B0AD-06AD10F47973}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+		paket.lock = paket.lock
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewTest", "ViewTest\ViewTest.csproj", "{DBA24F27-9A32-4047-976D-14AE0485625E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{03ACD37F-D91C-441C-BF6C-732F0F89C426}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +29,24 @@ Global
 		{8382BF18-B8BC-4C54-9826-8D9D20CD868D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8382BF18-B8BC-4C54-9826-8D9D20CD868D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8382BF18-B8BC-4C54-9826-8D9D20CD868D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0418A0A-CB31-47C5-ACC7-3493406469CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0418A0A-CB31-47C5-ACC7-3493406469CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0418A0A-CB31-47C5-ACC7-3493406469CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0418A0A-CB31-47C5-ACC7-3493406469CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93748016-5AA8-4D74-887E-64959D8D2496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93748016-5AA8-4D74-887E-64959D8D2496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93748016-5AA8-4D74-887E-64959D8D2496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93748016-5AA8-4D74-887E-64959D8D2496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA24F27-9A32-4047-976D-14AE0485625E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA24F27-9A32-4047-976D-14AE0485625E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA24F27-9A32-4047-976D-14AE0485625E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA24F27-9A32-4047-976D-14AE0485625E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DBA24F27-9A32-4047-976D-14AE0485625E} = {03ACD37F-D91C-441C-BF6C-732F0F89C426}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE6FAC8F-DB03-445B-B49C-F8D1C8A932EC}
