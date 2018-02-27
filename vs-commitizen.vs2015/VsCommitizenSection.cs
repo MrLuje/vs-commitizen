@@ -29,11 +29,11 @@ namespace vs_commitizen.vs2015
             var teamExplorer = GetService<ITeamExplorer>();
             var page = teamExplorer.CurrentPage as TeamExplorerBasePage;
 
-            this.CommitizenSection.CommitExecuted += (s, ee) =>
+            this.CommitizenSection.ProceedExecuted += (s, autoCommit) =>
             {
                 AddNavigationValue(NavigationDataType.CommitData, new NavigationCommitModel
                 {
-                    AutoCommit = true, //TODO: add an option for this
+                    AutoCommit = autoCommit,
                     Comment = CommitizenSection.GetComment()
                 });
 

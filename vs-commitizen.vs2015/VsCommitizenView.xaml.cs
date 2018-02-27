@@ -18,6 +18,7 @@ namespace vs_commitizen.vs
     /// </summary>
     public partial class VsCommitizenView : UserControl, INotifyPropertyChanged, ICommentBuilder
     {
+        #region Bound properties
         private List<CommitType> _commitTypes;
         public List<CommitType> CommitTypes
         {
@@ -81,7 +82,7 @@ namespace vs_commitizen.vs
             {
                 _subject = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(OnCommit));
+                OnPropertyChanged(nameof(OnProceed));
             }
         }
 
@@ -93,9 +94,10 @@ namespace vs_commitizen.vs
             {
                 _hasGitPendingChanges = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(OnCommit));
+                OnPropertyChanged(nameof(OnProceed));
             }
         }
+        #endregion
 
         public VsCommitizenView()
         {
@@ -115,7 +117,7 @@ namespace vs_commitizen.vs
                 new CommitType("chore", "Other changes that don't modify src or test files"),
                 new CommitType("revert", "Reverts a previous commit")
             };
-            this.OnCommit = new RelayCommand(Commit, CanCommit);
+            this.OnProceed = new RelayCommand(Proceed, CanProceed);
             this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
 
             this.DataContext = this;
@@ -127,7 +129,7 @@ namespace vs_commitizen.vs
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public bool CanCommit(object param)
+        public bool CanProceed(object param)
         {
             if (this.cbType.SelectedIndex < 0) return false;
             if (string.IsNullOrWhiteSpace(this.tbxSubject.Text)) return false;
@@ -136,9 +138,10 @@ namespace vs_commitizen.vs
             return true;
         }
 
-        public void Commit(object param)
+        public void Proceed(object param)
         {
-            CommitExecuted?.Invoke(this, new EventArgs());
+            var doCommit = param is bool && (bool)param;
+            ProceedExecuted?.Invoke(this, doCommit);
         }
 
         public string GetComment()
@@ -167,15 +170,15 @@ namespace vs_commitizen.vs
             return comment;
         }
 
-        public event EventHandler CommitExecuted;
+        public event EventHandler<bool> ProceedExecuted;
 
-        private ICommand _onCommit;
-        public ICommand OnCommit
+        private ICommand _onProceed;
+        public ICommand OnProceed
         {
-            get => _onCommit;
+            get => _onProceed;
             set
             {
-                _onCommit = value;
+                _onProceed = value;
                 OnPropertyChanged();
             }
         }
