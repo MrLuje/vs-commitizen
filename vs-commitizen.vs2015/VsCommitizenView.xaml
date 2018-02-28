@@ -15,23 +15,23 @@
                   Name="cbType"
                   DisplayMemberPath="DisplayString"
                   SelectedValuePath="Name" />
-        
+
         <Label Content="Scope :" HorizontalAlignment="Left" Margin="0,53,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxScope" HintText="Denote the scope of this change (optional)" 
                                   Height="24" Margin="0,79,25,0" VerticalAlignment="Top" 
                                   Text="{Binding ElementName=CtrlCommitizen, Path=Scope, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-        
+
         <Label Content="Subject :" HorizontalAlignment="Left" Margin="0,108,0,0" VerticalAlignment="Top" />
         <Controls:TextBoxWithHint x:Name="tbxSubject" HintText="Write a short, imperative tense description of the change" 
                                   Height="24" Margin="0,134,25,0" VerticalAlignment="Top"
                                   Text="{Binding ElementName=CtrlCommitizen, Path=Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-        
+
         <Label Content="Body :" HorizontalAlignment="Left" Margin="0,163,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxBody" HintText="Provide a longer description of the change (optional)" 
                                   Height="75" Margin="0,189,25,0" VerticalAlignment="Top"
                                   AcceptReturn="true"
                                   Text="{Binding ElementName=CtrlCommitizen, Path=Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
+
         <Label Content="Breaking changes :" HorizontalAlignment="Left" Margin="0,269,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxBreakingChanges" HintText="List any breaking changes (optional)" 
                                   Height="24" Margin="0,295,25,0" VerticalAlignment="Top"
@@ -41,9 +41,14 @@
         <Controls:TextBoxWithHint x:Name="tbxIssuesAffected" HintText="List any issues affected by this change (optional). E.g.: 'fix #123', 're #123'" 
                                   Height="24" Margin="0,350,25,0" VerticalAlignment="Top"
                                   Text="{Binding ElementName=CtrlCommitizen, Path=IssuesAffected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
-        <Button Name="BtnCommit" Content="Commit" 
-                HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="75" 
-                Command="{Binding ElementName=CtrlCommitizen, Path=OnCommit}" />
+
+        <Button Name="btnCommit" Content="Commit" 
+                HorizontalAlignment="Left" Margin="114,386,0,0" VerticalAlignment="Top" Width="74" 
+                Command="{Binding ElementName=CtrlCommitizen, Path=OnProceed}" CommandParameter="true"
+                ToolTip="Proceed to 'Changes' view and commit" />
+        <Button x:Name="btnProceed" Content="Proceed" 
+            HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="76" 
+            Command="{Binding ElementName=CtrlCommitizen, Path=OnProceed}" CommandParameter="false"
+            ToolTip="Proceed to 'Changes' view" />
     </Grid>
 </UserControl>
