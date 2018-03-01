@@ -61,12 +61,147 @@ namespace vs_commitizen.vs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commit.
+        /// </summary>
+        internal static string ButtonCommit {
+            get {
+                return ResourceManager.GetString("ButtonCommit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceed.
+        /// </summary>
+        internal static string ButtonProceed {
+            get {
+                return ResourceManager.GetString("ButtonProceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Git_icon_svg {
             get {
                 object obj = ResourceManager.GetObject("Git_icon_svg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provide a longer description of the change (optional).
+        /// </summary>
+        internal static string HintBody {
+            get {
+                return ResourceManager.GetString("HintBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List any breaking changes (optional).
+        /// </summary>
+        internal static string HintBreakingChanges {
+            get {
+                return ResourceManager.GetString("HintBreakingChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List any issues affected by this change (optional). E.g.: &apos;fix #123&apos;, &apos;re #123&apos;.
+        /// </summary>
+        internal static string HintIssues {
+            get {
+                return ResourceManager.GetString("HintIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Denote the scope of this change (optional).
+        /// </summary>
+        internal static string HintScope {
+            get {
+                return ResourceManager.GetString("HintScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write a short, imperative tense description of the change.
+        /// </summary>
+        internal static string HintSubject {
+            get {
+                return ResourceManager.GetString("HintSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Body :.
+        /// </summary>
+        internal static string LabelBody {
+            get {
+                return ResourceManager.GetString("LabelBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breaking changes :.
+        /// </summary>
+        internal static string LabelBreakingChanges {
+            get {
+                return ResourceManager.GetString("LabelBreakingChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type of changes :.
+        /// </summary>
+        internal static string LabelCommitType {
+            get {
+                return ResourceManager.GetString("LabelCommitType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Closes :.
+        /// </summary>
+        internal static string LabelIssues {
+            get {
+                return ResourceManager.GetString("LabelIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope :.
+        /// </summary>
+        internal static string LabelScope {
+            get {
+                return ResourceManager.GetString("LabelScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject :.
+        /// </summary>
+        internal static string LabelSubject {
+            get {
+                return ResourceManager.GetString("LabelSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceed to &apos;Changes&apos; view and commit.
+        /// </summary>
+        internal static string TooltipCommit {
+            get {
+                return ResourceManager.GetString("TooltipCommit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceed to &apos;Changes&apos; view.
+        /// </summary>
+        internal static string TooltipProceed {
+            get {
+                return ResourceManager.GetString("TooltipProceed", resourceCulture);
             }
         }
     }
