@@ -22,7 +22,7 @@ namespace vs_commitizen.vs {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class VSPackage {
+    public class VSPackage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace vs_commitizen.vs {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("vs_commitizen.vs.VSPackage", typeof(VSPackage).Assembly);
@@ -51,7 +51,7 @@ namespace vs_commitizen.vs {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Commit.
         /// </summary>
-        internal static string ButtonCommit {
+        public static string ButtonCommit {
             get {
                 return ResourceManager.GetString("ButtonCommit", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Proceed.
         /// </summary>
-        internal static string ButtonProceed {
+        public static string ButtonProceed {
             get {
                 return ResourceManager.GetString("ButtonProceed", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Git_icon_svg {
+        public static System.Drawing.Bitmap Git_icon_svg {
             get {
                 object obj = ResourceManager.GetObject("Git_icon_svg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -91,7 +91,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Provide a longer description of the change (optional).
         /// </summary>
-        internal static string HintBody {
+        public static string HintBody {
             get {
                 return ResourceManager.GetString("HintBody", resourceCulture);
             }
@@ -100,7 +100,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to List any breaking changes (optional).
         /// </summary>
-        internal static string HintBreakingChanges {
+        public static string HintBreakingChanges {
             get {
                 return ResourceManager.GetString("HintBreakingChanges", resourceCulture);
             }
@@ -109,7 +109,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to List any issues affected by this change (optional). E.g.: &apos;fix #123&apos;, &apos;re #123&apos;.
         /// </summary>
-        internal static string HintIssues {
+        public static string HintIssues {
             get {
                 return ResourceManager.GetString("HintIssues", resourceCulture);
             }
@@ -118,7 +118,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Denote the scope of this change (optional).
         /// </summary>
-        internal static string HintScope {
+        public static string HintScope {
             get {
                 return ResourceManager.GetString("HintScope", resourceCulture);
             }
@@ -127,7 +127,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Write a short, imperative tense description of the change.
         /// </summary>
-        internal static string HintSubject {
+        public static string HintSubject {
             get {
                 return ResourceManager.GetString("HintSubject", resourceCulture);
             }
@@ -136,7 +136,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Body :.
         /// </summary>
-        internal static string LabelBody {
+        public static string LabelBody {
             get {
                 return ResourceManager.GetString("LabelBody", resourceCulture);
             }
@@ -145,7 +145,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Breaking changes :.
         /// </summary>
-        internal static string LabelBreakingChanges {
+        public static string LabelBreakingChanges {
             get {
                 return ResourceManager.GetString("LabelBreakingChanges", resourceCulture);
             }
@@ -154,7 +154,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Type of changes :.
         /// </summary>
-        internal static string LabelCommitType {
+        public static string LabelCommitType {
             get {
                 return ResourceManager.GetString("LabelCommitType", resourceCulture);
             }
@@ -163,7 +163,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Closes :.
         /// </summary>
-        internal static string LabelIssues {
+        public static string LabelIssues {
             get {
                 return ResourceManager.GetString("LabelIssues", resourceCulture);
             }
@@ -172,7 +172,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Scope :.
         /// </summary>
-        internal static string LabelScope {
+        public static string LabelScope {
             get {
                 return ResourceManager.GetString("LabelScope", resourceCulture);
             }
@@ -181,7 +181,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Subject :.
         /// </summary>
-        internal static string LabelSubject {
+        public static string LabelSubject {
             get {
                 return ResourceManager.GetString("LabelSubject", resourceCulture);
             }
@@ -190,7 +190,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Proceed to &apos;Changes&apos; view and commit.
         /// </summary>
-        internal static string TooltipCommit {
+        public static string TooltipCommit {
             get {
                 return ResourceManager.GetString("TooltipCommit", resourceCulture);
             }
@@ -199,7 +199,7 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized string similar to Proceed to &apos;Changes&apos; view.
         /// </summary>
-        internal static string TooltipProceed {
+        public static string TooltipProceed {
             get {
                 return ResourceManager.GetString("TooltipProceed", resourceCulture);
             }

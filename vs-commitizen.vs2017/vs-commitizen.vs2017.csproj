@@ -137,7 +137,7 @@
   <ItemGroup>
     <EmbeddedResource Include="..\vs-commitizen.vs2015\VSPackage.resx">
       <Link>VSPackage.resx</Link>
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
