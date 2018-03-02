@@ -113,7 +113,7 @@
   <Import Project="..\.paket\paket.targets" />
   <ItemGroup>
     <EmbeddedResource Include="VSPackage.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
