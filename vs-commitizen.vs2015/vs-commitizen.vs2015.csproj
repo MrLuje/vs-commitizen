@@ -70,6 +70,7 @@
     <Compile Include="Controls\TextBoxWithHint.xaml.cs">
       <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\MaxLengthDisplayConverter.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\TeamExplorerPageBaseExtensions.cs" />
     <Compile Include="Interfaces\ICommentBuilder.cs" />
