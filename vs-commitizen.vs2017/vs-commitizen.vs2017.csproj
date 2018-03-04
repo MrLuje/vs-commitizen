@@ -95,6 +95,9 @@
     <Compile Include="..\vs-commitizen.vs2015\Models\NavigationDataType.cs">
       <Link>Models\NavigationDataType.cs</Link>
     </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\ViewModels\CommitizenViewModel.cs">
+      <Link>ViewModels\CommitizenViewModel.cs</Link>
+    </Compile>
     <Compile Include="..\vs-commitizen.vs2015\VsCommitizenNavigationItem.cs">
       <Link>VsCommitizenNavigationItem.cs</Link>
     </Compile>

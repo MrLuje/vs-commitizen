@@ -1,10 +1,7 @@
 ﻿using Microsoft.TeamFoundation.Controls;
-using Microsoft.TeamFoundation.Controls.WPF.TeamExplorer;
 using System;
 using vs_commitizen.vs;
 using vs_commitizen.vs.Models;
-using vs_commitizen.vs.Extensions;
-using System.Linq;
 
 namespace vs_commitizen.vs2015
 {
@@ -29,12 +26,12 @@ namespace vs_commitizen.vs2015
             var teamExplorer = GetService<ITeamExplorer>();
             var page = teamExplorer.CurrentPage as TeamExplorerBasePage;
 
-            this.CommitizenSection.ProceedExecuted += (s, autoCommit) =>
+            this.CommitizenSection.ViewModel.ProceedExecuted += (s, autoCommit) =>
             {
                 AddNavigationValue(NavigationDataType.CommitData, new NavigationCommitModel
                 {
                     AutoCommit = autoCommit,
-                    Comment = CommitizenSection.GetComment()
+                    Comment = CommitizenSection.ViewModel.GetComment()
                 });
 
                 teamExplorer.NavigateToPage(Guid.Parse(TeamExplorerPageIds.GitChanges), null);

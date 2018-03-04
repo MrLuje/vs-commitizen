@@ -4,55 +4,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:vs_commitizen.vs"
-             xmlns:Controls="clr-namespace:vs_commitizen.vs2015.Controls" x:Class="vs_commitizen.vs.VsCommitizenView" 
+             xmlns:Controls="clr-namespace:vs_commitizen.vs2015.Controls" xmlns:ViewModels="clr-namespace:vs_commitizen.vs.ViewModels" x:Class="vs_commitizen.vs.VsCommitizenView" 
              x:Name="CtrlCommitizen"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="300">
+    <!--<UserControl.DataContext>
+        <ViewModels:CommitizenViewModel/>
+    </UserControl.DataContext>-->
     <Grid>
         <Label Content="{x:Static local:VSPackage.LabelCommitType}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <ComboBox Margin="0,26,25,0" VerticalAlignment="Top" 
-                  ItemsSource="{Binding CommitTypes, ElementName=CtrlCommitizen}"
-                  Name="cbType"
+                  ItemsSource="{Binding ElementName=CtrlCommitizen, Path=DataContext.CommitTypes}"
+                  x:Name="cbType"
                   DisplayMemberPath="DisplayString"
                   SelectedValuePath="Name"
-                  SelectedItem="{Binding ElementName=CtrlCommitizen, Path=SelectedCommitType}" />
+                  SelectedItem="{Binding SelectedCommitType}" />
 
         <Label Content="{x:Static local:VSPackage.LabelScope}" HorizontalAlignment="Left" Margin="0,53,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxScope" HintText="{x:Static local:VSPackage.HintScope}" 
                                   Height="24" Margin="0,79,25,0" VerticalAlignment="Top" 
-                                  Text="{Binding ElementName=CtrlCommitizen, Path=Scope, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                  Text="{Binding ElementName=CtrlCommitizen, Path=DataContext.Scope, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Content="{x:Static local:VSPackage.LabelSubject}" HorizontalAlignment="Left" Margin="0,108,0,0" VerticalAlignment="Top" />
         <Label Margin="0,108,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="98" HorizontalContentAlignment="Right"
-               Content="{Binding FallbackValue=0/50, Path=SubjectLength}" ContentStringFormat="{}{0}/50"
+               Content="{Binding SubjectLength, FallbackValue=0/50}" ContentStringFormat="{}{0}/50"
                ToolTip="{x:Static local:VSPackage.TooltipSubjectCounter}"/>
         <Controls:TextBoxWithHint x:Name="tbxSubject" HintText="{x:Static local:VSPackage.HintSubject}" 
                                   Height="24" Margin="0,134,25,0" VerticalAlignment="Top"
-                                  Text="{Binding ElementName=CtrlCommitizen, Path=Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                  Text="{Binding ElementName=CtrlCommitizen, Path=DataContext.Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Content="{x:Static local:VSPackage.LabelBody}" HorizontalAlignment="Left" Margin="0,163,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxBody" HintText="{x:Static local:VSPackage.HintBody}" 
                                   Height="75" Margin="0,189,25,0" VerticalAlignment="Top"
                                   AcceptReturn="true"
-                                  Text="{Binding ElementName=CtrlCommitizen, Path=Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                  Text="{Binding ElementName=CtrlCommitizen, Path=DataContext.Body, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Content="{x:Static local:VSPackage.LabelBreakingChanges}" HorizontalAlignment="Left" Margin="0,269,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxBreakingChanges" HintText="{x:Static local:VSPackage.HintBreakingChanges}" 
                                   Height="24" Margin="0,295,25,0" VerticalAlignment="Top"
-                                  Text="{Binding ElementName=CtrlCommitizen, Path=BreakingChanges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                  Text="{Binding ElementName=CtrlCommitizen, Path=DataContext.BreakingChanges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <Label Content="{x:Static local:VSPackage.LabelIssues}" HorizontalAlignment="Left" Margin="0,324,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxIssuesAffected" HintText="{x:Static local:VSPackage.HintIssues}" 
                                   Height="24" Margin="0,350,25,0" VerticalAlignment="Top"
-                                  Text="{Binding ElementName=CtrlCommitizen, Path=IssuesAffected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                  Text="{Binding ElementName=CtrlCommitizen, Path=DataContext.IssuesAffected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <Button Name="btnCommit" Content="{x:Static local:VSPackage.ButtonCommit}" 
+        <Button x:Name="btnCommit" Content="{x:Static local:VSPackage.ButtonCommit}" 
                 HorizontalAlignment="Left" Margin="114,386,0,0" VerticalAlignment="Top" Width="74" 
-                Command="{Binding ElementName=CtrlCommitizen, Path=OnProceed}" CommandParameter="true"
+                Command="{Binding ElementName=CtrlCommitizen, Path=DataContext.OnProceed}" CommandParameter="true"
                 ToolTip="{x:Static local:VSPackage.TooltipCommit}" />
         <Button x:Name="btnProceed" Content="{x:Static local:VSPackage.ButtonProceed}" 
             HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="76" 
-            Command="{Binding ElementName=CtrlCommitizen, Path=OnProceed}" CommandParameter="false"
+            Command="{Binding ElementName=CtrlCommitizen, Path=DataContext.OnProceed}" CommandParameter="false"
             ToolTip="{x:Static local:VSPackage.TooltipProceed}" />
     </Grid>
 </UserControl>
