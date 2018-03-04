@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using vs_commitizen.vs.Models;
@@ -30,6 +29,19 @@ namespace vs_commitizen.vs
             }
         }
 
+        private CommitType _selectedCommitType;
+        public CommitType SelectedCommitType
+        {
+            get => _selectedCommitType;
+            set
+            {
+                _selectedCommitType = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(OnProceed));
+                OnPropertyChanged(nameof(SubjectLength));
+            }
+        }
+
         private string _scope;
         public string Scope
         {
@@ -38,6 +50,8 @@ namespace vs_commitizen.vs
             {
                 _scope = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(SubjectLength));
+
             }
         }
 
@@ -83,6 +97,21 @@ namespace vs_commitizen.vs
                 _subject = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(OnProceed));
+                OnPropertyChanged(nameof(SubjectLength));
+            }
+        }
+
+        public int SubjectLength
+        {
+            get
+            {
+                int type =this.SelectedCommitType?.Type.Length ?? 0;
+                int scope = this.Scope?.Length ?? 0;
+                int subject = this.Subject?.Length ?? 0;
+                var sum = type + scope + subject;
+                sum = sum == 0 ? 0 : sum + 1;
+
+                return sum;
             }
         }
 
@@ -161,6 +190,7 @@ namespace vs_commitizen.vs
                 breakingChanges = string.Join("\n", breakingChanges.ChunkBySize(100));
             }
 
+            //TODO: prefix by #
             var issues = !string.IsNullOrWhiteSpace(this.IssuesAffected) ? string.Join("\n", this.IssuesAffected.SafeTrim().ChunkBySize(100)) : string.Empty;
 
             var comment = string.Empty;

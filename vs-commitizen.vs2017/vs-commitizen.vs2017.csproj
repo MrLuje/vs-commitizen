@@ -74,9 +74,6 @@
       <Link>Controls\TextBoxWithHint.xaml.cs</Link>
       <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Converters\MaxLengthDisplayConverter.cs">
-      <Link>Converters\MaxLengthDisplayConverter.cs</Link>
-    </Compile>
     <Compile Include="..\vs-commitizen.vs2015\Extensions\StringExtensions.cs">
       <Link>Extensions\StringExtensions.cs</Link>
     </Compile>

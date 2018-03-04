@@ -4,21 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:vs_commitizen.vs"
-             xmlns:converter="clr-namespace:vs_commitizen.vs.Converters"
              xmlns:Controls="clr-namespace:vs_commitizen.vs2015.Controls" x:Class="vs_commitizen.vs.VsCommitizenView" 
              x:Name="CtrlCommitizen"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="300">
-    <UserControl.Resources>
-        <converter:MaxLengthDisplayConverter x:Key="MaxLengthDisplayConverter" />
-    </UserControl.Resources>
     <Grid>
         <Label Content="{x:Static local:VSPackage.LabelCommitType}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <ComboBox Margin="0,26,25,0" VerticalAlignment="Top" 
                   ItemsSource="{Binding CommitTypes, ElementName=CtrlCommitizen}"
                   Name="cbType"
                   DisplayMemberPath="DisplayString"
-                  SelectedValuePath="Name" />
+                  SelectedValuePath="Name"
+                  SelectedItem="{Binding ElementName=CtrlCommitizen, Path=SelectedCommitType}" />
 
         <Label Content="{x:Static local:VSPackage.LabelScope}" HorizontalAlignment="Left" Margin="0,53,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxScope" HintText="{x:Static local:VSPackage.HintScope}" 
@@ -26,16 +23,12 @@
                                   Text="{Binding ElementName=CtrlCommitizen, Path=Scope, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Content="{x:Static local:VSPackage.LabelSubject}" HorizontalAlignment="Left" Margin="0,108,0,0" VerticalAlignment="Top" />
-        <Label Margin="0,108,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40" HorizontalContentAlignment="Right">
-            <Label.Content>
-                <Binding ElementName="tbxSubject" Path="Text.Length" FallbackValue="0/50" Converter="{StaticResource MaxLengthDisplayConverter}">
-                </Binding>
-            </Label.Content>
-        </Label>
+        <Label Margin="0,108,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="98" HorizontalContentAlignment="Right"
+               Content="{Binding FallbackValue=0/50, Path=SubjectLength}" ContentStringFormat="{}{0}/50"
+               ToolTip="{x:Static local:VSPackage.TooltipSubjectCounter}"/>
         <Controls:TextBoxWithHint x:Name="tbxSubject" HintText="{x:Static local:VSPackage.HintSubject}" 
                                   Height="24" Margin="0,134,25,0" VerticalAlignment="Top"
-                                  Text="{Binding ElementName=CtrlCommitizen, Path=Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                  MaxLength="50"/>
+                                  Text="{Binding ElementName=CtrlCommitizen, Path=Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Label Content="{x:Static local:VSPackage.LabelBody}" HorizontalAlignment="Left" Margin="0,163,0,0" VerticalAlignment="Top"/>
         <Controls:TextBoxWithHint x:Name="tbxBody" HintText="{x:Static local:VSPackage.HintBody}" 
