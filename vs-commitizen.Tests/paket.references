@@ -1,0 +1,9 @@
+﻿AutoFixture.Xunit2
+Microsoft.VisualStudio.Shell.15.0
+Microsoft.VisualStudio.Shell.Interop.12.0
+Shouldly
+xunit
+xunit.runner.visualstudio
+
+group vs15
+	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true

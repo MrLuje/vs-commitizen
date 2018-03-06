@@ -11,6 +11,11 @@ nuget Microsoft.VisualStudio.Shell.15.0 ~> 15.0 copy_local: false
 nuget Microsoft.VSSDK.BuildTools ~> 15.5.100	#to debug 2017 exp
 nuget Newtonsoft.Json 11.0.1
 
+nuget xunit 2.3.1
+nuget xunit.runner.visualstudio 2.3.1 version_in_path: true
+nuget AutoFixture.Xunit2
+nuget Shouldly
+
 group vs14
 	framework: auto-detect
 	source https://api.nuget.org/v3/index.json

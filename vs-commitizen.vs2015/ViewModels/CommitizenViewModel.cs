@@ -167,6 +167,8 @@ namespace vs_commitizen.vs.ViewModels
 
         public string GetComment()
         {
+            if (this.SelectedCommitType == null) return string.Empty;
+
             var hasScope = !string.IsNullOrWhiteSpace(this.Scope);
             var scope = hasScope ? $"({this.Scope.SafeTrim()})" : string.Empty;
             var commitType = this.SelectedCommitType.Type;
@@ -182,13 +184,17 @@ namespace vs_commitizen.vs.ViewModels
                 breakingChanges = string.Join("\n", breakingChanges.ChunkBySize(100));
             }
 
-            //TODO: prefix by #
-            var issues = !string.IsNullOrWhiteSpace(this.IssuesAffected) ? string.Join("\n", this.IssuesAffected.SafeTrim().ChunkBySize(100)) : string.Empty;
+            var hasIssuesAffected = !string.IsNullOrEmpty(this.IssuesAffected);
+            var issues = this.IssuesAffected.SafeTrim();
+            if (hasIssuesAffected) {
+                issues = int.TryParse(issues, out var _) ? $"#{issues}" : issues;
+                issues = string.Join("\n", issues.ChunkBySize(100));
+            }
 
-            var comment = string.Empty;
-            comment += $"{head}\n\n{body}\n\n";
-            if (!string.IsNullOrEmpty(breakingChanges)) comment += $"{breakingChanges}\n\n";
-            if (!string.IsNullOrEmpty(issues)) comment += $"{issues}\n\n";
+            var comment = head;
+            if (!string.IsNullOrEmpty(body)) comment += $"\n\n{body}";
+            if (!string.IsNullOrEmpty(breakingChanges)) comment += $"\n\n{breakingChanges}";
+            if (!string.IsNullOrEmpty(issues)) comment += $"\n\n{issues}";
             return comment;
         }
 
