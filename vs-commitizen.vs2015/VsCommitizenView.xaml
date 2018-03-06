@@ -28,7 +28,8 @@
         <Label Content="{x:Static local:VSPackage.LabelSubject}" HorizontalAlignment="Left" Margin="0,108,0,0" VerticalAlignment="Top" />
         <Label Margin="0,108,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="98" HorizontalContentAlignment="Right"
                Content="{Binding SubjectLength, FallbackValue=0/50}" ContentStringFormat="{}{0}/50"
-               ToolTip="{x:Static local:VSPackage.TooltipSubjectCounter}"/>
+               ToolTip="{x:Static local:VSPackage.TooltipSubjectCounter}"
+               Foreground="{Binding ElementName=CtrlCommitizen, Path=DataContext.SubjectColor}" />
         <Controls:TextBoxWithHint x:Name="tbxSubject" HintText="{x:Static local:VSPackage.HintSubject}" 
                                   Height="24" Margin="0,134,25,0" VerticalAlignment="Top"
                                   Text="{Binding ElementName=CtrlCommitizen, Path=DataContext.Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

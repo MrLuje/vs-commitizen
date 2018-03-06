@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
+using System.Windows.Media;
 using vs_commitizen.vs.Extensions;
 using vs_commitizen.vs.Interfaces;
 using vs_commitizen.vs.Models;
@@ -36,6 +37,7 @@ namespace vs_commitizen.vs.ViewModels
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(OnProceed));
                 OnPropertyChanged(nameof(SubjectLength));
+                OnPropertyChanged(nameof(SubjectColor));
             }
         }
 
@@ -48,6 +50,7 @@ namespace vs_commitizen.vs.ViewModels
                 _scope = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(SubjectLength));
+                OnPropertyChanged(nameof(SubjectColor));
             }
         }
 
@@ -94,6 +97,7 @@ namespace vs_commitizen.vs.ViewModels
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(OnProceed));
                 OnPropertyChanged(nameof(SubjectLength));
+                OnPropertyChanged(nameof(SubjectColor));
             }
         }
 
@@ -110,6 +114,8 @@ namespace vs_commitizen.vs.ViewModels
                 return sum;
             }
         }
+
+        public Brush SubjectColor => this.SubjectLength > 50 ? Brushes.Red : Brushes.Black;
 
         private bool _hasGitPendingChanges;
         public bool HasGitPendingChanges
