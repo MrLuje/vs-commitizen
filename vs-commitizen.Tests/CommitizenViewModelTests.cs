@@ -55,21 +55,21 @@ namespace vs_commitizen.Tests
         }
 
         [Theory, TestConventions]
-        public void Scope_Changes_Should_Trigger_SubjectLength_Change(CommitizenViewModel sut)
+        public void Scope_Changes_Should_Trigger_SubjectLength_Color_Change(CommitizenViewModel sut)
         {
-            TestPropertyChangedFor(sut, (s) => s.Scope = "abc", new[] { "Scope", "SubjectLength" });
+            TestPropertyChangedFor(sut, (s) => s.Scope = "abc", new[] { "Scope", "SubjectLength", "SubjectColor" });
         }
 
         [Theory, TestConventions]
-        public void SelectedCommitType_Changes_Should_Trigger_SubjectLength_Change_And_OnProceed(CommitizenViewModel sut)
+        public void SelectedCommitType_Changes_Should_Trigger_SubjectLength_Color_Change_And_OnProceed(CommitizenViewModel sut)
         {
-            TestPropertyChangedFor(sut, s => s.SelectedCommitType = s.CommitTypes.Last(), new[] { "SelectedCommitType", "SubjectLength", "OnProceed" });
+            TestPropertyChangedFor(sut, s => s.SelectedCommitType = s.CommitTypes.Last(), new[] { "SelectedCommitType", "SubjectLength", "SubjectColor", "OnProceed" });
         }
 
         [Theory, TestConventions]
-        public void Subject_Changes_Should_Trigger_SubjectLength_Change_And_OnProceed(CommitizenViewModel sut)
+        public void Subject_Changes_Should_Trigger_SubjectLength_Color_Change_And_OnProceed(CommitizenViewModel sut)
         {
-            TestPropertyChangedFor(sut, s => s.Subject = "sub", new[] { "Subject", "SubjectLength", "OnProceed" });
+            TestPropertyChangedFor(sut, s => s.Subject = "sub", new[] { "Subject", "SubjectLength", "SubjectColor", "OnProceed" });
         }
 
         [Theory, TestConventions]
