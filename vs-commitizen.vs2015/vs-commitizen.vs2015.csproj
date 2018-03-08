@@ -82,6 +82,7 @@
     <Compile Include="Base\TeamExplorerBaseNavigationLink.cs" />
     <Compile Include="Base\TeamExplorerBasePage.cs" />
     <Compile Include="Base\TeamExplorerBaseSection.cs" />
+    <Compile Include="ViewModels\CommitizenViewModel.cs" />
     <Compile Include="VsCommitizenNavigationItem.cs" />
     <Compile Include="VsCommitizenPage.cs" />
     <Compile Include="GitChangesSection.cs" />

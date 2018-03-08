@@ -2,9 +2,9 @@
 {
     public class CommitType
     {
-        public CommitType(string name, string description)
+        public CommitType(string type, string description)
         {
-            Type = name;
+            Type = type;
             Description = description;
         }
 

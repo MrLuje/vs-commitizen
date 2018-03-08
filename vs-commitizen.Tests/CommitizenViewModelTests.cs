@@ -1,0 +1,194 @@
+﻿using Shouldly;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using vs_commitizen.vs.ViewModels;
+using Xunit;
+
+namespace vs_commitizen.Tests
+{
+    public class CommitizenViewModelTests
+    {
+        [Theory, TestConventions]
+        public void CantProcess_If_Subject_Empty(CommitizenViewModel sut)
+        {
+            sut.Subject = string.Empty;
+            sut.CanProceed(null).ShouldBe(false);
+        }
+
+        [Theory, TestConventions]
+        public void CantProcess_If_CommitType_IsNot_Selected(CommitizenViewModel sut)
+        {
+            sut.SelectedCommitType = null;
+            sut.CanProceed(null).ShouldBe(false);
+        }
+
+        [Theory, TestConventions]
+        public void CanProcess_If_CommitType_And_Subject_Are_Filled(CommitizenViewModel sut)
+        {
+            sut.SelectedCommitType.ShouldNotBeNull();
+            sut.Subject.ShouldNotBeNullOrEmpty();
+            sut.CanProceed(null).ShouldBe(true);
+        }
+
+        [Theory, TestConventions]
+        public void Should_Contains_CommitTypes_List(CommitizenViewModel sut)
+        {
+            sut.CommitTypes.Count.ShouldBeGreaterThan(0);
+        }
+
+        void TestPropertyChangedFor(CommitizenViewModel sut, Action<CommitizenViewModel> action, string[] changed)
+        {
+            var calledSoFar = new List<string>();
+            sut.PropertyChanged += (s, e) =>
+            {
+                // Assert
+                e.PropertyName.ShouldBeOneOf(changed);
+                calledSoFar.Add(e.PropertyName);
+            };
+
+            // Act
+            action(sut);
+
+            // Assert
+            calledSoFar.ShouldBe(changed, ignoreOrder: true);
+        }
+
+        [Theory, TestConventions]
+        public void Scope_Changes_Should_Trigger_SubjectLength_Color_Change(CommitizenViewModel sut)
+        {
+            TestPropertyChangedFor(sut, (s) => s.Scope = "abc", new[] { "Scope", "SubjectLength", "SubjectColor" });
+        }
+
+        [Theory, TestConventions]
+        public void SelectedCommitType_Changes_Should_Trigger_SubjectLength_Color_Change_And_OnProceed(CommitizenViewModel sut)
+        {
+            TestPropertyChangedFor(sut, s => s.SelectedCommitType = s.CommitTypes.Last(), new[] { "SelectedCommitType", "SubjectLength", "SubjectColor", "OnProceed" });
+        }
+
+        [Theory, TestConventions]
+        public void Subject_Changes_Should_Trigger_SubjectLength_Color_Change_And_OnProceed(CommitizenViewModel sut)
+        {
+            TestPropertyChangedFor(sut, s => s.Subject = "sub", new[] { "Subject", "SubjectLength", "SubjectColor", "OnProceed" });
+        }
+
+        [Theory, TestConventions]
+        public void SubjectLength_Should_DependsOn_Scope(CommitizenViewModel sut)
+        {
+            var actualLength = sut.SubjectLength;
+
+            // Act 
+            sut.Scope = sut.Scope.Substring(0, sut.Scope.Length - 1);
+
+            // Assert
+            sut.SubjectLength.ShouldBe(actualLength - 1);
+        }
+
+        [Theory, TestConventions]
+        public void SubjectLength_Should_DependsOn_Subject(CommitizenViewModel sut)
+        {
+            var actualLength = sut.SubjectLength;
+
+            // Act 
+            sut.Subject = sut.Subject.Substring(0, sut.Subject.Length - 1);
+
+            // Assert
+            sut.SubjectLength.ShouldBe(actualLength - 1);
+        }
+
+        [Theory, TestConventions]
+        public void SubjectLength_Should_DependsOn_CommitType(CommitizenViewModel sut)
+        {
+            sut.SelectedCommitType = sut.CommitTypes.First();
+            var actualLength = sut.SubjectLength;
+
+            // Act 
+            sut.SelectedCommitType = sut.CommitTypes.Skip(1).First();
+
+            // Assert
+            int differenceBetweenSubjectLength = Math.Abs(sut.SubjectLength - actualLength);
+            int differenceBetweenTypeLength = Math.Abs(sut.CommitTypes.First().Type.Length - sut.CommitTypes.Skip(1).First().Type.Length);
+            differenceBetweenSubjectLength.ShouldBe(differenceBetweenTypeLength);
+        }
+
+        [Theory, TestConventions]
+        public void SubjectLength_Is_sum(CommitizenViewModel sut)
+        {
+            var actualLength = sut.SubjectLength;
+
+            // Assert
+            actualLength.ShouldBe(sut.Subject.Length + sut.Scope.Length + sut.SelectedCommitType.Type.Length + 1);
+        }
+
+        [Theory, TestConventions]
+        public void SubjectLength_Is_Zero_If_No_Selected(CommitizenViewModel sut)
+        {
+            // Act
+            sut.Subject = string.Empty;
+            sut.Scope = string.Empty;
+            sut.SelectedCommitType = null;
+
+            // Assert
+            sut.SubjectLength.ShouldBe(0);
+        }
+
+        [Theory, TestConventions]
+        public void Proceed_Sets_Autocommit(CommitizenViewModel sut, bool autoCommit)
+        {
+            // Assert
+            sut.ProceedExecuted += (s, b) => b.ShouldBe(autoCommit);
+
+            // Act
+            sut.Proceed(autoCommit);
+        }
+        
+        [Fact]
+        public void GetComment_With_No_SelectedCommitType_ShouldBe_Empty()
+        {
+            var sut = new CommitizenViewModel();
+            sut.SelectedCommitType = null;
+            sut.GetComment().ShouldBeEmpty();
+        }
+
+        [Theory, TestConventions]
+        public void GetComment_With_No_Scope(CommitizenViewModel sut)
+        {
+            sut.Scope = null;
+            sut.GetComment().ShouldStartWith($"{sut.SelectedCommitType.Type}: ");
+        }
+
+        [Theory, TestConventions]
+        public void GetComment_With_Scope(CommitizenViewModel sut)
+        {
+            sut.GetComment().ShouldStartWith($"{sut.SelectedCommitType.Type}({sut.Scope}): ");
+        }
+
+        [Theory, TestConventions]
+        public void GetComment_With_No_Body(CommitizenViewModel sut)
+        {
+            sut.IssuesAffected = sut.Body = sut.BreakingChanges = null;
+            sut.GetComment().ShouldBe($"{sut.SelectedCommitType.Type}({sut.Scope}): {sut.Subject}");
+        }
+
+        [Theory, TestConventions]
+        public void GetComment_Should_Prefix_BreakingChanges(CommitizenViewModel sut)
+        {
+            sut.BreakingChanges = "no more login !";
+            sut.GetComment().ShouldContain($"BREAKING CHANGES: {sut.BreakingChanges}");
+        }
+
+        [Theory, TestConventions]
+        public void GetComment_Should_Prefix_Issues_If_Number(CommitizenViewModel sut)
+        {
+            sut.IssuesAffected = "666";
+            sut.GetComment().ShouldEndWith("\n\n#666");
+        }
+
+        [Theory, TestConventions]
+        public void GetComment_ShouldNot_Prefix_Issues_If_NotNumber(CommitizenViewModel sut)
+        {
+            sut.IssuesAffected = "666 & 999";
+            sut.GetComment().ShouldEndWith($"\n\n{sut.IssuesAffected}");
+        }
+    }
+}

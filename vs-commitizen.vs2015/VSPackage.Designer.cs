@@ -204,5 +204,14 @@ namespace vs_commitizen.vs {
                 return ResourceManager.GetString("TooltipProceed", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Including scope, type and formatting.
+        /// </summary>
+        public static string TooltipSubjectCounter {
+            get {
+                return ResourceManager.GetString("TooltipSubjectCounter", resourceCulture);
+            }
+        }
     }
 }

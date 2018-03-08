@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewTest", "ViewTest\ViewTe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{03ACD37F-D91C-441C-BF6C-732F0F89C426}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vs-commitizen.Tests", "vs-commitizen.Tests\vs-commitizen.Tests.csproj", "{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +43,17 @@ Global
 		{DBA24F27-9A32-4047-976D-14AE0485625E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA24F27-9A32-4047-976D-14AE0485625E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBA24F27-9A32-4047-976D-14AE0485625E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DBA24F27-9A32-4047-976D-14AE0485625E} = {03ACD37F-D91C-441C-BF6C-732F0F89C426}
+		{DEBEADBD-D754-46A3-8AFB-6C8D5657B535} = {03ACD37F-D91C-441C-BF6C-732F0F89C426}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE6FAC8F-DB03-445B-B49C-F8D1C8A932EC}

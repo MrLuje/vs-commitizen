@@ -1,6 +1,10 @@
 RESTRICTION: == net461
 NUGET
   remote: https://api.nuget.org/v3/index.json
+    AutoFixture (4.1)
+    AutoFixture.Xunit2 (4.1)
+      AutoFixture (>= 4.1)
+      xunit.extensibility.core (>= 2.0 < 3.0)
     Microsoft.AspNet.WebApi.Client (5.2.2)
       Newtonsoft.Json (>= 6.0.4)
     Microsoft.AspNet.WebApi.Core (5.2.2)
@@ -109,6 +113,7 @@ NUGET
     Microsoft.VSSDK.BuildTools (15.5.100)
     Microsoft.Win32.Primitives (4.0.1)
     Newtonsoft.Json (11.0.1)
+    Shouldly (3.0)
     StreamJsonRpc (1.3.23) - copy_local: false
       Microsoft.VisualStudio.Threading (>= 15.3.20)
       Newtonsoft.Json (>= 6.0.6)
@@ -147,6 +152,21 @@ NUGET
     System.Xml.ReaderWriter (4.0.11)
     System.Xml.XDocument (4.0.11)
     WindowsAzure.ServiceBus (3.3.2)
+    xunit (2.3.1)
+      xunit.analyzers (>= 0.7)
+      xunit.assert (2.3.1)
+      xunit.core (2.3.1)
+    xunit.abstractions (2.0.1)
+    xunit.analyzers (0.8)
+    xunit.assert (2.3.1)
+    xunit.core (2.3.1)
+      xunit.extensibility.core (2.3.1)
+      xunit.extensibility.execution (2.3.1)
+    xunit.extensibility.core (2.3.1)
+      xunit.abstractions (>= 2.0.1)
+    xunit.extensibility.execution (2.3.1)
+      xunit.extensibility.core (2.3.1)
+    xunit.runner.visualstudio (2.3.1) - version_in_path: true
 
 GROUP vs14
 RESTRICTION: == net461
