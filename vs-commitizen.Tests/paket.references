@@ -4,6 +4,7 @@ Microsoft.VisualStudio.Shell.Interop.12.0
 Shouldly
 xunit
 xunit.runner.visualstudio
+Xunit.StaFact
 
 group vs15
 	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true

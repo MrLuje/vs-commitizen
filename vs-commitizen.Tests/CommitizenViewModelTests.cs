@@ -1,8 +1,8 @@
-﻿using AutoFixture.Xunit2;
-using Shouldly;
+﻿using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using vs_commitizen.Tests.TestAttributes;
 using vs_commitizen.vs.ViewModels;
 using Xunit;
 

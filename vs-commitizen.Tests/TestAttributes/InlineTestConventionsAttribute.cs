@@ -1,7 +1,7 @@
 ﻿using AutoFixture.Xunit2;
 using System;
 
-namespace vs_commitizen.Tests
+namespace vs_commitizen.Tests.TestAttributes
 {
     [AttributeUsageAttribute(AttributeTargets.Method, AllowMultiple = true)]
     public class InlineTestConventionsAttribute : InlineAutoDataAttribute
