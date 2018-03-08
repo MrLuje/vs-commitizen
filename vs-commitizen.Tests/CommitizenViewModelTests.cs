@@ -1,4 +1,5 @@
-﻿using Shouldly;
+﻿using AutoFixture.Xunit2;
+using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -132,16 +133,18 @@ namespace vs_commitizen.Tests
             sut.SubjectLength.ShouldBe(0);
         }
 
-        [Theory, TestConventions]
-        public void Proceed_Sets_Autocommit(CommitizenViewModel sut, bool autoCommit)
+        [Theory]
+        [InlineTestConventions("true", true)]
+        [InlineTestConventions("false", false)]
+        public void Proceed_Sets_Autocommit(string autoCommit, bool expected, CommitizenViewModel sut)
         {
             // Assert
-            sut.ProceedExecuted += (s, b) => b.ShouldBe(autoCommit);
+            sut.ProceedExecuted += (s, b) => b.ShouldBe(expected);
 
             // Act
             sut.Proceed(autoCommit);
         }
-        
+
         [Fact]
         public void GetComment_With_No_SelectedCommitType_ShouldBe_Empty()
         {

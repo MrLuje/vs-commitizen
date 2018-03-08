@@ -167,7 +167,7 @@ namespace vs_commitizen.vs.ViewModels
 
         public void Proceed(object param)
         {
-            var doCommit = param is bool && (bool)param;
+            bool.TryParse(param.ToString(), out var doCommit);
             ProceedExecuted?.Invoke(this, doCommit);
         }
 

@@ -45,6 +45,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InlineTestConventionsAttribute.cs" />
     <Compile Include="TestConventionsAttribute.cs" />
     <Compile Include="CommitizenViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
