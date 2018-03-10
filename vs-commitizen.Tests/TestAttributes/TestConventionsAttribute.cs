@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using vs_commitizen.vs.ViewModels;
 
-namespace vs_commitizen.Tests
+namespace vs_commitizen.Tests.TestAttributes
 {
     [AttributeUsageAttribute(AttributeTargets.Method, AllowMultiple = false)]
     public class TestConventionsAttribute : AutoDataAttribute
