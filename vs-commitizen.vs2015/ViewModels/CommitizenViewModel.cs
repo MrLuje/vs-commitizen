@@ -179,7 +179,7 @@ namespace vs_commitizen.vs.ViewModels
             var scope = hasScope ? $"({this.Scope.SafeTrim()})" : string.Empty;
             var commitType = this.SelectedCommitType.Type;
 
-            var head = $"{commitType}{scope}: {this.Subject.SafeTrim()}"; //TODO: add a max size check
+            var head = $"{commitType}{scope}: {this.Subject.SafeTrim()}";
             var body = string.Join("\n", this.Body.SafeTrim().ChunkBySizePreverveWords(100));
 
             var hasBreakingChanges = !string.IsNullOrEmpty(this.BreakingChanges);
@@ -192,7 +192,8 @@ namespace vs_commitizen.vs.ViewModels
 
             var hasIssuesAffected = !string.IsNullOrEmpty(this.IssuesAffected);
             var issues = this.IssuesAffected.SafeTrim();
-            if (hasIssuesAffected) {
+            if (hasIssuesAffected)
+            {
                 issues = int.TryParse(issues, out var _) ? $"#{issues}" : issues;
                 issues = string.Join("\n", issues.ChunkBySizePreverveWords(100));
             }
