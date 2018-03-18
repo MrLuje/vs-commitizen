@@ -1,0 +1,2 @@
+﻿group vs15
+	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true
