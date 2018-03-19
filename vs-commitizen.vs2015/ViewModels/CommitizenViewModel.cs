@@ -179,22 +179,23 @@ namespace vs_commitizen.vs.ViewModels
             var scope = hasScope ? $"({this.Scope.SafeTrim()})" : string.Empty;
             var commitType = this.SelectedCommitType.Type;
 
-            var head = $"{commitType}{scope}: {this.Subject.SafeTrim()}"; //TODO: add a max size check
-            var body = string.Join("\n", this.Body.SafeTrim().ChunkBySize(100));
+            var head = $"{commitType}{scope}: {this.Subject.SafeTrim()}";
+            var body = string.Join("\n", this.Body.SafeTrim().ChunkBySizePreverveWords(100));
 
             var hasBreakingChanges = !string.IsNullOrEmpty(this.BreakingChanges);
             var breakingChanges = this.BreakingChanges.SafeTrim();
             if (hasBreakingChanges)
             {
                 breakingChanges = "BREAKING CHANGES: " + Regex.Replace(this.BreakingChanges, "^BREAKING CHANGES: ", string.Empty, RegexOptions.IgnoreCase);
-                breakingChanges = string.Join("\n", breakingChanges.ChunkBySize(100));
+                breakingChanges = string.Join("\n", breakingChanges.ChunkBySizePreverveWords(100));
             }
 
             var hasIssuesAffected = !string.IsNullOrEmpty(this.IssuesAffected);
             var issues = this.IssuesAffected.SafeTrim();
-            if (hasIssuesAffected) {
+            if (hasIssuesAffected)
+            {
                 issues = int.TryParse(issues, out var _) ? $"#{issues}" : issues;
-                issues = string.Join("\n", issues.ChunkBySize(100));
+                issues = string.Join("\n", issues.ChunkBySizePreverveWords(100));
             }
 
             var comment = head;
