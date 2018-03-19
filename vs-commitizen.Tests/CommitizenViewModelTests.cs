@@ -193,5 +193,17 @@ namespace vs_commitizen.Tests
             sut.IssuesAffected = "666 & 999";
             sut.GetComment().ShouldEndWith($"\n\n{sut.IssuesAffected}");
         }
+
+        [Fact, TestConventions]
+        public void GetComment_ShouldNot_Take_Last_Space_If_Over_ChunkSize()
+        {
+            var sut = new CommitizenViewModel();
+            sut.SelectedCommitType = sut.CommitTypes.First(f => f.Type.Contains("feat"));
+            sut.Scope = "test";
+            sut.Body = "test";
+            sut.Body += " tenwordsss tenwordsss";
+            sut.LineLength = 10;
+            sut.GetComment().ShouldBe("feat(test): \n\ntest\ntenwordsss\ntenwordsss");
+        }
     }
 }

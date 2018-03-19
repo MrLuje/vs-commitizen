@@ -49,7 +49,7 @@ namespace vs_commitizen.Tests.Extensions
         public void Split_By_1()
         {
             var res = "Lorem ipsum ".ChunkBySizePreverveWords(1);
-            res.ShouldBe(new[] { "L", "o", "r", "e", "m", "", "i", "p", "s", "u", "m", "" });
+            res.ShouldBe(new[] { "L", "o", "r", "e", "m", "i", "p", "s", "u", "m" });
         }
     }
 }
