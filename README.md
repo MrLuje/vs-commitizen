@@ -1,4 +1,5 @@
 # vs-commitizen
+[![Build status](https://ci.appveyor.com/api/projects/status/4yx0hjn5qmu8oem0/branch/master?svg=true)](https://ci.appveyor.com/project/MrLuje/vs-commitizen/branch/master)
 This extension adds [commitizen](https://github.com/commitizen/) support to VisualStudio.
 
 ## Features
