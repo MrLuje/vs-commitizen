@@ -194,7 +194,7 @@ namespace vs_commitizen.Tests
             sut.GetComment().ShouldEndWith($"\n\n{sut.IssuesAffected}");
         }
 
-        [Fact, TestConventions]
+        [Fact]
         public void GetComment_ShouldNot_Take_Last_Space_If_Over_ChunkSize()
         {
             var sut = new CommitizenViewModel();
