@@ -116,6 +116,7 @@ namespace vs_commitizen.vs.ViewModels
         }
 
         public Brush SubjectColor => this.SubjectLength > 50 ? Brushes.Red : Brushes.Black;
+        public int LineLength { get; set; } = 100; 
 
         private bool _hasGitPendingChanges;
         public bool HasGitPendingChanges
@@ -180,14 +181,14 @@ namespace vs_commitizen.vs.ViewModels
             var commitType = this.SelectedCommitType.Type;
 
             var head = $"{commitType}{scope}: {this.Subject.SafeTrim()}";
-            var body = string.Join("\n", this.Body.SafeTrim().ChunkBySizePreverveWords(100));
+            var body = string.Join("\n", this.Body.SafeTrim().ChunkBySizePreverveWords(this.LineLength));
 
             var hasBreakingChanges = !string.IsNullOrEmpty(this.BreakingChanges);
             var breakingChanges = this.BreakingChanges.SafeTrim();
             if (hasBreakingChanges)
             {
                 breakingChanges = "BREAKING CHANGES: " + Regex.Replace(this.BreakingChanges, "^BREAKING CHANGES: ", string.Empty, RegexOptions.IgnoreCase);
-                breakingChanges = string.Join("\n", breakingChanges.ChunkBySizePreverveWords(100));
+                breakingChanges = string.Join("\n", breakingChanges.ChunkBySizePreverveWords(this.LineLength));
             }
 
             var hasIssuesAffected = !string.IsNullOrEmpty(this.IssuesAffected);
@@ -195,7 +196,7 @@ namespace vs_commitizen.vs.ViewModels
             if (hasIssuesAffected)
             {
                 issues = int.TryParse(issues, out var _) ? $"#{issues}" : issues;
-                issues = string.Join("\n", issues.ChunkBySizePreverveWords(100));
+                issues = string.Join("\n", issues.ChunkBySizePreverveWords(this.LineLength));
             }
 
             var comment = head;
