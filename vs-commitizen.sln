@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{03ACD37F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vs-commitizen.Tests", "vs-commitizen.Tests\vs-commitizen.Tests.csproj", "{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vs-commitizen.Settings", "vs-commitizen.settings\vs-commitizen.Settings.csproj", "{1952D753-DC63-46B4-9561-7D84CF215D6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEBEADBD-D754-46A3-8AFB-6C8D5657B535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1952D753-DC63-46B4-9561-7D84CF215D6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1952D753-DC63-46B4-9561-7D84CF215D6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1952D753-DC63-46B4-9561-7D84CF215D6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1952D753-DC63-46B4-9561-7D84CF215D6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

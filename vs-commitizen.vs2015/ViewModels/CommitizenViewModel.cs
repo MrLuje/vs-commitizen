@@ -9,6 +9,7 @@ using System.Windows.Media;
 using vs_commitizen.vs.Extensions;
 using vs_commitizen.vs.Interfaces;
 using vs_commitizen.vs.Models;
+using vs_commitizen.vs.Settings;
 
 namespace vs_commitizen.vs.ViewModels
 {
@@ -131,7 +132,7 @@ namespace vs_commitizen.vs.ViewModels
         }
         #endregion
 
-        public CommitizenViewModel()
+        public CommitizenViewModel(IUserSettings userSettings)
         {
             this.CommitTypes = new List<CommitType>
             {
@@ -149,6 +150,7 @@ namespace vs_commitizen.vs.ViewModels
             };
             this.OnProceed = new RelayCommand(Proceed, CanProceed);
             this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
+            this.userSettings = userSettings;
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -181,14 +183,14 @@ namespace vs_commitizen.vs.ViewModels
             var commitType = this.SelectedCommitType.Type;
 
             var head = $"{commitType}{scope}: {this.Subject.SafeTrim()}";
-            var body = string.Join("\n", this.Body.SafeTrim().ChunkBySizePreverveWords(this.LineLength));
+            var body = string.Join("\n", this.Body.SafeTrim().ChunkBySize(this.userSettings.MaxLineLength));
 
             var hasBreakingChanges = !string.IsNullOrEmpty(this.BreakingChanges);
             var breakingChanges = this.BreakingChanges.SafeTrim();
             if (hasBreakingChanges)
             {
                 breakingChanges = "BREAKING CHANGES: " + Regex.Replace(this.BreakingChanges, "^BREAKING CHANGES: ", string.Empty, RegexOptions.IgnoreCase);
-                breakingChanges = string.Join("\n", breakingChanges.ChunkBySizePreverveWords(this.LineLength));
+                breakingChanges = string.Join("\n", breakingChanges.ChunkBySize(this.userSettings.MaxLineLength));
             }
 
             var hasIssuesAffected = !string.IsNullOrEmpty(this.IssuesAffected);
@@ -196,7 +198,7 @@ namespace vs_commitizen.vs.ViewModels
             if (hasIssuesAffected)
             {
                 issues = int.TryParse(issues, out var _) ? $"#{issues}" : issues;
-                issues = string.Join("\n", issues.ChunkBySizePreverveWords(this.LineLength));
+                issues = string.Join("\n", issues.ChunkBySize(this.userSettings.MaxLineLength));
             }
 
             var comment = head;
@@ -209,6 +211,8 @@ namespace vs_commitizen.vs.ViewModels
         public event EventHandler<bool> ProceedExecuted;
 
         private ICommand _onProceed;
+        private readonly IUserSettings userSettings;
+
         public ICommand OnProceed
         {
             get => _onProceed;

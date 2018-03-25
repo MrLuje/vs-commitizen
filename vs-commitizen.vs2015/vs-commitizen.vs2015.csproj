@@ -343,6 +343,12 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vs-commitizen.settings\vs-commitizen.Settings.csproj">
+      <Project>{1952D753-DC63-46B4-9561-7D84CF215D6A}</Project>
+      <Name>vs-commitizen.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
