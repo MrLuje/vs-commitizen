@@ -1,20 +1,25 @@
 ﻿using AutoFixture;
+using AutoFixture.AutoNSubstitute;
 using AutoFixture.Xunit2;
+using NSubstitute;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using vs_commitizen.vs.Settings;
 using vs_commitizen.vs.ViewModels;
 
 namespace vs_commitizen.Tests.TestAttributes
 {
-    [AttributeUsageAttribute(AttributeTargets.Method, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class TestConventionsAttribute : AutoDataAttribute
     {
-        public TestConventionsAttribute(): base(() => new Fixture().Customize(new DomainCustomization()))
+        public TestConventionsAttribute() : base(() => 
+            new Fixture()
+                .Customize(new DomainCustomization())
+                .Customize(new AutoNSubstituteCustomization
+                {
+                    ConfigureMembers = true
+                })
+        )
         {
-
         }
 
         private class DomainCustomization : ICustomization

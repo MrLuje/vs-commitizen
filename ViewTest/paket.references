@@ -1,2 +1,4 @@
-﻿group vs15
+﻿StructureMap
+
+group vs15
 	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true

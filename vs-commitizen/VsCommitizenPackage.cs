@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Win32;
+using vs_commitizen.Settings;
 using vs_commitizen.vs.Settings;
 
 namespace vs_commitizen
@@ -61,6 +62,8 @@ namespace vs_commitizen
         protected override void Initialize()
         {
             base.Initialize();
+
+            Bootstrap.InitExtension();
         }
 
         #endregion

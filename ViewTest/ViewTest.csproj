@@ -100,12 +100,27 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\vs-commitizen.settings\vs-commitizen.Settings.csproj">
+      <Project>{1952D753-DC63-46B4-9561-7D84CF215D6A}</Project>
+      <Name>vs-commitizen.Settings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\vs-commitizen.vs2015\vs-commitizen.vs2015.csproj">
       <Project>{d0418a0a-cb31-47c5-acc7-3493406469cd}</Project>
       <Name>vs-commitizen.vs2015</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="StructureMap">
+          <HintPath>..\packages\StructureMap\lib\net45\StructureMap.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>

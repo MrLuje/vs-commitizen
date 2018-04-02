@@ -10,16 +10,7 @@ namespace vs_commitizen.Settings
 
         static IoC()
         {
-            Container = new Container(c =>
-            {
-                c.Scan(i =>
-                {
-                    i.TheCallingAssembly();
-                    i.WithDefaultConventions();
-                });
-
-                c.For<IServiceProvider>().Use(ServiceProvider.GlobalProvider);
-            });
+            Container = new Container();
         }
 
         public static T GetInstance<T>()

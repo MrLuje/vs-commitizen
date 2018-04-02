@@ -146,6 +146,12 @@
       <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vs-commitizen.settings\vs-commitizen.Settings.csproj">
+      <Project>{1952d753-dc63-46b4-9561-7d84cf215d6a}</Project>
+      <Name>vs-commitizen.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>

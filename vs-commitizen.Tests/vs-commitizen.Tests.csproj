@@ -72,6 +72,10 @@
   </Choose>
   <Import Project="..\packages\xunit.runner.visualstudio.2.3.1\build\$(__paket__xunit_runner_visualstudio_props).props" Condition="Exists('..\packages\xunit.runner.visualstudio.2.3.1\build\$(__paket__xunit_runner_visualstudio_props).props')" Label="Paket" />
   <ItemGroup>
+    <ProjectReference Include="..\vs-commitizen.settings\vs-commitizen.Settings.csproj">
+      <Project>{1952D753-DC63-46B4-9561-7D84CF215D6A}</Project>
+      <Name>vs-commitizen.Settings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\vs-commitizen.vs2017\vs-commitizen.vs2017.csproj">
       <Project>{93748016-5aa8-4d74-887e-64959d8d2496}</Project>
       <Name>vs-commitizen.vs2017</Name>
@@ -100,6 +104,17 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
+        <Reference Include="AutoFixture.AutoNSubstitute">
+          <HintPath>..\packages\AutoFixture.AutoNSubstitute\lib\net452\AutoFixture.AutoNSubstitute.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
         <Reference Include="AutoFixture.Xunit2">
           <HintPath>..\packages\AutoFixture.Xunit2\lib\net452\AutoFixture.Xunit2.dll</HintPath>
           <Private>True</Private>
@@ -111,9 +126,23 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
+        <Reference Include="System.Configuration">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Castle.Core">
+          <HintPath>..\packages\Castle.Core\lib\net45\Castle.Core.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.CoreUtility">
           <HintPath>..\packages\Microsoft.VisualStudio.CoreUtility\lib\net45\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -124,7 +153,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.ImageCatalog">
           <HintPath>..\packages\Microsoft.VisualStudio.ImageCatalog\lib\net45\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -135,7 +164,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Imaging">
           <HintPath>..\packages\Microsoft.VisualStudio.Imaging\lib\net45\Microsoft.VisualStudio.Imaging.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -146,7 +175,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.OLE.Interop">
           <HintPath>..\packages\Microsoft.VisualStudio.OLE.Interop\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -157,7 +186,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.15.0">
           <HintPath>..\packages\Microsoft.VisualStudio.Shell.15.0\lib\Microsoft.VisualStudio.Shell.15.0.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -168,7 +197,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Framework">
           <HintPath>..\packages\Microsoft.VisualStudio.Shell.Framework\lib\net45\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -179,7 +208,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop">
           <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop\lib\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -223,7 +252,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime">
           <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime\lib\net20\Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -234,7 +263,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0">
           <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.8.0\lib\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -245,7 +274,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0">
           <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.9.0\lib\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -256,7 +285,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextManager.Interop">
           <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop\lib\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -267,7 +296,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0">
           <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.8.0\lib\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -281,7 +310,7 @@
         </Reference>
         <Reference Include="Microsoft.VisualStudio.Threading">
           <HintPath>..\packages\Microsoft.VisualStudio.Threading\lib\net46\Microsoft.VisualStudio.Threading.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -337,7 +366,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Utilities">
           <HintPath>..\packages\Microsoft.VisualStudio.Utilities\lib\net46\Microsoft.VisualStudio.Utilities.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -348,7 +377,7 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Validation">
           <HintPath>..\packages\Microsoft.VisualStudio.Validation\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -359,7 +388,21 @@
       <ItemGroup>
         <Reference Include="Newtonsoft.Json">
           <HintPath>..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.CSharp">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="NSubstitute">
+          <HintPath>..\packages\NSubstitute\lib\net46\NSubstitute.dll</HintPath>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -384,7 +427,38 @@
         </Reference>
         <Reference Include="StreamJsonRpc">
           <HintPath>..\packages\StreamJsonRpc\lib\net45\StreamJsonRpc.dll</HintPath>
-          <Private>False</Private>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="StructureMap">
+          <HintPath>..\packages\StructureMap\lib\net45\StructureMap.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.Composition">
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="System.Threading.Tasks.Extensions">
+          <HintPath>..\packages\System.Threading.Tasks.Extensions\lib\netstandard1.0\System.Threading.Tasks.Extensions.dll</HintPath>
+          <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -491,9 +565,6 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
-        <Reference Include="Microsoft.CSharp">
-          <Paket>True</Paket>
-        </Reference>
         <Reference Include="Microsoft.IdentityModel.Logging">
           <HintPath>..\packages\vs15\Microsoft.IdentityModel.Logging\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
           <Private>True</Private>
