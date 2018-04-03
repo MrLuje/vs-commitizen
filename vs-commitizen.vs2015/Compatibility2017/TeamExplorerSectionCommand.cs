@@ -10,10 +10,10 @@ namespace vs_commitizen.vs
         public object Icon { get; private set; }
         public bool IsVisible { get; set; }
 
-        public TeamExplorerSectionCommand(ICommand command, string v, DrawingBrush drawingBrush)
+        public TeamExplorerSectionCommand(ICommand command, string text, object drawingBrush)
         {
             this.Command = command;
-            this.Text = v;
+            this.Text = text;
             this.Icon = drawingBrush;
         }
     }
