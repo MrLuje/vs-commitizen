@@ -38,6 +38,9 @@
     <Reference Include="Microsoft.TeamFoundation.Git.Controls">
       <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.Git.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Git.Provider">
+      <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.TeamFoundation.VersionControl.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.VersionControl.Controls.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>

@@ -5,15 +5,16 @@ namespace vs_commitizen.vs
 {
     internal class TeamExplorerSectionCommand : ITeamExplorerSectionCommand
     {
-        private ICommand command;
-        private string v;
-        private DrawingBrush drawingBrush;
+        public ICommand Command { get; private set; }
+        public string Text { get; private set; }
+        public object Icon { get; private set; }
+        public bool IsVisible { get; set; }
 
         public TeamExplorerSectionCommand(ICommand command, string v, DrawingBrush drawingBrush)
         {
-            this.command = command;
-            this.v = v;
-            this.drawingBrush = drawingBrush;
+            this.Command = command;
+            this.Text = v;
+            this.Icon = drawingBrush;
         }
     }
 }
