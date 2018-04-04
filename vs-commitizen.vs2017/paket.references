@@ -1,5 +1,6 @@
-Microsoft.VisualStudio.Shell.15.0
-Microsoft.VisualStudio.Shell.Interop.12.0
 
 group vs15
 	Microsoft.TeamFoundationServer.ExtendedClient
+	Microsoft.VisualStudio.Shell.15.0
+	Microsoft.VisualStudio.Shell.Interop.12.0
+	Microsoft.VisualStudio.Threading

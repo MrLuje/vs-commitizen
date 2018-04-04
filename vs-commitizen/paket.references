@@ -1,4 +1,5 @@
-Microsoft.VisualStudio.SDK.EmbedInteropTypes
-Microsoft.VisualStudio.Shell.15.0
-Microsoft.VisualStudio.Shell.Interop.12.0
 Microsoft.VSSDK.BuildTools
+
+group vs14
+	Microsoft.VisualStudio.Shell.14.0
+	Microsoft.VisualStudio.Shell.Interop.12.0

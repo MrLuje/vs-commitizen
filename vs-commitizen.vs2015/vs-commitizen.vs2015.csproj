@@ -134,271 +134,6 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.CoreUtility">
-          <HintPath>..\packages\Microsoft.VisualStudio.CoreUtility\lib\net45\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.ImageCatalog">
-          <HintPath>..\packages\Microsoft.VisualStudio.ImageCatalog\lib\net45\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Imaging">
-          <HintPath>..\packages\Microsoft.VisualStudio.Imaging\lib\net45\Microsoft.VisualStudio.Imaging.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.OLE.Interop">
-          <HintPath>..\packages\Microsoft.VisualStudio.OLE.Interop\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.15.0">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.15.0\lib\Microsoft.VisualStudio.Shell.15.0.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Framework">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.Framework\lib\net45\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop\lib\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.10.0\lib\Microsoft.VisualStudio.Shell.Interop.10.0.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.11.0\lib\Microsoft.VisualStudio.Shell.Interop.11.0.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop.12.0">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.12.0\lib\Microsoft.VisualStudio.Shell.Interop.12.0.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime\lib\net20\Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.8.0\lib\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0">
-          <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.9.0\lib\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.TextManager.Interop">
-          <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop\lib\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0">
-          <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.8.0\lib\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Threading">
-          <HintPath>..\packages\Microsoft.VisualStudio.Threading\lib\net46\Microsoft.VisualStudio.Threading.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Import Project="..\packages\Microsoft.VisualStudio.SDK.EmbedInteropTypes\build\Microsoft.VisualStudio.SDK.EmbedInteropTypes.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.SDK.EmbedInteropTypes\build\Microsoft.VisualStudio.SDK.EmbedInteropTypes.targets')" Label="Paket" />
-  <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\cs\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\de\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\es\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\fr\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\it\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ja\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ko\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\pl\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\pt-BR\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ru\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\tr\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hans\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hant\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Utilities">
-          <HintPath>..\packages\Microsoft.VisualStudio.Utilities\lib\net46\Microsoft.VisualStudio.Utilities.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Validation">
-          <HintPath>..\packages\Microsoft.VisualStudio.Validation\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Newtonsoft.Json">
-          <HintPath>..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="StreamJsonRpc">
-          <HintPath>..\packages\StreamJsonRpc\lib\net45\StreamJsonRpc.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
         <Reference Include="System.Net.Http.Formatting">
           <HintPath>..\packages\vs14\Microsoft.AspNet.WebApi.Client\lib\net45\System.Net.Http.Formatting.dll</HintPath>
           <Private>False</Private>
@@ -639,6 +374,50 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.CoreUtility">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.CoreUtility\lib\net45\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.ImageCatalog">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.ImageCatalog\lib\net45\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Imaging">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Imaging\lib\net45\Microsoft.VisualStudio.Imaging.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.OLE.Interop">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.OLE.Interop\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
         <Reference Include="Microsoft.TeamFoundation.Common">
           <HintPath>..\packages\vs14\Microsoft.VisualStudio.Services.Client\lib\net45\Microsoft.TeamFoundation.Common.dll</HintPath>
           <Private>False</Private>
@@ -662,6 +441,193 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Services.Client">
           <HintPath>..\packages\vs14\Microsoft.VisualStudio.Services.InteractiveClient\lib\net45\Microsoft.VisualStudio.Services.Client.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.14.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.14.0\lib\Microsoft.VisualStudio.Shell.14.0.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Immutable.10.0\lib\net40\Microsoft.VisualStudio.Shell.Immutable.10.0.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Immutable.11.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Immutable.11.0\lib\net45\Microsoft.VisualStudio.Shell.Immutable.11.0.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Immutable.12.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Immutable.12.0\lib\net45\Microsoft.VisualStudio.Shell.Immutable.12.0.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Immutable.14.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Immutable.14.0\lib\net45\Microsoft.VisualStudio.Shell.Immutable.14.0.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Interop">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop\lib\net11\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.10.0\lib\net20\Microsoft.VisualStudio.Shell.Interop.10.0.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.11.0\lib\net20\Microsoft.VisualStudio.Shell.Interop.11.0.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Interop.12.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.12.0\lib\net20\Microsoft.VisualStudio.Shell.Interop.12.0.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.8.0\lib\net11\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.9.0\lib\net11\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.TextManager.Interop">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextManager.Interop\lib\net11\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextManager.Interop.8.0\lib\net11\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Threading">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Threading\lib\net45\Microsoft.VisualStudio.Threading.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Utilities">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Utilities\lib\net46\Microsoft.VisualStudio.Utilities.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Validation">
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Validation\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\packages\vs14\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>

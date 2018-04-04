@@ -1,7 +1,5 @@
 ﻿AutoFixture.AutoNSubstitute
 AutoFixture.Xunit2
-Microsoft.VisualStudio.Shell.15.0 copy_local: true
-Microsoft.VisualStudio.Shell.Interop.12.0
 NSubstitute
 Shouldly
 StructureMap
@@ -11,3 +9,5 @@ Xunit.StaFact
 
 group vs15
 	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true
+	Microsoft.VisualStudio.Shell.15.0 copy_local: true
+	Microsoft.VisualStudio.Shell.Interop.12.0
