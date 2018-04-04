@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using System.ComponentModel;
-using System.ComponentModel.Composition;
 using vs_commitizen.Settings;
 
 namespace vs_commitizen.vs.Settings

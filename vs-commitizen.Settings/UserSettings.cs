@@ -2,22 +2,15 @@
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Settings;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace vs_commitizen.vs.Settings
 {
     public interface IUserSettings
     {
         int MaxLineLength { get; set; }
-        //void Save();
     }
 
-    [Export(typeof(IUserSettings))]
     public class UserSettings : SettingsManagerBase, IUserSettings
     {
         private const string SettingsRoot = "vs-commitizen";
