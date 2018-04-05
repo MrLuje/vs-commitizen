@@ -36,15 +36,6 @@ NUGET
       System.Threading.Tasks (>= 4.0.11)
       System.Xml.ReaderWriter (>= 4.0.11)
       System.Xml.XDocument (>= 4.0.11)
-    Microsoft.VisualStudio.CoreUtility (15.6.27413) - copy_local: false
-      Microsoft.VisualStudio.Threading (>= 15.4.4)
-    Microsoft.VisualStudio.ImageCatalog (15.6.27413) - copy_local: false
-    Microsoft.VisualStudio.Imaging (15.6.27413) - copy_local: false
-      Microsoft.VisualStudio.CoreUtility (>= 15.6.27413)
-      Microsoft.VisualStudio.ImageCatalog (>= 15.6.27413)
-      Microsoft.VisualStudio.Utilities (>= 15.6.27413)
-    Microsoft.VisualStudio.OLE.Interop (7.10.6071) - copy_local: false
-    Microsoft.VisualStudio.SDK.EmbedInteropTypes (15.0.10)
     Microsoft.VisualStudio.Services.Client (15.112.1)
       Microsoft.AspNet.WebApi.Client (>= 5.2.2)
       Newtonsoft.Json (>= 8.0.3)
@@ -55,75 +46,13 @@ NUGET
       Newtonsoft.Json (>= 8.0.3)
       System.IdentityModel.Tokens.Jwt (>= 4.0.2.206221351)
       WindowsAzure.ServiceBus (>= 3.3.2)
-    Microsoft.VisualStudio.Shell.15.0 (15.0.26606) - copy_local: false
-      Microsoft.VisualStudio.Imaging (>= 15.0.26606)
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.SDK.EmbedInteropTypes (>= 15.0.9)
-      Microsoft.VisualStudio.Shell.Framework (>= 15.0.26606)
-      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
-      Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime (>= 15.0.26606)
-      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
-      Microsoft.VisualStudio.Shell.Interop.9.0 (>= 9.0.30729)
-      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.Threading (>= 15.3.23)
-      Microsoft.VisualStudio.Utilities (>= 15.0.26606)
-    Microsoft.VisualStudio.Shell.Framework (15.6.27413) - copy_local: false
-      Microsoft.VisualStudio.CoreUtility (>= 15.6.27413)
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6071)
-      Microsoft.VisualStudio.Utilities (>= 15.6.27413)
-    Microsoft.VisualStudio.Shell.Interop (7.10.6071)
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
-    Microsoft.VisualStudio.Shell.Interop.10.0 (10.0.30319)
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
-    Microsoft.VisualStudio.Shell.Interop.11.0 (11.0.61030)
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
-      Microsoft.VisualStudio.Shell.Interop.10.0 (>= 10.0.30319)
-      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
-    Microsoft.VisualStudio.Shell.Interop.12.0 (12.0.30110)
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
-      Microsoft.VisualStudio.Shell.Interop.10.0 (>= 10.0.30319)
-      Microsoft.VisualStudio.Shell.Interop.11.0 (>= 11.0.61030)
-      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
-    Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime (15.0.26606) - copy_local: false
-      Microsoft.VisualStudio.SDK.EmbedInteropTypes (>= 15.0.9)
-    Microsoft.VisualStudio.Shell.Interop.8.0 (8.0.50727)
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
-      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.TextManager.Interop.8.0 (>= 8.0.50727)
-    Microsoft.VisualStudio.Shell.Interop.9.0 (9.0.30729) - copy_local: false
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
-      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
-      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
-    Microsoft.VisualStudio.TextManager.Interop (7.10.6070) - copy_local: false
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-    Microsoft.VisualStudio.TextManager.Interop.8.0 (8.0.50727)
-      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
-      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
-      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
-    Microsoft.VisualStudio.Threading (15.6.31) - copy_local: false
-      Microsoft.VisualStudio.Threading.Analyzers (>= 15.6.31)
-      Microsoft.VisualStudio.Validation (>= 15.3.15)
-    Microsoft.VisualStudio.Threading.Analyzers (15.6.31) - copy_local: false
-    Microsoft.VisualStudio.Utilities (15.6.27413) - copy_local: false
-      Microsoft.VisualStudio.Threading (>= 15.4.4)
-      StreamJsonRpc (>= 1.2.8)
-    Microsoft.VisualStudio.Validation (15.3.32) - copy_local: false
-    Microsoft.VSSDK.BuildTools (15.5.100)
+    Microsoft.VSSDK.BuildTools (15.6.170)
     Microsoft.Win32.Primitives (4.0.1)
     Newtonsoft.Json (11.0.1)
     NSubstitute (3.1)
       Castle.Core (>= 4.2)
       System.Threading.Tasks.Extensions (>= 4.3)
     Shouldly (3.0)
-    StreamJsonRpc (1.3.23) - copy_local: false
-      Microsoft.VisualStudio.Threading (>= 15.3.20)
-      Newtonsoft.Json (>= 6.0.6)
     StructureMap (4.6.1)
       System.Reflection.Emit.Lightweight (>= 4.3)
     System.Collections (4.3)
@@ -210,6 +139,12 @@ NUGET
       Microsoft.VisualStudio.Services.InteractiveClient (14.102)
       Newtonsoft.Json (>= 6.0.8)
       System.IdentityModel.Tokens.Jwt (>= 4.0)
+    Microsoft.VisualStudio.CoreUtility (15.5.27130) - copy_local: false
+    Microsoft.VisualStudio.ImageCatalog (15.6.27413) - copy_local: false
+    Microsoft.VisualStudio.Imaging (15.5.27130) - copy_local: false
+      Microsoft.VisualStudio.CoreUtility (>= 15.5.27130)
+      Microsoft.VisualStudio.ImageCatalog (>= 15.5.27130)
+    Microsoft.VisualStudio.OLE.Interop (7.10.6071) - copy_local: false
     Microsoft.VisualStudio.Services.Client (14.102) - copy_local: false, redirects: force
       Microsoft.AspNet.WebApi.Client (>= 5.2.2)
       Newtonsoft.Json (>= 6.0.8)
@@ -220,6 +155,47 @@ NUGET
       Newtonsoft.Json (>= 6.0.8)
       System.IdentityModel.Tokens.Jwt (>= 4.0)
       WindowsAzure.ServiceBus (>= 2.5.1)
+    Microsoft.VisualStudio.Shell.14.0 (14.3.25407) - copy_local: false
+      Microsoft.VisualStudio.Imaging (>= 14.3.25407)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Shell.Immutable.10.0 (>= 10.0.30319)
+      Microsoft.VisualStudio.Shell.Immutable.11.0 (>= 11.0.50727)
+      Microsoft.VisualStudio.Shell.Immutable.12.0 (>= 12.0.21003)
+      Microsoft.VisualStudio.Shell.Immutable.14.0 (>= 14.3.25407)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50727)
+      Microsoft.VisualStudio.Shell.Interop.9.0 (>= 9.0.30729)
+      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Threading (>= 14.1.111)
+      Microsoft.VisualStudio.Utilities (>= 14.3.25407)
+    Microsoft.VisualStudio.Shell.Immutable.10.0 (10.0.30319)
+    Microsoft.VisualStudio.Shell.Immutable.11.0 (11.0.50727)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6070)
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6071)
+    Microsoft.VisualStudio.Shell.Immutable.12.0 (12.0.21003)
+    Microsoft.VisualStudio.Shell.Immutable.14.0 (14.3.25407)
+      Microsoft.VisualStudio.Shell.Immutable.11.0 (>= 11.0.50727)
+    Microsoft.VisualStudio.Shell.Interop (7.10.6072) - copy_local: false
+      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6071)
+    Microsoft.VisualStudio.Shell.Interop.10.0 (10.0.30320)
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50728)
+    Microsoft.VisualStudio.Shell.Interop.11.0 (11.0.61031)
+      Microsoft.VisualStudio.Shell.Interop.10.0 (>= 10.0.30320)
+    Microsoft.VisualStudio.Shell.Interop.12.0 (12.0.30111)
+      Microsoft.VisualStudio.Shell.Interop.11.0 (>= 11.0.61031)
+    Microsoft.VisualStudio.Shell.Interop.8.0 (8.0.50728) - copy_local: false
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6072)
+      Microsoft.VisualStudio.TextManager.Interop.8.0 (>= 8.0.50728)
+    Microsoft.VisualStudio.Shell.Interop.9.0 (9.0.30730) - copy_local: false
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50728)
+    Microsoft.VisualStudio.TextManager.Interop (7.10.6071) - copy_local: false
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6071)
+    Microsoft.VisualStudio.TextManager.Interop.8.0 (8.0.50728) - copy_local: false
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6072)
+    Microsoft.VisualStudio.Threading (14.1.131)
+      Microsoft.VisualStudio.Validation (>= 14.1.111)
+    Microsoft.VisualStudio.Utilities (15.5.27130) - copy_local: false
+    Microsoft.VisualStudio.Validation (15.3.32)
     Newtonsoft.Json (11.0.1) - copy_local: false, redirects: force
     System.IdentityModel.Tokens.Jwt (5.2.1) - copy_local: false, redirects: force
       Microsoft.IdentityModel.Tokens (>= 5.2.1)
@@ -258,6 +234,16 @@ NUGET
       Newtonsoft.Json (>= 8.0.3)
       System.IdentityModel.Tokens.Jwt (>= 4.0.2.206221351)
     Microsoft.Tpl.Dataflow (4.5.24) - copy_local: false, redirects: force
+    Microsoft.VisualStudio.CoreUtility (15.6.27740) - copy_local: false
+      Microsoft.VisualStudio.Threading (>= 15.3.23)
+      Microsoft.VisualStudio.Validation (>= 15.3.15)
+    Microsoft.VisualStudio.ImageCatalog (15.6.27413) - copy_local: false
+    Microsoft.VisualStudio.Imaging (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.CoreUtility (>= 15.6.27413)
+      Microsoft.VisualStudio.ImageCatalog (>= 15.6.27413)
+      Microsoft.VisualStudio.Utilities (>= 15.6.27413)
+    Microsoft.VisualStudio.OLE.Interop (7.10.6071) - copy_local: false
+    Microsoft.VisualStudio.SDK.EmbedInteropTypes (15.0.16) - copy_local: false
     Microsoft.VisualStudio.Services.Client (15.112.1) - copy_local: false, redirects: force
       Microsoft.AspNet.WebApi.Client (>= 5.2.2)
       Newtonsoft.Json (>= 8.0.3)
@@ -268,7 +254,58 @@ NUGET
       Newtonsoft.Json (>= 8.0.3)
       System.IdentityModel.Tokens.Jwt (>= 4.0.2.206221351)
       WindowsAzure.ServiceBus (>= 3.3.2)
+    Microsoft.VisualStudio.Shell.15.0 (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.Imaging (>= 15.6.27413)
+      Microsoft.VisualStudio.SDK.EmbedInteropTypes (>= 15.0.16)
+      Microsoft.VisualStudio.Shell.Framework (>= 15.6.27413)
+      Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime (>= 15.0.26929)
+      Microsoft.VisualStudio.Shell.Interop.15.6.DesignTime (>= 15.6.27413)
+      Microsoft.VisualStudio.Shell.Interop.9.0 (>= 9.0.30730)
+      Microsoft.VisualStudio.Text.Data (>= 15.6.27413)
+      Microsoft.VisualStudio.Threading (>= 15.4.4)
+    Microsoft.VisualStudio.Shell.Framework (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.CoreUtility (>= 15.6.27413)
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6071)
+      Microsoft.VisualStudio.Utilities (>= 15.6.27413)
+    Microsoft.VisualStudio.Shell.Interop (7.10.6072) - copy_local: false
+      Microsoft.VisualStudio.TextManager.Interop (>= 7.10.6071)
+    Microsoft.VisualStudio.Shell.Interop.10.0 (10.0.30320)
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50728)
+    Microsoft.VisualStudio.Shell.Interop.11.0 (11.0.61031)
+      Microsoft.VisualStudio.Shell.Interop.10.0 (>= 10.0.30320)
+    Microsoft.VisualStudio.Shell.Interop.12.0 (12.0.30111)
+      Microsoft.VisualStudio.Shell.Interop.11.0 (>= 11.0.61031)
+    Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime (15.0.26929) - copy_local: false
+      Microsoft.VisualStudio.SDK.EmbedInteropTypes (>= 15.0.12)
+      Microsoft.VisualStudio.Shell.Interop.11.0 (>= 11.0.61031)
+    Microsoft.VisualStudio.Shell.Interop.15.6.DesignTime (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.SDK.EmbedInteropTypes (>= 15.0.16)
+      Microsoft.VisualStudio.Shell.Interop.11.0 (>= 11.0.61031)
+    Microsoft.VisualStudio.Shell.Interop.8.0 (8.0.50728) - copy_local: false
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6072)
+      Microsoft.VisualStudio.TextManager.Interop.8.0 (>= 8.0.50728)
+    Microsoft.VisualStudio.Shell.Interop.9.0 (9.0.30730) - copy_local: false
+      Microsoft.VisualStudio.Shell.Interop.8.0 (>= 8.0.50728)
+    Microsoft.VisualStudio.Text.Data (15.6.27740) - copy_local: false
+      Microsoft.VisualStudio.CoreUtility (>= 15.6.27740)
+      Microsoft.VisualStudio.Threading (>= 15.3.23)
+      Microsoft.VisualStudio.Validation (>= 15.3.15)
+    Microsoft.VisualStudio.TextManager.Interop (7.10.6071) - copy_local: false
+      Microsoft.VisualStudio.OLE.Interop (>= 7.10.6071)
+    Microsoft.VisualStudio.TextManager.Interop.8.0 (8.0.50728) - copy_local: false
+      Microsoft.VisualStudio.Shell.Interop (>= 7.10.6072)
+    Microsoft.VisualStudio.Threading (15.6.46)
+      Microsoft.VisualStudio.Threading.Analyzers (>= 15.6.46)
+      Microsoft.VisualStudio.Validation (>= 15.3.15)
+    Microsoft.VisualStudio.Threading.Analyzers (15.6.46)
+    Microsoft.VisualStudio.Utilities (15.6.27413) - copy_local: false
+      Microsoft.VisualStudio.Threading (>= 15.4.4)
+      StreamJsonRpc (>= 1.2.8)
+    Microsoft.VisualStudio.Validation (15.3.32)
     Newtonsoft.Json (11.0.1) - copy_local: false, redirects: force
+    StreamJsonRpc (1.3.23) - copy_local: false
+      Microsoft.VisualStudio.Threading (>= 15.3.20)
+      Newtonsoft.Json (>= 6.0.6)
     System.IdentityModel.Tokens.Jwt (5.2.1) - copy_local: false, redirects: force
       Microsoft.IdentityModel.Tokens (>= 5.2.1)
       Newtonsoft.Json (>= 10.0.1)
