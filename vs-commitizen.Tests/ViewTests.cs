@@ -9,7 +9,7 @@ namespace vs_commitizen.Tests
     public class ViewTests
     {
         [WpfFact]
-        public async Task Should_Display_CommitizenView()
+        public async Task Should_Display_CommitizenViewAsync()
         {
             var t = await Task.Factory.StartNew(async () =>
             {

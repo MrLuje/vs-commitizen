@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using vs_commitizen.Settings;
 using vs_commitizen.vs.ViewModels;
 
 namespace vs_commitizen.vs
@@ -9,7 +10,7 @@ namespace vs_commitizen.vs
     /// </summary>
     public partial class VsCommitizenView : UserControl
     {
-        CommitizenViewModel _viewModel = new CommitizenViewModel();
+        CommitizenViewModel _viewModel = IoC.GetInstance<CommitizenViewModel>();
 
         public VsCommitizenView()
         {

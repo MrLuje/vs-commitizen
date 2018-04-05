@@ -9,6 +9,7 @@ using System.Windows.Media;
 using vs_commitizen.vs.Extensions;
 using vs_commitizen.vs.Interfaces;
 using vs_commitizen.vs.Models;
+using vs_commitizen.vs.Settings;
 
 namespace vs_commitizen.vs.ViewModels
 {
@@ -116,7 +117,7 @@ namespace vs_commitizen.vs.ViewModels
         }
 
         public Brush SubjectColor => this.SubjectLength > 50 ? Brushes.Red : Brushes.Black;
-        public int LineLength { get; set; } = 100; 
+        public int LineLength { get; private set; } 
 
         private bool _hasGitPendingChanges;
         public bool HasGitPendingChanges
@@ -131,7 +132,7 @@ namespace vs_commitizen.vs.ViewModels
         }
         #endregion
 
-        public CommitizenViewModel()
+        public CommitizenViewModel(IUserSettings userSettings)
         {
             this.CommitTypes = new List<CommitType>
             {
@@ -149,6 +150,8 @@ namespace vs_commitizen.vs.ViewModels
             };
             this.OnProceed = new RelayCommand(Proceed, CanProceed);
             this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
+            this._userSettings = userSettings;
+            this.LineLength = this._userSettings.MaxLineLength;
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -209,6 +212,8 @@ namespace vs_commitizen.vs.ViewModels
         public event EventHandler<bool> ProceedExecuted;
 
         private ICommand _onProceed;
+        private readonly IUserSettings _userSettings;
+
         public ICommand OnProceed
         {
             get => _onProceed;

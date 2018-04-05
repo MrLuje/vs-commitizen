@@ -38,6 +38,9 @@
     <Reference Include="Microsoft.TeamFoundation.Git.Controls">
       <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.Git.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Git.Provider">
+      <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.TeamFoundation.VersionControl.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.VersionControl.Controls.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
@@ -73,6 +76,8 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\TeamExplorerPageBaseExtensions.cs" />
     <Compile Include="Interfaces\ICommentBuilder.cs" />
+    <Compile Include="Compatibility2017\ITeamExplorerSectionCommand.cs" />
+    <Compile Include="Compatibility2017\ITeamExplorerSectionCommandProvider.cs" />
     <Compile Include="Models\CommitType.cs" />
     <Compile Include="Models\NavigationCommitModel.cs" />
     <Compile Include="Models\NavigationDataType.cs" />
@@ -82,6 +87,7 @@
     <Compile Include="Base\TeamExplorerBaseNavigationLink.cs" />
     <Compile Include="Base\TeamExplorerBasePage.cs" />
     <Compile Include="Base\TeamExplorerBaseSection.cs" />
+    <Compile Include="Compatibility2017\TeamExplorerSectionCommand.cs" />
     <Compile Include="ViewModels\CommitizenViewModel.cs" />
     <Compile Include="VsCommitizenNavigationItem.cs" />
     <Compile Include="VsCommitizenPage.cs" />
@@ -118,6 +124,12 @@
       <SubType>Designer</SubType>
       <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vs-commitizen.settings\vs-commitizen.Settings.csproj">
+      <Project>{1952D753-DC63-46B4-9561-7D84CF215D6A}</Project>
+      <Name>vs-commitizen.Settings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">

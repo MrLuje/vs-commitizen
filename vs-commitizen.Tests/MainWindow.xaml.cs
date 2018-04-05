@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using vs_commitizen.Settings;
+using vs_commitizen.vs.Settings;
 
 namespace vs_commitizen.Tests
 {
@@ -22,7 +24,14 @@ namespace vs_commitizen.Tests
     {
         public MainWindow()
         {
+            IoC.Container.Inject<IUserSettings>(new DummyUserSettings());
+
             InitializeComponent();
+        }
+
+        public class DummyUserSettings : IUserSettings
+        {
+            public int MaxLineLength { get; set; } = 80;
         }
     }
 }

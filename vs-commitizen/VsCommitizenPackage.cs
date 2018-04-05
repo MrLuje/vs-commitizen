@@ -1,14 +1,13 @@
 ﻿using System;
-using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.Win32;
+using vs_commitizen.Settings;
+using vs_commitizen.vs.Settings;
 
 namespace vs_commitizen
 {
@@ -32,6 +31,8 @@ namespace vs_commitizen
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [Guid(PackageGuids.guidVsCommitizenPackageString)]
+    [ProvideOptionPage(typeof(SettingsGeneral), "vs-commitizen", "General", 101, 106, true)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.RepositoryOpen_string)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
     public sealed class VsCommitizenPackage : Package
     {
@@ -56,6 +57,8 @@ namespace vs_commitizen
         /// </summary>
         protected override void Initialize()
         {
+            Bootstrap.InitExtension(this);
+
             base.Initialize();
         }
 

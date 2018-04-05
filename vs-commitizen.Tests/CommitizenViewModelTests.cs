@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using vs_commitizen.Tests.TestAttributes;
+using vs_commitizen.vs.Settings;
 using vs_commitizen.vs.ViewModels;
 using Xunit;
 
@@ -145,10 +146,10 @@ namespace vs_commitizen.Tests
             sut.Proceed(autoCommit);
         }
 
-        [Fact]
-        public void GetComment_With_No_SelectedCommitType_ShouldBe_Empty()
+        [Theory, TestConventions]
+        public void GetComment_With_No_SelectedCommitType_ShouldBe_Empty(IUserSettings userSettings)
         {
-            var sut = new CommitizenViewModel();
+            var sut = new CommitizenViewModel(userSettings);
             sut.SelectedCommitType = null;
             sut.GetComment().ShouldBeEmpty();
         }
@@ -194,15 +195,16 @@ namespace vs_commitizen.Tests
             sut.GetComment().ShouldEndWith($"\n\n{sut.IssuesAffected}");
         }
 
-        [Fact]
-        public void GetComment_ShouldNot_Take_Last_Space_If_Over_ChunkSize()
+        [Theory, TestConventions]
+        public void GetComment_ShouldNot_Take_Last_Space_If_Over_ChunkSize(IUserSettings userSettings)
         {
-            var sut = new CommitizenViewModel();
+            userSettings.MaxLineLength = 10;
+
+            var sut = new CommitizenViewModel(userSettings);
             sut.SelectedCommitType = sut.CommitTypes.First(f => f.Type.Contains("feat"));
             sut.Scope = "test";
             sut.Body = "test";
             sut.Body += " tenwordsss tenwordsss";
-            sut.LineLength = 10;
             sut.GetComment().ShouldBe("feat(test): \n\ntest\ntenwordsss\ntenwordsss");
         }
     }

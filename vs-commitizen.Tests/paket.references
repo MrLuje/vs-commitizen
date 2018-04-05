@@ -1,7 +1,10 @@
-﻿AutoFixture.Xunit2
-Microsoft.VisualStudio.Shell.15.0
+﻿AutoFixture.AutoNSubstitute
+AutoFixture.Xunit2
+Microsoft.VisualStudio.Shell.15.0 copy_local: true
 Microsoft.VisualStudio.Shell.Interop.12.0
+NSubstitute
 Shouldly
+StructureMap
 xunit
 xunit.runner.visualstudio
 Xunit.StaFact
