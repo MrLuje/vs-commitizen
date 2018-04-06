@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace vs_commitizen.Settings
 {
@@ -9,7 +10,7 @@ namespace vs_commitizen.Settings
             IoC.Container.Configure(c =>
             {
                 c.AddRegistry<ExtensionRegistry>();
-                c.ForSingletonOf<Package>().Use(package);
+                c.ForSingletonOf<IVsPackage>().Use(package);
             });
         }
     }
