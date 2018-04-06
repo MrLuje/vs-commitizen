@@ -3,7 +3,10 @@ using Microsoft.TeamFoundation.Controls.WPF;
 using Microsoft.TeamFoundation.Controls.WPF.TeamExplorer;
 using Microsoft.TeamFoundation.MVVM;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 using System;
+using System.ComponentModel;
+using System.Reflection;
 using System.Windows.Media;
 using vs_commitizen.Settings;
 using vs_commitizen.vs;
@@ -33,8 +36,9 @@ namespace vs_commitizen.vs2015
 
         private void ExecuteOpenSettings()
         {
-            var package = IoC.GetInstance<Package>();
-            package.ShowOptionPage(typeof(SettingsGeneral));
+            var package = IoC.GetInstance<IVsPackage>();
+            var showOptionPageMethod = package.GetType().GetMethod("ShowOptionPage", BindingFlags.Public | BindingFlags.Instance);
+            showOptionPageMethod.Invoke(package, new[] { typeof(SettingsGeneral) });
         }
 
         public override void Initialize(object sender, SectionInitializeEventArgs e)
