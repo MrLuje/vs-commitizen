@@ -605,8 +605,8 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.15.0">
-          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.15.0\lib\net45\Microsoft.VisualStudio.Shell.15.0.dll</HintPath>
+        <Reference Include="Microsoft.VisualStudio.Shell.14.0">
+          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.14.0\lib\Microsoft.VisualStudio.Shell.14.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -618,6 +618,50 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Framework">
           <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Framework\lib\net45\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0">
+          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Immutable.10.0\lib\net45\Microsoft.VisualStudio.Shell.Immutable.10.0.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Immutable.11.0">
+          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Immutable.11.0\lib\net45\Microsoft.VisualStudio.Shell.Immutable.11.0.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Immutable.12.0">
+          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Immutable.12.0\lib\net45\Microsoft.VisualStudio.Shell.Immutable.12.0.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.Shell.Immutable.14.0">
+          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Immutable.14.0\lib\net45\Microsoft.VisualStudio.Shell.Immutable.14.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -671,28 +715,6 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime">
-          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime\lib\net20\Microsoft.VisualStudio.Shell.Interop.15.3.DesignTime.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Shell.Interop.15.6.DesignTime">
-          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Interop.15.6.DesignTime\lib\net20\Microsoft.VisualStudio.Shell.Interop.15.6.DesignTime.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0">
           <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Interop.8.0\lib\net11\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
           <Private>True</Private>
@@ -706,17 +728,6 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0">
           <HintPath>..\packages\vs15\Microsoft.VisualStudio.Shell.Interop.9.0\lib\net11\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.1'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Text.Data">
-          <HintPath>..\packages\vs15\Microsoft.VisualStudio.Text.Data\lib\net46\Microsoft.VisualStudio.Text.Data.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -761,7 +772,6 @@
   </Choose>
   <Import Project="..\packages\xunit.core\build\xunit.core.targets" Condition="Exists('..\packages\xunit.core\build\xunit.core.targets')" Label="Paket" />
   <Import Project="..\packages\vs15\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets" Condition="Exists('..\packages\vs15\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" Label="Paket" />
-  <Import Project="..\packages\vs15\Microsoft.VisualStudio.SDK.EmbedInteropTypes\build\Microsoft.VisualStudio.SDK.EmbedInteropTypes.targets" Condition="Exists('..\packages\vs15\Microsoft.VisualStudio.SDK.EmbedInteropTypes\build\Microsoft.VisualStudio.SDK.EmbedInteropTypes.targets')" Label="Paket" />
   <Import Project="..\packages\vs15\Microsoft.VisualStudio.Threading.Analyzers\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('..\packages\vs15\Microsoft.VisualStudio.Threading.Analyzers\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" Label="Paket" />
   <ItemGroup>
     <Analyzer Include="..\packages\vs15\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll">
