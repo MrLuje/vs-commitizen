@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using vs_commitizen.Settings;
@@ -28,13 +29,13 @@ namespace vs_commitizen
     /// To get loaded into VS, the package must be referred by &lt;Asset Type="Microsoft.VisualStudio.VsPackage" ...&gt; in .vsixmanifest file.
     /// </para>
     /// </remarks>
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [Guid(PackageGuids.guidVsCommitizenPackageString)]
     [ProvideOptionPage(typeof(SettingsGeneral), "vs-commitizen", "General", 101, 106, true)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.RepositoryOpen_string)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.RepositoryOpen_string, PackageAutoLoadFlags.BackgroundLoad)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
-    public sealed class VsCommitizenPackage : Package
+    public sealed class VsCommitizenPackage : AsyncPackage
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VsCommitizenPackage"/> class.
@@ -51,15 +52,11 @@ namespace vs_commitizen
 
         #region Package Members
 
-        /// <summary>
-        /// Initialization of the package; this method is called right after the package is sited, so this is the place
-        /// where you can put all the initialization code that rely on services provided by VisualStudio.
-        /// </summary>
-        protected override void Initialize()
+        protected override System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             Bootstrap.InitExtension(this);
 
-            base.Initialize();
+            return base.InitializeAsync(cancellationToken, progress);
         }
 
         #endregion

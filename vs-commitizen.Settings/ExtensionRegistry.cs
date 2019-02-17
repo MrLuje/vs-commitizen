@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using StructureMap;
 using System;
+using vs_commitizen.vs.Settings;
 
 namespace vs_commitizen.Settings
 {
@@ -14,6 +15,7 @@ namespace vs_commitizen.Settings
                 i.WithDefaultConventions();
             });
 
+            this.For<IUserSettings>().Use<UserSettings>();
             this.For<IServiceProvider>().Use(ServiceProvider.GlobalProvider);
         }
     }

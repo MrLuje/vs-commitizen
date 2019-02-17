@@ -25,5 +25,6 @@
         <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%.vs2015" Path="|vs-commitizen.vs2015|" />
         <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%.vs2017" Path="|vs-commitizen.vs2017|" />
         <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%.Settings" Path="|vs-commitizen.Settings|" />
+        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%.vs2019" Path="|vs-commitizen.vs2019|" />
     </Assets>
 </PackageManifest>
