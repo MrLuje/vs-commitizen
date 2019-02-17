@@ -50,3 +50,16 @@ group vs16
 	nuget Microsoft.VisualStudio.Shell.15.0 ~> 15.0 copy_local: false
 	nuget Microsoft.VisualStudio.Shell.Interop.12.0 ~> 12.0
 	nuget Microsoft.VisualStudio.Threading ~> 15.0
+
+group build-script
+	framework: netstandard2.0
+	source https://api.nuget.org/v3/index.json
+	nuget Fake >= 5.0.0 rc
+	nuget canopy
+	nuget Fake.Api.GitHub
+	nuget Fake.Core prerelease
+	nuget Fake.Core.Target prerelease
+	nuget Fake.IO.FileSystem prerelease
+	nuget Selenium.Support
+	nuget Selenium.WebDriver.ChromeDriver
+	nuget Selenium.WebDriver
