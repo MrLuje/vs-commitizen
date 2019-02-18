@@ -1,4 +1,5 @@
 ﻿using Microsoft.TeamFoundation.MVVM;
+using Microsoft.VisualStudio.PlatformUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -116,7 +117,8 @@ namespace vs_commitizen.vs.ViewModels
             }
         }
 
-        public Brush SubjectColor => this.SubjectLength > 50 ? Brushes.Red : Brushes.Black;
+        private System.Drawing.Color themedColor => VSColorTheme.GetThemedColor(CommonControlsColors.CheckBoxTextBrushKey);
+        public Brush SubjectColor => this.SubjectLength > 50 ? Brushes.Red : new SolidColorBrush(Color.FromArgb(themedColor.A, themedColor.R, themedColor.G, themedColor.B));
         public int LineLength { get; private set; } 
 
         private bool _hasGitPendingChanges;

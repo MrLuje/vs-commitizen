@@ -1,11 +1,12 @@
 source https://api.nuget.org/v3/index.json
-version 5.138.5
+version 5.196.2
 framework: auto-detect
 
 nuget Microsoft.AspNet.WebApi.Core 5.2.2
+nuget Microsoft.VisualStudio.SDK.Analyzers 15.8.36
 nuget Microsoft.VisualStudio.Services.InteractiveClient 15.112.1
 #nuget Microsoft.VSSDK.BuildTools ~> 14.3   #to debug 2015 exp
-nuget Microsoft.VSSDK.BuildTools ~> 15.5.100	#to debug 2017 exp
+nuget Microsoft.VSSDK.BuildTools ~> 15.9.3039	#to debug 2017 exp
 nuget Newtonsoft.Json 11.0.1
 nuget StructureMap 4.6.1
 
@@ -39,3 +40,26 @@ group vs15
 	nuget Microsoft.VisualStudio.Shell.15.0 ~> 15.0 copy_local: false
 	nuget Microsoft.VisualStudio.Shell.Interop.12.0 ~> 12.0
 	nuget Microsoft.VisualStudio.Threading ~> 15.0
+
+group vs16
+	framework: auto-detect
+	source https://api.nuget.org/v3/index.json
+	nuget Microsoft.VisualStudio.CoreUtility 16.0.428 copy_local: false # avoid Could not detect any platforms from 'UAP10' issue
+	nuget Microsoft.TeamFoundationServer.ExtendedClient 16.147.0-preview redirects: force, copy_local: false
+	nuget Microsoft.VisualStudio.Shell.14.0 ~> 14.0 copy_local: false
+	nuget Microsoft.VisualStudio.Shell.15.0 ~> 15.0 copy_local: false
+	nuget Microsoft.VisualStudio.Shell.Interop.12.0 ~> 12.0
+	nuget Microsoft.VisualStudio.Threading ~> 15.0
+
+group build-script
+	framework: netstandard2.0
+	source https://api.nuget.org/v3/index.json
+	nuget Fake >= 5.0.0 rc
+	nuget canopy
+	nuget Fake.Api.GitHub
+	nuget Fake.Core prerelease
+	nuget Fake.Core.Target prerelease
+	nuget Fake.IO.FileSystem prerelease
+	nuget Selenium.Support
+	nuget Selenium.WebDriver.ChromeDriver
+	nuget Selenium.WebDriver
