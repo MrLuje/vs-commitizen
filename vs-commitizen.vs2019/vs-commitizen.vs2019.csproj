@@ -91,6 +91,9 @@
     <Compile Include="..\vs-commitizen.vs2015\Interfaces\ICommentBuilder.cs">
       <Link>Interfaces\ICommentBuilder.cs</Link>
     </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Interfaces\IVsAppId.cs">
+      <Link>Interfaces\IVsAppId.cs</Link>
+    </Compile>
     <Compile Include="..\vs-commitizen.vs2015\Models\CommitType.cs">
       <Link>Models\CommitType.cs</Link>
     </Compile>
