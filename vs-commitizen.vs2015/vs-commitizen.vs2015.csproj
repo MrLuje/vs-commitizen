@@ -79,6 +79,7 @@
     <Compile Include="Interfaces\ICommentBuilder.cs" />
     <Compile Include="Compatibility2017\ITeamExplorerSectionCommand.cs" />
     <Compile Include="Compatibility2017\ITeamExplorerSectionCommandProvider.cs" />
+    <Compile Include="Interfaces\IVsAppId.cs" />
     <Compile Include="Models\CommitType.cs" />
     <Compile Include="Models\NavigationCommitModel.cs" />
     <Compile Include="Models\NavigationDataType.cs" />

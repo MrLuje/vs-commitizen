@@ -2,10 +2,12 @@
 using Microsoft.TeamFoundation.Controls.WPF;
 using Microsoft.TeamFoundation.Controls.WPF.TeamExplorer;
 using Microsoft.TeamFoundation.Controls.WPF.TeamExplorer.Framework;
+using Microsoft.VisualStudio.ProjectSystem.VS.Interop;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Controls;
@@ -51,15 +53,37 @@ namespace vs_commitizen.vs2015
             commitButton = view.FindName("commitButton") as Button;
             var commitGrid = commitButton.Parent as Grid;
 
+            var commitCzButton = createCommitCzButton(teamExplorer);
+            AppendButtonToPage(commitGrid, commitCzButton);
+        }
+
+        private void AppendButtonToPage(Grid commitGrid, Button commitCzButton)
+        {
+            if (isVs2019())
+                commitGrid.Children.OfType<WrapPanel>().First().Children.Insert(0, commitCzButton);
+            else
+            {
+                commitCzButton.Margin = new Thickness(12, 0, 0, 0);
+                commitGrid.Children.Insert(1, commitCzButton);
+                Grid.SetColumn(commitCzButton, 1);
+            }
+        }
+
+        private static Button createCommitCzButton(ITeamExplorer teamExplorer)
+        {
             var commitCzButton = new Button();
             commitCzButton.Content = "CommitCz";
-            commitCzButton.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-            commitCzButton.Margin = new System.Windows.Thickness(12, 0, 0, 0);
+            commitCzButton.HorizontalAlignment = HorizontalAlignment.Center;
             commitCzButton.Click += (s, re) => teamExplorer.NavigateToPage(Guid.Parse(VsCommitizenPage.PageId), null);
-            commitGrid.Children.Add(commitCzButton);
+            return commitCzButton;
+        }
 
-            // Place the button on the right of the Commit button
-            Grid.SetColumn(commitCzButton, 1);
+        private bool isVs2019()
+        {
+            var vsAppId = GetService<IVsAppId>();
+            vsAppId.GetProperty((int)VSAPropID.VSAPROPID_ProductSemanticVersion, out var semanticVersionObj);
+
+            return (semanticVersionObj?.ToString().StartsWith("16.")).GetValueOrDefault(false);
         }
 
         private void TeamExplorerPageBasePropertyChanged(object sender, PropertyChangedEventArgs e)
