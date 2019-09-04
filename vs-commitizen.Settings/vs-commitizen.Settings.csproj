@@ -45,6 +45,7 @@
     <Compile Include="Bootstrap.cs" />
     <Compile Include="ExtensionRegistry.cs" />
     <Compile Include="IoC.cs" />
+    <Compile Include="OutputPaneWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsGeneral.cs">
       <SubType>Component</SubType>
