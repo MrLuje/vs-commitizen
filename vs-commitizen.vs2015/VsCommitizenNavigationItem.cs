@@ -37,12 +37,16 @@ namespace vs_commitizen.vs2015
 
         private async System.Threading.Tasks.Task UpdateIsVisibleAsync()
         {
-            if (VsTaskLibraryHelper.ServiceInstance != null)
-            {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                this.IsVisible = this.gitService?.ActiveRepositories.Count > 0;
-                await TaskScheduler.Default;
-            }
+            if (VsTaskLibraryHelper.ServiceInstance == null)
+                return;
+
+            var joinableTaskFactory = ThreadHelper.JoinableTaskFactory;
+            if (joinableTaskFactory == null)
+                return;
+
+            await joinableTaskFactory.SwitchToMainThreadAsync();
+            this.IsVisible = this.gitService?.ActiveRepositories.Count > 0;
+            await TaskScheduler.Default;
         }
 
         public override void Execute()
