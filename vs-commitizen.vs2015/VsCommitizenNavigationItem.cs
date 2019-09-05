@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel.Composition;
 using System.Drawing;
 using System.Threading.Tasks;
+using vs_commitizen.Settings;
 using vs_commitizen.vs;
 
 namespace vs_commitizen.vs2015
@@ -37,9 +38,23 @@ namespace vs_commitizen.vs2015
 
         private async System.Threading.Tasks.Task UpdateIsVisibleAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            this.IsVisible = this.gitService?.ActiveRepositories.Count > 0;
-            await TaskScheduler.Default;
+            if (VsTaskLibraryHelper.ServiceInstance == null)
+                return;
+
+            try
+            {
+                var joinableTaskFactory = ThreadHelper.JoinableTaskFactory;
+                if (joinableTaskFactory == null)
+                    return;
+
+                await joinableTaskFactory.SwitchToMainThreadAsync();
+                this.IsVisible = this.gitService?.ActiveRepositories.Count > 0;
+                await TaskScheduler.Default;
+            }
+            catch (Exception ex)
+            {
+                OutputPaneWriter.Print($"UpdateIsVisibleAsync: {ex}");
+            }
         }
 
         public override void Execute()
