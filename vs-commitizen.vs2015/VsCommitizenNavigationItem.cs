@@ -41,12 +41,12 @@ namespace vs_commitizen.vs2015
             if (VsTaskLibraryHelper.ServiceInstance == null)
                 return;
 
-            var joinableTaskFactory = ThreadHelper.JoinableTaskFactory;
-            if (joinableTaskFactory == null)
-                return;
-
             try
             {
+                var joinableTaskFactory = ThreadHelper.JoinableTaskFactory;
+                if (joinableTaskFactory == null)
+                    return;
+
                 await joinableTaskFactory.SwitchToMainThreadAsync();
                 this.IsVisible = this.gitService?.ActiveRepositories.Count > 0;
                 await TaskScheduler.Default;
