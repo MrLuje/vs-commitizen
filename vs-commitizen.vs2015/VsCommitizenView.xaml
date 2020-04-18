@@ -45,6 +45,11 @@
 
         <Label Content="{x:Static local:VSPackage.LabelBreakingChanges}" HorizontalAlignment="Left" Margin="0,269,0,0" VerticalAlignment="Top"
                Foreground="{DynamicResource {x:Static platformUi:CommonControlsColors.CheckBoxTextBrushKey}}" />
+        <CheckBox Content="Highlight ?" Margin="0,275,25,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="79"
+                  ToolTip="{x:Static local:VSPackage.TooltipHighlightBreakingChanges}"
+                  Background="Transparent"
+                  Foreground="{DynamicResource {x:Static platformUi:CommonControlsColors.CheckBoxTextBrushKey}}"
+                  IsChecked="{Binding ElementName=CtrlCommitizen, Path=DataContext.HighlighBreakingChanges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <Controls:TextBoxWithHint x:Name="tbxBreakingChanges" HintText="{x:Static local:VSPackage.HintBreakingChanges}" 
                                   Height="24" Margin="0,295,25,0" VerticalAlignment="Top"
                                   Text="{Binding ElementName=CtrlCommitizen, Path=DataContext.BreakingChanges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

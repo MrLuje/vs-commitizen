@@ -117,6 +117,18 @@ namespace vs_commitizen.vs.ViewModels
             }
         }
 
+        private bool _highlighBreakingChanges;
+
+        public bool HighlighBreakingChanges
+        {
+            get { return _highlighBreakingChanges; }
+            set
+            {
+                _highlighBreakingChanges = value;
+                OnPropertyChanged();
+            }
+        }
+
         private System.Drawing.Color themedColor => VSColorTheme.GetThemedColor(CommonControlsColors.CheckBoxTextBrushKey);
         public Brush SubjectColor => this.SubjectLength > 50 ? Brushes.Red : new SolidColorBrush(Color.FromArgb(themedColor.A, themedColor.R, themedColor.G, themedColor.B));
         public int LineLength { get; private set; }
@@ -152,6 +164,7 @@ namespace vs_commitizen.vs.ViewModels
             };
             this.OnProceed = new RelayCommand(Proceed, CanProceed);
             this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
+            this.HighlighBreakingChanges = false;
             this._userSettings = userSettings;
             this.LineLength = this._userSettings.MaxLineLength;
         }
@@ -184,8 +197,10 @@ namespace vs_commitizen.vs.ViewModels
             var hasScope = !string.IsNullOrWhiteSpace(this.Scope);
             var scope = hasScope ? $"({this.Scope.SafeTrim()})" : string.Empty;
             var commitType = this.SelectedCommitType.Type;
+            var shouldHighlightBreakingChange = this.HighlighBreakingChanges;
+            var highlightBreakingChange = shouldHighlightBreakingChange ? "!" : string.Empty;
 
-            var head = $"{commitType}{scope}: {this.Subject.SafeTrim()}";
+            var head = $"{commitType}{scope}{highlightBreakingChange}: {this.Subject.SafeTrim()}";
             var body = string.Join("\n", this.Body.SafeTrim().ChunkBySizePreverveWords(this.LineLength));
 
             var hasBreakingChanges = !string.IsNullOrEmpty(this.BreakingChanges);

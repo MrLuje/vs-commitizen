@@ -30,7 +30,8 @@ namespace vs_commitizen.Tests.TestAttributes
             public void Customize(IFixture fixture)
             {
                 fixture.Customize<CommitizenViewModel>(m => m.Without(c => c.OnProceed)
-                                                             .Without(c => c.CommitTypes));
+                                                             .Without(c => c.CommitTypes)
+                                                             .With(c => c.HighlighBreakingChanges, () => false));
 
                 fixture.Register<IUserSettings>(() =>
                 {

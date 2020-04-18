@@ -197,6 +197,15 @@ namespace vs_commitizen.vs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Optional ! to draw attention to breaking change. E.g.: &quot;chore!: drop Node 6 from testing matrix&quot;.
+        /// </summary>
+        public static string TooltipHighlightBreakingChanges {
+            get {
+                return ResourceManager.GetString("TooltipHighlightBreakingChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Proceed to &apos;Changes&apos; view.
         /// </summary>
         public static string TooltipProceed {

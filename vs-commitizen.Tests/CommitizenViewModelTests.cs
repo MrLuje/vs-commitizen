@@ -182,6 +182,21 @@ namespace vs_commitizen.Tests
         }
 
         [Theory, TestConventions]
+        public void GetComment_Should_NotSuffix_Type_If_No_Highlight_BreakingChanges(CommitizenViewModel sut)
+        {
+            sut.BreakingChanges = "no more login !";
+            sut.GetComment().ShouldStartWith($"{sut.SelectedCommitType.Type}({sut.Scope}):");
+        }
+
+        [Theory, TestConventions]
+        public void GetComment_Should_Suffix_Type_If_Highlight_BreakingChanges(CommitizenViewModel sut)
+        {
+            sut.BreakingChanges = "no more login !";
+            sut.HighlighBreakingChanges = true;
+            sut.GetComment().ShouldStartWith($"{sut.SelectedCommitType.Type}({sut.Scope})!:");
+        }
+
+        [Theory, TestConventions]
         public void GetComment_Should_Prefix_Issues_If_Number(CommitizenViewModel sut)
         {
             sut.IssuesAffected = "666";
