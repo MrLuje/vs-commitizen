@@ -34,6 +34,13 @@ namespace vs_commitizen.vs2015
             this.SectionContent = new VsCommitizenView();
         }
 
+        private Boolean IsPackageLoaded()
+        {
+            var package = IoC.TryGetInstance<IVsPackage>();
+            return package != null;
+
+        }
+
         private void ExecuteOpenSettings()
         {
             var package = IoC.GetInstance<IVsPackage>();
@@ -45,8 +52,12 @@ namespace vs_commitizen.vs2015
         {
             base.Initialize(sender, e);
 
-            var openSettingsCommand = new RelayCommand(ExecuteOpenSettings);
-            this.teamExplorerSectionCommand = new TeamExplorerSectionCommand(openSettingsCommand, "Open options", WpfUtil.SharedResources["Home_SettingsBrush"] as DrawingBrush);
+            // Only show the option button if pacakge is loaded, else it won't do anything
+            if (IsPackageLoaded())
+            {
+                var openSettingsCommand = new RelayCommand(ExecuteOpenSettings);
+                this.teamExplorerSectionCommand = new TeamExplorerSectionCommand(openSettingsCommand, "Open options", WpfUtil.SharedResources["Home_SettingsBrush"] as DrawingBrush);
+            }
         }
 
         public override void Loaded(object sender, SectionLoadedEventArgs e)

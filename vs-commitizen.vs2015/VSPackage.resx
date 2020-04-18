@@ -134,7 +134,7 @@
     <value>List any breaking changes (optional)</value>
   </data>
   <data name="HintIssues" xml:space="preserve">
-    <value>List any issues affected by this change (optional). E.g.: 'fix #123', 're #123'</value>
+    <value>List any issues affected by this change (optional). E.g.: '#123'</value>
   </data>
   <data name="HintScope" xml:space="preserve">
     <value>Denote the scope of this change (optional)</value>
@@ -162,6 +162,9 @@
   </data>
   <data name="TooltipCommit" xml:space="preserve">
     <value>Proceed to 'Changes' view and commit</value>
+  </data>
+  <data name="TooltipHighlightBreakingChanges" xml:space="preserve">
+    <value>Optional ! to draw attention to breaking change. E.g.: "chore!: drop Node 6 from testing matrix"</value>
   </data>
   <data name="TooltipProceed" xml:space="preserve">
     <value>Proceed to 'Changes' view</value>
