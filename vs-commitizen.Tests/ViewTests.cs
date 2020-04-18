@@ -11,17 +11,8 @@ namespace vs_commitizen.Tests
         [WpfFact]
         public async Task Should_Display_CommitizenViewAsync()
         {
-            var t = await Task.Factory.StartNew(async () =>
-            {
-                var mainWindow = new MainWindow();
-                mainWindow.Show();
-
-                await Task.Delay(1);
-            }, new CancellationToken(), TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
-
-            await t;
-            t.IsCompleted.ShouldBe(true);
-            t.Exception.ShouldBeNull();
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
         }
     }
 }
