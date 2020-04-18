@@ -39,7 +39,7 @@ NUGET
       System.IdentityModel.Tokens.Jwt (>= 4.0.2.206221351)
       WindowsAzure.ServiceBus (>= 3.3.2)
     Microsoft.VisualStudio.Threading.Analyzers (16.6.13)
-    Microsoft.VSSDK.BuildTools (15.9.3039)
+    Microsoft.VSSDK.BuildTools (16.5.2044)
       Microsoft.VisualStudio.SDK.Analyzers (>= 15.8.33)
     Newtonsoft.Json (11.0.1)
     NSubstitute (3.1)

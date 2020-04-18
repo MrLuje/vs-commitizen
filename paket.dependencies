@@ -5,7 +5,7 @@ nuget Microsoft.AspNet.WebApi.Core 5.2.2
 nuget Microsoft.VisualStudio.SDK.Analyzers 15.8.36
 nuget Microsoft.VisualStudio.Services.InteractiveClient 15.112.1
 #nuget Microsoft.VSSDK.BuildTools ~> 14.3   #to debug 2015 exp
-nuget Microsoft.VSSDK.BuildTools ~> 15.9.3039	#to debug 2017 exp
+nuget Microsoft.VSSDK.BuildTools ~> 16.5.2044	#to debug 2017 exp
 nuget Newtonsoft.Json 11.0.1
 nuget StructureMap 4.6.1
 
