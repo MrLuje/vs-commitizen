@@ -119,7 +119,7 @@ namespace vs_commitizen.vs.ViewModels
 
         private System.Drawing.Color themedColor => VSColorTheme.GetThemedColor(CommonControlsColors.CheckBoxTextBrushKey);
         public Brush SubjectColor => this.SubjectLength > 50 ? Brushes.Red : new SolidColorBrush(Color.FromArgb(themedColor.A, themedColor.R, themedColor.G, themedColor.B));
-        public int LineLength { get; private set; } 
+        public int LineLength { get; private set; }
 
         private bool _hasGitPendingChanges;
         public bool HasGitPendingChanges
@@ -192,7 +192,7 @@ namespace vs_commitizen.vs.ViewModels
             var breakingChanges = this.BreakingChanges.SafeTrim();
             if (hasBreakingChanges)
             {
-                breakingChanges = "BREAKING CHANGES: " + Regex.Replace(this.BreakingChanges, "^BREAKING CHANGES: ", string.Empty, RegexOptions.IgnoreCase);
+                breakingChanges = "BREAKING CHANGE: " + Regex.Replace(this.BreakingChanges, "^BREAKING CHANGE: ", string.Empty, RegexOptions.IgnoreCase);
                 breakingChanges = string.Join("\n", breakingChanges.ChunkBySizePreverveWords(this.LineLength));
             }
 
@@ -200,7 +200,7 @@ namespace vs_commitizen.vs.ViewModels
             var issues = this.IssuesAffected.SafeTrim();
             if (hasIssuesAffected)
             {
-                issues = int.TryParse(issues, out var _) ? $"#{issues}" : issues;
+                issues = int.TryParse(issues, out var _) ? $"closes #{issues}" : $"closes {issues}";
                 issues = string.Join("\n", issues.ChunkBySizePreverveWords(this.LineLength));
             }
 

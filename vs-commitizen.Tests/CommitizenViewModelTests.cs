@@ -178,21 +178,21 @@ namespace vs_commitizen.Tests
         public void GetComment_Should_Prefix_BreakingChanges(CommitizenViewModel sut)
         {
             sut.BreakingChanges = "no more login !";
-            sut.GetComment().ShouldContain($"BREAKING CHANGES: {sut.BreakingChanges}");
+            sut.GetComment().ShouldContain($"BREAKING CHANGE: {sut.BreakingChanges}");
         }
 
         [Theory, TestConventions]
         public void GetComment_Should_Prefix_Issues_If_Number(CommitizenViewModel sut)
         {
             sut.IssuesAffected = "666";
-            sut.GetComment().ShouldEndWith("\n\n#666");
+            sut.GetComment().ShouldEndWith("\n\ncloses #666");
         }
 
         [Theory, TestConventions]
         public void GetComment_ShouldNot_Prefix_Issues_If_NotNumber(CommitizenViewModel sut)
         {
             sut.IssuesAffected = "666 & 999";
-            sut.GetComment().ShouldEndWith($"\n\n{sut.IssuesAffected}");
+            sut.GetComment().ShouldEndWith($"\n\ncloses {sut.IssuesAffected}");
         }
 
         [Theory, TestConventions]

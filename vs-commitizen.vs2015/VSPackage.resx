@@ -134,7 +134,7 @@
     <value>List any breaking changes (optional)</value>
   </data>
   <data name="HintIssues" xml:space="preserve">
-    <value>List any issues affected by this change (optional). E.g.: 'fix #123', 're #123'</value>
+    <value>List any issues affected by this change (optional). E.g.: '#123'</value>
   </data>
   <data name="HintScope" xml:space="preserve">
     <value>Denote the scope of this change (optional)</value>
