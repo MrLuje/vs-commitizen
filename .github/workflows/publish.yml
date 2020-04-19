@@ -27,5 +27,5 @@ jobs:
         uses: mrluje/vs-marketplace-publisher@v2
         with:
           pat: ${{ secrets.vs_pat }}
-          manifestPath: vsixManifest.json
+          manifestPath: vs-commitizen/Resources/vsixManifest.json
           useLatestReleaseAsset: true
