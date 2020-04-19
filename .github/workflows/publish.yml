@@ -19,9 +19,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#     - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: dir "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\vssdk\VisualStudioIntegration\tools\bin\*.exe"
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Publish release to marketplace
+        id: publish
+        uses: mrluje/vs-marketplace-publisher@v2
+        with:
+          pat: ${{ secrets.vs_pat }}
+          manifestPath: vsixManifest.json
+          useLatestReleaseAsset: true
