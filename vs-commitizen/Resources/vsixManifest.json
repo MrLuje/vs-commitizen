@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json.schemastore.org/vsix-publish",
+    "categories": [
+        "other",
+        "source control",
+        "team development"
+    ],
+    "identity": {
+        "internalName": "vs-commitizen"
+    },
+    "overview": "readme.md",
+    "priceCategory": "free",
+    "publisher": "mrluje",
+    "private": false,
+    "qna": true,
+    "repo": "https://github.com/MrLuje/vs-commitizen"
+}
