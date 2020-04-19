@@ -6,7 +6,7 @@
         <Description xml:space="preserve">This extension adds commitizen support.</Description>
         <MoreInfo>https://github.com/MrLuje/vs-commitizen</MoreInfo>
         <Icon>Resources\Git_icon.svg.png</Icon>
-        <Tags>git commitizen changelog conventional-changelog</Tags>
+        <Tags>git;commitizen;changelog;conventional-changelog</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,17.0]" />
