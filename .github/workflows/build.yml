@@ -1,4 +1,4 @@
-name: Publish to VS Marketplace
+name: Build
 
 env:
   config: Release
@@ -11,24 +11,25 @@ on:
       - master
 
 jobs:
-  publish:
+  build:
     runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1.4.0
+        
+      - name: Install paket
+        run: |
+          dotnet tool install paket
+          paket restore
       
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v1.0.0
-      
-      - uses: nuget/setup-nuget@v1
-        with:
-          nuget-version: '5.x'
 
       - name: Add VSTest to PATH
         uses: darenm/Setup-VSTest@v1
-
-      - name: NuGet restore ${{ env.solution }}
-        run: nuget restore ${{ env.solution }}
 
       - name: MSBuild ${{ env.solution }}
         run: |
