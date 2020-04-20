@@ -22,7 +22,7 @@ jobs:
         
       - name: Install paket
         run: |
-          dotnet tool install paket
+          dotnet tool install paket --global
           paket restore
       
       - name: Add MSBuild to PATH
