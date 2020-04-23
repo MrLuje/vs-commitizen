@@ -3,3 +3,4 @@ Microsoft.VSSDK.BuildTools
 group vs14
 	Microsoft.VisualStudio.Shell.14.0
 	Microsoft.VisualStudio.Shell.Interop.12.0
+	Microsoft.VisualStudio.Threading redirects: force, copy_local: false

@@ -29,7 +29,7 @@ group vs14
 	nuget Microsoft.VisualStudio.Shell.Immutable.12.0 < 15.0
 	nuget Microsoft.VisualStudio.Shell.Immutable.14.0 < 15.0
 	nuget Microsoft.VisualStudio.Shell.Interop.12.0 ~> 12.0
-	nuget Microsoft.VisualStudio.Threading ~> 14.0
+	nuget Microsoft.VisualStudio.Threading == 15.8.192 redirects: force, copy_local: false
 
 group vs15
 	framework: auto-detect
@@ -40,7 +40,7 @@ group vs15
 	nuget Microsoft.VisualStudio.Shell.14.0 ~> 14.0 copy_local: false
 	nuget Microsoft.VisualStudio.Shell.15.0 ~> 15.0 copy_local: false
 	nuget Microsoft.VisualStudio.Shell.Interop.12.0 ~> 12.0
-	nuget Microsoft.VisualStudio.Threading ~> 15.0
+	nuget Microsoft.VisualStudio.Threading == 15.8.192 redirects: force, copy_local: false
 
 group vs16
 	framework: auto-detect
@@ -50,7 +50,7 @@ group vs16
 	nuget Microsoft.VisualStudio.Shell.14.0 ~> 14.0 copy_local: false
 	nuget Microsoft.VisualStudio.Shell.15.0 ~> 15.0 copy_local: false
 	nuget Microsoft.VisualStudio.Shell.Interop.12.0 ~> 12.0
-	nuget Microsoft.VisualStudio.Threading ~> 16.0
+	nuget Microsoft.VisualStudio.Threading == 15.8.192 redirects: force, copy_local: false
 
 group build-script
 	framework: netstandard2.0
@@ -63,4 +63,3 @@ group build-script
 	nuget Fake.IO.FileSystem prerelease
 	nuget Selenium.Support
 	nuget Selenium.WebDriver.ChromeDriver
-	nuget Selenium.WebDriver
