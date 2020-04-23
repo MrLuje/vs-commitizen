@@ -163,6 +163,28 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
+        <Reference Include="MessagePack">
+          <HintPath>..\packages\vs15\MessagePack\lib\netstandard2.0\MessagePack.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="MessagePack.Annotations">
+          <HintPath>..\packages\vs15\MessagePack.Annotations\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
         <Reference Include="System.Net.Http.Formatting">
           <HintPath>..\packages\vs15\Microsoft.AspNet.WebApi.Client\lib\net45\System.Net.Http.Formatting.dll</HintPath>
           <Private>False</Private>
@@ -205,6 +227,20 @@
         </Reference>
         <Reference Include="Microsoft.Azure.Services.AppAuthentication">
           <HintPath>..\packages\vs15\Microsoft.Azure.Services.AppAuthentication\lib\net472\Microsoft.Azure.Services.AppAuthentication.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="mscorlib">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+          <HintPath>..\packages\vs15\Microsoft.Bcl.AsyncInterfaces\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -717,7 +753,7 @@
         </Reference>
         <Reference Include="Microsoft.VisualStudio.Threading">
           <HintPath>..\packages\vs15\Microsoft.VisualStudio.Threading\lib\net46\Microsoft.VisualStudio.Threading.dll</HintPath>
-          <Private>True</Private>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -797,11 +833,8 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
-        <Reference Include="System.Net.WebSockets">
-          <Paket>True</Paket>
-        </Reference>
         <Reference Include="Nerdbank.Streams">
-          <HintPath>..\packages\vs15\Nerdbank.Streams\lib\net472\Nerdbank.Streams.dll</HintPath>
+          <HintPath>..\packages\vs15\Nerdbank.Streams\lib\netstandard2.0\Nerdbank.Streams.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -823,7 +856,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="StreamJsonRpc">
-          <HintPath>..\packages\vs15\StreamJsonRpc\lib\net472\StreamJsonRpc.dll</HintPath>
+          <HintPath>..\packages\vs15\StreamJsonRpc\lib\netstandard2.0\StreamJsonRpc.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -833,11 +866,19 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
-        <Reference Include="mscorlib">
-          <Paket>True</Paket>
-        </Reference>
         <Reference Include="System.Buffers">
           <HintPath>..\packages\vs15\System.Buffers\lib\net461\System.Buffers.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="System.Collections.Immutable">
+          <HintPath>..\packages\vs15\System.Collections.Immutable\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -984,6 +1025,17 @@
       <ItemGroup>
         <Reference Include="System.Security.Cryptography.X509Certificates">
           <HintPath>..\packages\vs15\System.Security.Cryptography.X509Certificates\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="System.Threading.Tasks.Dataflow">
+          <HintPath>..\packages\vs15\System.Threading.Tasks.Dataflow\lib\netstandard2.0\System.Threading.Tasks.Dataflow.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>

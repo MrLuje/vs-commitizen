@@ -652,13 +652,62 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Threading">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Threading\lib\net45\Microsoft.VisualStudio.Threading.dll</HintPath>
-          <Private>True</Private>
+          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Threading\lib\net46\Microsoft.VisualStudio.Threading.dll</HintPath>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
     </When>
   </Choose>
+  <Import Project="..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets" Condition="Exists('..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" Label="Paket" />
+  <Import Project="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" Label="Paket" />
+  <ItemGroup>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\cs\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\de\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\es\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\fr\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\it\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ja\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ko\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\pl\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\pt-BR\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ru\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\tr\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hans\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hant\Microsoft.VisualStudio.Threading.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
@@ -786,5 +835,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets" Condition="Exists('..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" Label="Paket" />
 </Project>

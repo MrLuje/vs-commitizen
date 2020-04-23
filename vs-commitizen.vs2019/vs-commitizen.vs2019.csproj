@@ -807,8 +807,8 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.Threading">
-          <HintPath>..\packages\vs16\Microsoft.VisualStudio.Threading\lib\net472\Microsoft.VisualStudio.Threading.dll</HintPath>
-          <Private>True</Private>
+          <HintPath>..\packages\vs16\Microsoft.VisualStudio.Threading\lib\net46\Microsoft.VisualStudio.Threading.dll</HintPath>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -878,17 +878,6 @@
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Validation">
           <HintPath>..\packages\vs16\Microsoft.VisualStudio.Validation\lib\netstandard2.0\Microsoft.VisualStudio.Validation.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="Microsoft.Win32.Registry">
-          <HintPath>..\packages\vs16\Microsoft.Win32.Registry\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1066,17 +1055,6 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
-        <Reference Include="System.Security.AccessControl">
-          <HintPath>..\packages\vs16\System.Security.AccessControl\lib\net461\System.Security.AccessControl.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
         <Reference Include="System.Security.Cryptography.Algorithms">
           <HintPath>..\packages\vs16\System.Security.Cryptography.Algorithms\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
           <Private>False</Private>
@@ -1112,17 +1090,6 @@
       <ItemGroup>
         <Reference Include="System.Security.Cryptography.X509Certificates">
           <HintPath>..\packages\vs16\System.Security.Cryptography.X509Certificates\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="System.Security.Principal.Windows">
-          <HintPath>..\packages\vs16\System.Security.Principal.Windows\lib\net461\System.Security.Principal.Windows.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
