@@ -6,7 +6,9 @@ xunit
 xunit.runner.visualstudio
 Xunit.StaFact
 
-group vs15
-	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true
+group vs16
+	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true, redirects: force
 	Microsoft.VisualStudio.Shell.14.0 copy_local: true
+	Microsoft.VisualStudio.Shell.15.0 copy_local: true
 	Microsoft.VisualStudio.Shell.Interop.12.0
+	Microsoft.VisualStudio.Threading copy_local: true, redirects: on

@@ -3,15 +3,19 @@ framework: auto-detect
 
 nuget Microsoft.AspNet.WebApi.Core 5.2.2
 nuget Microsoft.VisualStudio.SDK.Analyzers 15.8.36
-nuget Microsoft.VisualStudio.Services.InteractiveClient 15.112.1
-#nuget Microsoft.VSSDK.BuildTools ~> 14.3   #to debug 2015 exp
+# nuget Microsoft.VisualStudio.Services.InteractiveClient 15.112.1
+# nuget Microsoft.VSSDK.BuildTools ~> 14.3   #to debug 2015 exp
 nuget Microsoft.VSSDK.BuildTools ~> 16.5.2044	#to debug 2017 exp
+nuget Microsoft.VisualStudio.Shell.Interop.12.0 ~> 12.0
+nuget Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime
+nuget Microsoft.VisualStudio.Threading == 15.8.192 redirects: force, copy_local: false
 nuget Newtonsoft.Json 11.0.1
 nuget StructureMap 4.6.1
+# nuget System.Runtime 4.3.1 redirects: on
 
 nuget AutoFixture.Xunit2 ~> 4.1
 nuget AutoFixture.AutoNSubstitute ~> 4.2
-nuget NSubstitute ~> 3.1
+nuget NSubstitute ~> 4.2
 nuget Shouldly ~> 3.0
 nuget xunit ~> 2.3.1
 nuget xunit.runner.visualstudio ~> 2.3.1 version_in_path: true

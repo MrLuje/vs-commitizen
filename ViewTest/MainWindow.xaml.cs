@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows;
 using vs_commitizen.Settings;
 using vs_commitizen.vs.Settings;
 
@@ -12,6 +14,7 @@ namespace ViewTest
         public MainWindow()
         {
             IoC.Container.Inject<IUserSettings>(new DummyUserSettings());
+            IoC.Container.Inject<IConfigFileProvider>(new DummyConfigFileProvider());
 
             InitializeComponent();
         }
@@ -19,6 +22,14 @@ namespace ViewTest
         public class DummyUserSettings : IUserSettings
         {
             public int MaxLineLength { get; set; } = 80;
+        }
+
+        internal class DummyConfigFileProvider : IConfigFileProvider
+        {
+            public Task<IList<T>> GetCommitTypesAsync<T>() where T : class
+            {
+                throw new System.NotImplementedException();
+            }
         }
     }
 }
