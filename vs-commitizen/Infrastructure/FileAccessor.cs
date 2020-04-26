@@ -20,10 +20,16 @@ namespace vs_commitizen.Infrastructure
         IEnumerable<string> GetDirectories(string folderPath);
         bool DirectoryExists(string path);
         string GetTempFileName();
+        StreamWriter CreateText(string filePath);
     }
 
     public class FileAccessor : IFileAccessor
     {
+        public virtual StreamWriter CreateText(string filePath)
+        {
+            return File.CreateText(filePath);
+        }
+
         public virtual string ReadFile(string filePath)
         {
             return File.ReadAllText(filePath);

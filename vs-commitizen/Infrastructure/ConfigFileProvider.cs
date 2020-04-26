@@ -41,7 +41,7 @@ namespace vs_commitizen.Infrastructure
                 CachedCommitTypes = commitTypes;
                 return commitTypes;
             }
-            catch (Exception ex)
+            catch (InvalidConfigurationFileException ex)
             {
                 popupManager.Show($"Failed to read configuration file, using default values.{Environment.NewLine}{Environment.NewLine}{ex}", "Error");
                 throw;
@@ -57,13 +57,17 @@ namespace vs_commitizen.Infrastructure
                 string types = JObject.Parse(content).SelectToken("types").ToString();
                 return (true, types);
             }
+            catch (JsonReaderException)
+            {
+                throw new InvalidConfigurationFileException(path);
+            }
             catch (Exception)
             {
                 return (false, null);
             }
         }
 
-        internal protected async Task<(bool isLoaded, string path)> GetCurrentSolutionAsync()
+        internal protected virtual async Task<(bool isLoaded, string path)> GetCurrentSolutionAsync()
         {
             var asyncServiceProvider = serviceProvider.GetService(typeof(SAsyncServiceProvider)) as IAsyncServiceProvider;
             var dte = await asyncServiceProvider.GetServiceAsync(typeof(SDTE)) as DTE2;
@@ -104,7 +108,7 @@ namespace vs_commitizen.Infrastructure
 
         private async Task<string> GenerateDefaultConfigFileAsync(string configFileInUserSettings)
         {
-            using (var fileStream = File.CreateText(configFileInUserSettings))
+            using (var fileStream = fileAccessor.CreateText(configFileInUserSettings))
             {
                 var assembly = Assembly.GetExecutingAssembly();
                 var resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("defaultConfigFile.json"));

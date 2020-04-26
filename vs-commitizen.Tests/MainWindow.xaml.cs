@@ -25,13 +25,22 @@ namespace vs_commitizen.Tests
         public MainWindow()
         {
             IoC.Container.Inject<IUserSettings>(new DummyUserSettings());
+            IoC.Container.Inject<IConfigFileProvider>(new DummyConfigFileProvider());
 
             InitializeComponent();
         }
 
-        public class DummyUserSettings : IUserSettings
+        internal class DummyUserSettings : IUserSettings
         {
             public int MaxLineLength { get; set; } = 80;
+        }
+
+        internal class DummyConfigFileProvider : IConfigFileProvider
+        {
+            public Task<IList<T>> GetCommitTypesAsync<T>() where T : class
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

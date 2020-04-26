@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" 
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.VSSDK.BuildTools\build\Microsoft.VSSDK.BuildTools.props" Condition="Exists('..\packages\Microsoft.VSSDK.BuildTools\build\Microsoft.VSSDK.BuildTools.props')" Label="Paket" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
@@ -58,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Infrastructure\ConfigFileProvider.cs" />
     <Compile Include="Infrastructure\FileAccessor.cs" />
+    <Compile Include="Infrastructure\InvalidConfigurationFileException.cs" />
     <Compile Include="PackageRegistry.cs" />
     <Compile Include="Infrastructure\PopupManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,7 +74,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="defaultConfigFile.json" />
+    <EmbeddedResource Include="defaultConfigFile.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="paket.references" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
@@ -80,7 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Git_icon.svg.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\ToolWindow1Command.png" />

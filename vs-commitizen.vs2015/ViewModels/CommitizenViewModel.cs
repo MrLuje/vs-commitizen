@@ -152,7 +152,7 @@ namespace vs_commitizen.vs.ViewModels
         public CommitizenViewModel(IUserSettings userSettings, IConfigFileProvider configFileProvider)
         {
             _ = LoadCommitTypesAsync(configFileProvider);
-            ;
+
             this.OnProceed = new RelayCommand(Proceed, CanProceed);
             this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
             this.HighlighBreakingChanges = false;

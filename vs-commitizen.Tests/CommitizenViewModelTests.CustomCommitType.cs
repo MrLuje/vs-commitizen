@@ -1,10 +1,13 @@
 ﻿using AutoFixture;
+using AutoFixture.AutoNSubstitute;
 using AutoFixture.Xunit2;
 using NSubstitute;
 using NSubstitute.Extensions;
 using Shouldly;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using vs_commitizen.Infrastructure;
@@ -17,243 +20,102 @@ namespace vs_commitizen.Tests
 {
     public class CommitizenViewModelTests_CustomCommitType
     {
+        CommitizenViewModel getSut(Fixture fixture, ConfigFileProvider configFileProvider, (bool, string) currentSolution)
+        {
+            configFileProvider.Configure().GetCurrentSolutionAsync().Returns(currentSolution);
+            fixture.Register<IConfigFileProvider>(() => configFileProvider);
+            return fixture.Create<CommitizenViewModel>();
+        }
+
+        private static void SetupConfigFileInUserProfile(IFileAccessor fileAccessor, string userProfileContent, string inRepoConfigContent = null)
+        {
+            fileAccessor.Exists(default).ReturnsForAnyArgs(inRepoConfigContent != null, true);
+
+            if (string.IsNullOrWhiteSpace(inRepoConfigContent))
+                fileAccessor.ReadFileAsync(default).ReturnsForAnyArgs(userProfileContent);
+            else
+                fileAccessor.ReadFileAsync(default).ReturnsForAnyArgs(inRepoConfigContent, userProfileContent);
+            fileAccessor.Configure().CreateText(default).ReturnsForAnyArgs(new StreamWriter(new MemoryStream()));
+        }
+
+        private static void SetupNoConfigFiles(IFileAccessor fileAccessor)
+        {
+            fileAccessor.Exists(default).ReturnsForAnyArgs(false, false);
+        }
+
+        private static void SetupConfigFileInRepo(IFileAccessor fileAccessor, string fileContent)
+        {
+            fileAccessor.Exists(default).ReturnsForAnyArgs(true);
+            fileAccessor.ReadFileAsync(default).ReturnsForAnyArgs(fileContent);
+            fileAccessor.Configure().CreateText(default).ReturnsForAnyArgs(new StreamWriter(new MemoryStream()));
+        }
+
         [Theory, TestConventions]
-        public void Non_Parsable_Config_Should_Give_Default_CommitTypes(
-            [Frozen]IServiceProvider serviceProvider,
-            [Frozen]IPopupManager popupManager,
+        public void InRepo_Config_Should_Be_Used_First(
             [Frozen]IFileAccessor fileAccessor,
-            //[Frozen]ConfigFileProvider configFileProvider,
+            [Frozen][Substitute] IPopupManager popupManager,
+            [Frozen][Substitute] ConfigFileProvider configFileProvider,
             Fixture fixture
-            //CommitizenViewModel sut
             )
         {
+            SetupConfigFileInUserProfile(fileAccessor,
+                userProfileContent: "{\"types\": [{\"type\": \"feat\"}, {\"type\": \"nope\"}]}",
+                inRepoConfigContent: "{\"types\": [{\"type\": \"feat\"}, {\"type\": \"nope\"}, {\"type\": \"nope2\"}]}");
 
-            var configFileProvider = Substitute.ForPartsOf<ConfigFileProvider>(
-                serviceProvider,
-                fileAccessor,
-                popupManager);
+            var sut = getSut(fixture, configFileProvider, (true, "here"));
 
-
-            configFileProvider.Configure().GetCurrentSolutionAsync().Returns(Task.FromResult((true, "here")));
-            fileAccessor.Exists(Arg.Any<string>()).Returns(true);
-            fileAccessor.ReadFile(Arg.Any<string>()).Returns("<");
-            var sut = fixture.Create<CommitizenViewModel>();
-
-            sut.Subject = string.Empty;
-            sut.CommitTypes.Count.ShouldBeGreaterThan(0);
-        }
-
-
-        [Theory, TestConventions]
-        public void CantProcess_If_Subject_Empty(CommitizenViewModel sut)
-        {
-            sut.Subject = string.Empty;
-            sut.CanProceed(null).ShouldBe(false);
+            sut.CommitTypes.Count.ShouldBe(3);
+            popupManager.DidNotReceiveWithAnyArgs().Show(default, default);
         }
 
         [Theory, TestConventions]
-        public void CantProcess_If_CommitType_IsNot_Selected(CommitizenViewModel sut)
+        public void UserProfileConfig_Should_Be_Used_If_InRepo_Is_Not_Existing(
+            [Frozen]IFileAccessor fileAccessor,
+            [Frozen][Substitute] IPopupManager popupManager,
+            [Frozen][Substitute] ConfigFileProvider configFileProvider,
+            Fixture fixture
+            )
         {
-            sut.SelectedCommitType = null;
-            sut.CanProceed(null).ShouldBe(false);
+            SetupConfigFileInUserProfile(fileAccessor,
+                userProfileContent: "{\"types\": [{\"type\": \"feat\"}, {\"type\": \"nope\"}, {\"type\": \"nope2\"}]}");
+
+            var sut = getSut(fixture, configFileProvider, (true, "here"));
+
+            sut.CommitTypes.Count.ShouldBe(3);
+            popupManager.DidNotReceiveWithAnyArgs().Show(default, default);
         }
 
         [Theory, TestConventions]
-        public void CanProcess_If_CommitType_And_Subject_Are_Filled(CommitizenViewModel sut)
+        public void Non_Parsable_Config_Should_Give_Default_CommitTypes_And_Warn_User(
+            [Frozen]IFileAccessor fileAccessor,
+            [Frozen][Substitute] IPopupManager popupManager,
+            [Frozen][Substitute] ConfigFileProvider configFileProvider,
+            Fixture fixture
+            )
         {
-            sut.SelectedCommitType.ShouldNotBeNull();
-            sut.Subject.ShouldNotBeNullOrEmpty();
-            sut.CanProceed(null).ShouldBe(true);
+            SetupConfigFileInRepo(fileAccessor, ">");
+
+            var sut = getSut(fixture, configFileProvider, (true, "here"));
+
+            sut.CommitTypes.Count.ShouldBe(11);
+            popupManager.ReceivedWithAnyArgs().Show(default, default);
         }
 
         [Theory, TestConventions]
-        public void Should_Contains_CommitTypes_List(CommitizenViewModel sut)
+        public void UserProfileConfig_Should_Be_Generated_If_None_Are_Found(
+            [Frozen]IFileAccessor fileAccessor,
+            [Frozen][Substitute] IPopupManager popupManager,
+            [Frozen][Substitute] ConfigFileProvider configFileProvider,
+            Fixture fixture
+            )
         {
-            sut.CommitTypes.Count.ShouldBeGreaterThan(0);
+            SetupNoConfigFiles(fileAccessor);
+
+            var sut = getSut(fixture, configFileProvider, (false, null));
+
+            sut.CommitTypes.Count.ShouldBe(11);
+            popupManager.DidNotReceiveWithAnyArgs().Show(default, default);
+            fileAccessor.ReceivedWithAnyArgs().CreateText(default);
         }
-
-        void TestPropertyChangedFor(CommitizenViewModel sut, Action<CommitizenViewModel> action, string[] changed)
-        {
-            var calledSoFar = new List<string>();
-            sut.PropertyChanged += (s, e) =>
-            {
-                // Assert
-                e.PropertyName.ShouldBeOneOf(changed);
-                calledSoFar.Add(e.PropertyName);
-            };
-
-            // Act
-            action(sut);
-
-            // Assert
-            calledSoFar.ShouldBe(changed, ignoreOrder: true);
-        }
-
-        [Theory, TestConventions]
-        public void Scope_Changes_Should_Trigger_SubjectLength_Color_Change(CommitizenViewModel sut)
-        {
-            TestPropertyChangedFor(sut, (s) => s.Scope = "abc", new[] { "Scope", "SubjectLength", "SubjectColor" });
-        }
-
-        [Theory, TestConventions]
-        public void SelectedCommitType_Changes_Should_Trigger_SubjectLength_Color_Change_And_OnProceed(CommitizenViewModel sut)
-        {
-            TestPropertyChangedFor(sut, s => s.SelectedCommitType = s.CommitTypes.Last(), new[] { "SelectedCommitType", "SubjectLength", "SubjectColor", "OnProceed" });
-        }
-
-        [Theory, TestConventions]
-        public void Subject_Changes_Should_Trigger_SubjectLength_Color_Change_And_OnProceed(CommitizenViewModel sut)
-        {
-            TestPropertyChangedFor(sut, s => s.Subject = "sub", new[] { "Subject", "SubjectLength", "SubjectColor", "OnProceed" });
-        }
-
-        [Theory, TestConventions]
-        public void SubjectLength_Should_DependsOn_Scope(CommitizenViewModel sut)
-        {
-            var actualLength = sut.SubjectLength;
-
-            // Act 
-            sut.Scope = sut.Scope.Substring(0, sut.Scope.Length - 1);
-
-            // Assert
-            sut.SubjectLength.ShouldBe(actualLength - 1);
-        }
-
-        [Theory, TestConventions]
-        public void SubjectLength_Should_DependsOn_Subject(CommitizenViewModel sut)
-        {
-            var actualLength = sut.SubjectLength;
-
-            // Act 
-            sut.Subject = sut.Subject.Substring(0, sut.Subject.Length - 1);
-
-            // Assert
-            sut.SubjectLength.ShouldBe(actualLength - 1);
-        }
-
-        [Theory, TestConventions]
-        public void SubjectLength_Should_DependsOn_CommitType(CommitizenViewModel sut)
-        {
-            sut.SelectedCommitType = sut.CommitTypes.First();
-            var actualLength = sut.SubjectLength;
-
-            // Act 
-            sut.SelectedCommitType = sut.CommitTypes.Skip(1).First();
-
-            // Assert
-            int differenceBetweenSubjectLength = Math.Abs(sut.SubjectLength - actualLength);
-            int differenceBetweenTypeLength = Math.Abs(sut.CommitTypes.First().Type.Length - sut.CommitTypes.Skip(1).First().Type.Length);
-            differenceBetweenSubjectLength.ShouldBe(differenceBetweenTypeLength);
-        }
-
-        [Theory, TestConventions]
-        public void SubjectLength_Is_sum(CommitizenViewModel sut)
-        {
-            var actualLength = sut.SubjectLength;
-
-            // Assert
-            actualLength.ShouldBe(sut.Subject.Length + sut.Scope.Length + sut.SelectedCommitType.Type.Length + 1);
-        }
-
-        [Theory, TestConventions]
-        public void SubjectLength_Is_Zero_If_No_Selected(CommitizenViewModel sut)
-        {
-            // Act
-            sut.Subject = string.Empty;
-            sut.Scope = string.Empty;
-            sut.SelectedCommitType = null;
-
-            // Assert
-            sut.SubjectLength.ShouldBe(0);
-        }
-
-        //[Theory]
-        //[InlineTestConventions("true", true)]
-        //[InlineTestConventions("false", false)]
-        //public void Proceed_Sets_Autocommit(string autoCommit, bool expected, CommitizenViewModel sut)
-        //{
-        //    // Assert
-        //    sut.ProceedExecuted += (s, b) => b.ShouldBe(expected);
-
-        //    // Act
-        //    sut.Proceed(autoCommit);
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_With_No_SelectedCommitType_ShouldBe_Empty(IUserSettings userSettings)
-        //{
-        //    var sut = new CommitizenViewModel(userSettings);
-        //    sut.SelectedCommitType = null;
-        //    sut.GetComment().ShouldBeEmpty();
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_With_No_Scope(CommitizenViewModel sut)
-        //{
-        //    sut.Scope = null;
-        //    sut.GetComment().ShouldStartWith($"{sut.SelectedCommitType.Type}: ");
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_With_Scope(CommitizenViewModel sut)
-        //{
-        //    sut.GetComment().ShouldStartWith($"{sut.SelectedCommitType.Type}({sut.Scope}): ");
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_With_No_Body(CommitizenViewModel sut)
-        //{
-        //    sut.IssuesAffected = sut.Body = sut.BreakingChanges = null;
-        //    sut.GetComment().ShouldBe($"{sut.SelectedCommitType.Type}({sut.Scope}): {sut.Subject}");
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_Should_Prefix_BreakingChanges(CommitizenViewModel sut)
-        //{
-        //    sut.BreakingChanges = "no more login !";
-        //    sut.GetComment().ShouldContain($"BREAKING CHANGE: {sut.BreakingChanges}");
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_Should_NotSuffix_Type_If_No_Highlight_BreakingChanges(CommitizenViewModel sut)
-        //{
-        //    sut.BreakingChanges = "no more login !";
-        //    sut.GetComment().ShouldStartWith($"{sut.SelectedCommitType.Type}({sut.Scope}):");
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_Should_Suffix_Type_If_Highlight_BreakingChanges(CommitizenViewModel sut)
-        //{
-        //    sut.BreakingChanges = "no more login !";
-        //    sut.HighlighBreakingChanges = true;
-        //    sut.GetComment().ShouldStartWith($"{sut.SelectedCommitType.Type}({sut.Scope})!:");
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_Should_Prefix_Issues_If_Number(CommitizenViewModel sut)
-        //{
-        //    sut.IssuesAffected = "666";
-        //    sut.GetComment().ShouldEndWith("\n\ncloses #666");
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_ShouldNot_Prefix_Issues_If_NotNumber(CommitizenViewModel sut)
-        //{
-        //    sut.IssuesAffected = "666 & 999";
-        //    sut.GetComment().ShouldEndWith($"\n\ncloses {sut.IssuesAffected}");
-        //}
-
-        //[Theory, TestConventions]
-        //public void GetComment_ShouldNot_Take_Last_Space_If_Over_ChunkSize(IUserSettings userSettings)
-        //{
-        //    userSettings.MaxLineLength = 10;
-
-        //    var sut = new CommitizenViewModel(userSettings);
-        //    sut.SelectedCommitType = sut.CommitTypes.First(f => f.Type.Contains("feat"));
-        //    sut.Scope = "test";
-        //    sut.Body = "test";
-        //    sut.Body += " tenwordsss tenwordsss";
-        //    sut.GetComment().ShouldBe("feat(test): \n\ntest\ntenwordsss\ntenwordsss");
-        //}
     }
 }
