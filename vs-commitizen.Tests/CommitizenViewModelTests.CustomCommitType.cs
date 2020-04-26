@@ -29,25 +29,25 @@ namespace vs_commitizen.Tests
 
         private static void SetupConfigFileInUserProfile(IFileAccessor fileAccessor, string userProfileContent, string inRepoConfigContent = null)
         {
-            fileAccessor.Exists(default).ReturnsForAnyArgs(inRepoConfigContent != null, true);
+            fileAccessor.Exists(Arg.Any<string>()).ReturnsForAnyArgs(inRepoConfigContent != null, true);
 
             if (string.IsNullOrWhiteSpace(inRepoConfigContent))
-                fileAccessor.ReadFileAsync(default).ReturnsForAnyArgs(userProfileContent);
+                fileAccessor.ReadFileAsync(Arg.Any<string>()).ReturnsForAnyArgs(userProfileContent);
             else
-                fileAccessor.ReadFileAsync(default).ReturnsForAnyArgs(inRepoConfigContent, userProfileContent);
-            fileAccessor.Configure().CreateText(default).ReturnsForAnyArgs(new StreamWriter(new MemoryStream()));
+                fileAccessor.ReadFileAsync(Arg.Any<string>()).ReturnsForAnyArgs(inRepoConfigContent, userProfileContent);
+            fileAccessor.Configure().CreateText(Arg.Any<string>()).ReturnsForAnyArgs(new StreamWriter(new MemoryStream()));
         }
 
         private static void SetupNoConfigFiles(IFileAccessor fileAccessor)
         {
-            fileAccessor.Exists(default).ReturnsForAnyArgs(false, false);
+            fileAccessor.Exists(Arg.Any<string>()).ReturnsForAnyArgs(false, false);
         }
 
         private static void SetupConfigFileInRepo(IFileAccessor fileAccessor, string fileContent)
         {
-            fileAccessor.Exists(default).ReturnsForAnyArgs(true);
-            fileAccessor.ReadFileAsync(default).ReturnsForAnyArgs(fileContent);
-            fileAccessor.Configure().CreateText(default).ReturnsForAnyArgs(new StreamWriter(new MemoryStream()));
+            fileAccessor.Exists(Arg.Any<string>()).ReturnsForAnyArgs(true);
+            fileAccessor.ReadFileAsync(Arg.Any<string>()).ReturnsForAnyArgs(fileContent);
+            fileAccessor.Configure().CreateText(Arg.Any<string>()).ReturnsForAnyArgs(new StreamWriter(new MemoryStream()));
         }
 
         [Theory, TestConventions]
@@ -65,7 +65,7 @@ namespace vs_commitizen.Tests
             var sut = getSut(fixture, configFileProvider, (true, "here"));
 
             sut.CommitTypes.Count.ShouldBe(3);
-            popupManager.DidNotReceiveWithAnyArgs().Show(default, default);
+            popupManager.DidNotReceiveWithAnyArgs().Show(Arg.Any<string>(), Arg.Any<string>());
         }
 
         [Theory, TestConventions]
@@ -82,7 +82,7 @@ namespace vs_commitizen.Tests
             var sut = getSut(fixture, configFileProvider, (true, "here"));
 
             sut.CommitTypes.Count.ShouldBe(3);
-            popupManager.DidNotReceiveWithAnyArgs().Show(default, default);
+            popupManager.DidNotReceiveWithAnyArgs().Show(Arg.Any<string>(), Arg.Any<string>());
         }
 
         [Theory, TestConventions]
@@ -98,7 +98,7 @@ namespace vs_commitizen.Tests
             var sut = getSut(fixture, configFileProvider, (true, "here"));
 
             sut.CommitTypes.Count.ShouldBe(11);
-            popupManager.ReceivedWithAnyArgs().Show(default, default);
+            popupManager.ReceivedWithAnyArgs().Show(Arg.Any<string>(), Arg.Any<string>());
         }
 
         [Theory, TestConventions]
@@ -114,8 +114,8 @@ namespace vs_commitizen.Tests
             var sut = getSut(fixture, configFileProvider, (false, null));
 
             sut.CommitTypes.Count.ShouldBe(11);
-            popupManager.DidNotReceiveWithAnyArgs().Show(default, default);
-            fileAccessor.ReceivedWithAnyArgs().CreateText(default);
+            popupManager.DidNotReceiveWithAnyArgs().Show(Arg.Any<string>(), Arg.Any<string>());
+            fileAccessor.ReceivedWithAnyArgs().CreateText(Arg.Any<string>());
         }
     }
 }
