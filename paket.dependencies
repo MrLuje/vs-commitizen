@@ -9,7 +9,7 @@ nuget Microsoft.VSSDK.BuildTools ~> 16.5.2044	#to debug 2017 exp
 nuget Microsoft.VisualStudio.Shell.Interop.12.0 ~> 12.0
 nuget Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime
 nuget Microsoft.VisualStudio.Threading == 15.8.192 redirects: force, copy_local: false
-nuget Newtonsoft.Json 11.0.1
+nuget Newtonsoft.Json 12.0.3
 nuget StructureMap 4.6.1
 # nuget System.Runtime 4.3.1 redirects: on
 
