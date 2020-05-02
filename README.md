@@ -17,3 +17,39 @@ This extension adds [commitizen](https://github.com/commitizen/) support to Visu
 - Nice page to format your comment using commitizen fashion.
 
 ![vs-commitizen_-_commitizen_view.png](images/commitizen-view.png)
+
+## Customizations
+
+The list of "Type of changes" can be customized, globally or per repository.
+
+The configuration is stored in a *.commitizen.json* file ([schema](./config-schema.json))
+
+You can access the configuration file directly from VisualStudio menu (files will be generated if not existing yet) :
+
+
+![menu.png](images/menu.png)
+
+#### Sample configuration
+
+```json
+{
+  "$schema": "https://github.com/MrLuje/vs-commitizen/config-schema.json",
+  "types": [
+    {
+      "type": "feat",
+      "description": "A new feature"
+    },
+    {
+      "type": "fix",
+      "description": "A bug fix"
+    },
+    {
+      "type": "docs",
+      "description": "Documentation only changes"
+    },
+    {
+      "type": "test",
+      "description": "Adding missing tests or correcting existing tests"
+    }
+}
+```
