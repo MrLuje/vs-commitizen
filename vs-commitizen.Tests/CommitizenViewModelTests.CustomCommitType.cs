@@ -118,5 +118,39 @@ namespace vs_commitizen.Tests
             popupManager.DidNotReceiveWithAnyArgs().Show(Arg.Any<string>(), Arg.Any<string>());
             fileAccessor.ReceivedWithAnyArgs().CreateText(Arg.Any<string>());
         }
+
+        [Theory, TestConventions]
+        public async Task MultipleCall_From_Same_Repository_Should_Use_Cached_Config(
+            [Frozen]IFileAccessor fileAccessor,
+            [Frozen][Substitute] ConfigFileProvider configFileProvider,
+            Fixture fixture
+            )
+        {
+            SetupConfigFileInRepo(fileAccessor, "{\"types\": [{\"type\": \"feat\"}, {\"type\": \"nope\"}, {\"type\": \"nope2\"}]}");
+
+            var sut = getSut(fixture, configFileProvider, (true, "path_to_repo1"));
+            var sut2 = getSut(fixture, configFileProvider, (true, "path_to_repo1"));
+
+            sut.CommitTypes.Count.ShouldBe(3);
+            sut2.CommitTypes.Count.ShouldBe(3);
+            await fileAccessor.ReceivedWithAnyArgs(1).ReadFileAsync(Arg.Any<string>());
+        }
+
+        [Theory, TestConventions]
+        public async Task MultipleCall_From_Different_Repository_Shouldnt_Use_Cached_Config(
+            [Frozen]IFileAccessor fileAccessor,
+            [Frozen][Substitute] ConfigFileProvider configFileProvider,
+            Fixture fixture
+            )
+        {
+            SetupConfigFileInRepo(fileAccessor, "{\"types\": [{\"type\": \"feat\"}, {\"type\": \"nope\"}, {\"type\": \"nope2\"}]}");
+
+            var sut = getSut(fixture, configFileProvider, (true, "path_to_repo1"));
+            var sut2 = getSut(fixture, configFileProvider, (true, "path_to_repo2"));
+
+            sut.CommitTypes.Count.ShouldBe(3);
+            sut2.CommitTypes.Count.ShouldBe(3);
+            await fileAccessor.ReceivedWithAnyArgs(2).ReadFileAsync(Arg.Any<string>());
+        }
     }
 }

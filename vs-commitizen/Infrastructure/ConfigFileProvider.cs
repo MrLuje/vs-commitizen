@@ -53,7 +53,7 @@ namespace vs_commitizen.Infrastructure
                 T[] commitTypes = JsonConvert.DeserializeObject<T[]>(configStr).Where(c => !string.IsNullOrEmpty(c.ToString())).ToArray();
                 lock (@lock)
                 {
-                    cache.Set("commitTypes", commitTypes, new CacheItemPolicy());
+                    cache.Set(cacheKey, commitTypes, new CacheItemPolicy());
                 }
                 return commitTypes;
             }
