@@ -105,6 +105,9 @@
     <Compile Include="..\vs-commitizen.vs2015\Models\NavigationDataType.cs">
       <Link>Models\NavigationDataType.cs</Link>
     </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Repository.cs">
+      <Link>Repository.cs</Link>
+    </Compile>
     <Compile Include="..\vs-commitizen.vs2015\ViewModels\CommitizenViewModel.cs">
       <Link>ViewModels\CommitizenViewModel.cs</Link>
     </Compile>
@@ -126,6 +129,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VSPackage.resx</DependentUpon>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\VsRegistry.cs">
+      <Link>VsRegistry.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -161,6 +167,17 @@
       <Name>vs-commitizen.Settings</Name>
     </ProjectReference>
   </ItemGroup>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="StructureMap">
+          <HintPath>..\packages\StructureMap\lib\net45\StructureMap.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>

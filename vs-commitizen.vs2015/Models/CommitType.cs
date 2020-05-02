@@ -11,6 +11,6 @@
         public string Type { get; }
         public string Description { get; }
 
-        public string DisplayString => $"{this.Type} - {this.Description}";
+        public string DisplayString => string.IsNullOrEmpty(Description) ? $"{this.Type}" : $"{this.Type} - {this.Description}";
     }
 }

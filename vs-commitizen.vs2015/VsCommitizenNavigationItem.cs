@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel.Composition;
 using System.Drawing;
 using System.Threading.Tasks;
+using vs_commitizen.Settings;
 using vs_commitizen.vs;
 
 namespace vs_commitizen.vs2015
@@ -30,16 +31,20 @@ namespace vs_commitizen.vs2015
             this.IsVisible = gitService.ActiveRepositories.Count > 0;
         }
 
-        private async void GitService_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void GitService_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            await this.UpdateIsVisibleAsync();
+            _ = this.UpdateIsVisibleAsync();
         }
 
         private async System.Threading.Tasks.Task UpdateIsVisibleAsync()
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            this.IsVisible = this.gitService?.ActiveRepositories.Count > 0;
-            await TaskScheduler.Default;
+            try
+            {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                this.IsVisible = this.gitService?.ActiveRepositories.Count > 0;
+                await TaskScheduler.Default;
+            }
+            catch { }
         }
 
         public override void Execute()

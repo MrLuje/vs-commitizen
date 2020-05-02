@@ -3,10 +3,13 @@ using Microsoft.VisualStudio.PlatformUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
+using vs_commitizen.Settings;
 using vs_commitizen.vs.Extensions;
 using vs_commitizen.vs.Interfaces;
 using vs_commitizen.vs.Models;
@@ -18,7 +21,7 @@ namespace vs_commitizen.vs.ViewModels
     {
         #region Bound properties
 
-        private List<CommitType> _commitTypes;
+        private List<CommitType> _commitTypes = new List<CommitType>();
         public List<CommitType> CommitTypes
         {
             get => _commitTypes;
@@ -146,27 +149,40 @@ namespace vs_commitizen.vs.ViewModels
         }
         #endregion
 
-        public CommitizenViewModel(IUserSettings userSettings)
+        public CommitizenViewModel(IUserSettings userSettings, IConfigFileProvider configFileProvider)
         {
-            this.CommitTypes = new List<CommitType>
-            {
-                new CommitType("feat", "A new feature"),
-                new CommitType("fix", "A bug fix"),
-                new CommitType("docs", "Documentation only changes"),
-                new CommitType("style", "Changes that do not affect the meaning of the code (formatting, etc)"),
-                new CommitType("refactor", "A code change that neither fixes a bug nor adds a feature"),
-                new CommitType("perf", "A code change that improves performance"),
-                new CommitType("test", "Adding missing tests or correcting existing tests"),
-                new CommitType("build", "Changes that affect the build system or external dependencies (example scopes: gulp, etc)"),
-                new CommitType("ci", "Changes to our CI configuration files and scripts (example scopes: Travis, etc)"),
-                new CommitType("chore", "Other changes that don't modify src or test files"),
-                new CommitType("revert", "Reverts a previous commit")
-            };
+            _ = LoadCommitTypesAsync(configFileProvider);
+
             this.OnProceed = new RelayCommand(Proceed, CanProceed);
             this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
             this.HighlighBreakingChanges = false;
             this._userSettings = userSettings;
             this.LineLength = this._userSettings.MaxLineLength;
+        }
+
+        private async Task LoadCommitTypesAsync(IConfigFileProvider configFileProvider)
+        {
+            try
+            {
+                this.CommitTypes = (await configFileProvider.GetCommitTypesAsync<CommitType>()).ToList();
+            }
+            catch
+            {
+                this.CommitTypes = new List<CommitType>
+                {
+                    new CommitType("feat", "A new feature"),
+                    new CommitType("fix", "A bug fix"),
+                    new CommitType("docs", "Documentation only changes"),
+                    new CommitType("style", "Changes that do not affect the meaning of the code (formatting, etc)"),
+                    new CommitType("refactor", "A code change that neither fixes a bug nor adds a feature"),
+                    new CommitType("perf", "A code change that improves performance"),
+                    new CommitType("test", "Adding missing tests or correcting existing tests"),
+                    new CommitType("build", "Changes that affect the build system or external dependencies (example scopes: gulp, etc)"),
+                    new CommitType("ci", "Changes to our CI configuration files and scripts (example scopes: Travis, etc)"),
+                    new CommitType("chore", "Other changes that don't modify src or test files"),
+                    new CommitType("revert", "Reverts a previous commit")
+                };
+            }
         }
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)

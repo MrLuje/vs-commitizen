@@ -5,6 +5,8 @@ using AutoFixture.Xunit2;
 using NSubstitute;
 using System;
 using System.Reflection;
+using vs_commitizen.Infrastructure;
+using vs_commitizen.Settings;
 using vs_commitizen.vs.Settings;
 using vs_commitizen.vs.ViewModels;
 
@@ -13,17 +15,17 @@ namespace vs_commitizen.Tests.TestAttributes
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class TestConventionsAttribute : AutoDataAttribute
     {
-        public TestConventionsAttribute() : base(() => 
+        public TestConventionsAttribute() : base(() =>
             new Fixture()
                 .Customize(new DomainCustomization())
                 .Customize(new AutoNSubstituteCustomization
                 {
-                    ConfigureMembers = true
+                    ConfigureMembers = true,
+                    GenerateDelegates = true
                 })
         )
         {
         }
-
 
         private class DomainCustomization : ICustomization
         {
@@ -33,6 +35,7 @@ namespace vs_commitizen.Tests.TestAttributes
                                                              .Without(c => c.CommitTypes)
                                                              .With(c => c.HighlighBreakingChanges, () => false));
 
+                fixture.Register<IConfigFileProvider>(() => fixture.Create<ConfigFileProvider>());
                 fixture.Register<IUserSettings>(() =>
                 {
                     var sut = Substitute.For<IUserSettings>();
