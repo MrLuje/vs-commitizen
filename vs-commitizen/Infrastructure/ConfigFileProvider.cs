@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Caching;
 using System.Threading.Tasks;
 using vs_commitizen.Settings;
 using IAsyncServiceProvider = Microsoft.VisualStudio.Shell.IAsyncServiceProvider;
@@ -20,13 +21,13 @@ namespace vs_commitizen.Infrastructure
         private readonly IFileAccessor fileAccessor;
         private const string CONFIGFILE_NAME = ".commitizen.json";
         private const string EXTENSION_FOLDER_NAME = "vs-commitizen";
-        private object CachedCommitTypes;
         private readonly IServiceProvider serviceProvider;
         private readonly IPopupManager popupManager;
 
         private SolutionEvents solutionEvents;
         private bool init;
         private static readonly Object @lock = new Object();
+        private MemoryCache cache = new MemoryCache("commitTypes");
 
         public static string ConfigPathUserProfile => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), EXTENSION_FOLDER_NAME, CONFIGFILE_NAME);
 
@@ -39,9 +40,11 @@ namespace vs_commitizen.Infrastructure
 
         public async Task<IList<T>> GetCommitTypesAsync<T>() where T : class
         {
+            string cacheKey = await GetCacheKeyAsync();
             lock (@lock)
             {
-                if (CachedCommitTypes != null) return (IList<T>)CachedCommitTypes;
+                var commitTypes = cache.GetCacheItem(cacheKey);
+                if (commitTypes != null) return (IList<T>)commitTypes.Value;
             }
 
             try
@@ -50,7 +53,7 @@ namespace vs_commitizen.Infrastructure
                 T[] commitTypes = JsonConvert.DeserializeObject<T[]>(configStr).Where(c => !string.IsNullOrEmpty(c.ToString())).ToArray();
                 lock (@lock)
                 {
-                    CachedCommitTypes = commitTypes;
+                    cache.Set("commitTypes", commitTypes, new CacheItemPolicy());
                 }
                 return commitTypes;
             }
@@ -59,6 +62,14 @@ namespace vs_commitizen.Infrastructure
                 popupManager.Show($"Failed to read configuration file, using default values.{Environment.NewLine}{Environment.NewLine}{ex}", "Error");
                 throw;
             }
+        }
+
+        private async Task<string> GetCacheKeyAsync()
+        {
+            var (ok, path) = await this.GetLocalPathAsync();
+            if (ok)
+                return string.Concat("commitTypes-", path.Normalize());
+            return "commitTypes";
         }
 
         private async Task<(bool isValid, string content)> TryGetValidConfigFileAsync(string path)
@@ -152,7 +163,7 @@ namespace vs_commitizen.Infrastructure
                 {
                     lock (@lock)
                     {
-                        this.CachedCommitTypes = null;
+                        this.cache = new MemoryCache("commitTypes");
                     }
                 };
 

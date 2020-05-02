@@ -31,7 +31,7 @@ namespace vs_commitizen.vs2015
             this.IsVisible = gitService.ActiveRepositories.Count > 0;
         }
 
-        private async void GitService_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void GitService_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             _ = this.UpdateIsVisibleAsync();
         }
