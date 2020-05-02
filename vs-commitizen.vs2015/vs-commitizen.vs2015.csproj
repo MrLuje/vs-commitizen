@@ -91,6 +91,7 @@
     <Compile Include="Base\TeamExplorerBasePage.cs" />
     <Compile Include="Base\TeamExplorerBaseSection.cs" />
     <Compile Include="Compatibility2017\TeamExplorerSectionCommand.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="ViewModels\CommitizenViewModel.cs" />
     <Compile Include="VsCommitizenNavigationItem.cs" />
     <Compile Include="VsCommitizenPage.cs" />
@@ -104,6 +105,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VSPackage.resx</DependentUpon>
     </Compile>
+    <Compile Include="VsRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -134,6 +136,17 @@
       <Name>vs-commitizen.Settings</Name>
     </ProjectReference>
   </ItemGroup>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="StructureMap">
+          <HintPath>..\packages\StructureMap\lib\net45\StructureMap.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>

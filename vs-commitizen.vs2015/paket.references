@@ -1,3 +1,5 @@
+StructureMap
+
 group vs14
 	Microsoft.TeamFoundationServer.ExtendedClient
 	Microsoft.VisualStudio.Shell.14.0

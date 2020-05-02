@@ -38,7 +38,6 @@ namespace vs_commitizen.vs2015
         {
             var package = IoC.TryGetInstance<IVsPackage>();
             return package != null;
-
         }
 
         private void ExecuteOpenSettings()

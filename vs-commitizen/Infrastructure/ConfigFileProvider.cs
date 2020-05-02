@@ -1,4 +1,5 @@
-﻿using EnvDTE80;
+﻿using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Newtonsoft.Json;
@@ -23,6 +24,12 @@ namespace vs_commitizen.Infrastructure
         private readonly IServiceProvider serviceProvider;
         private readonly IPopupManager popupManager;
 
+        private SolutionEvents solutionEvents;
+        private bool init;
+        private static readonly Object @lock = new Object();
+
+        public static string ConfigPathUserProfile => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), EXTENSION_FOLDER_NAME, CONFIGFILE_NAME);
+
         public ConfigFileProvider(IServiceProvider serviceProvider, IFileAccessor fileAccessor, IPopupManager popupManager)
         {
             this.fileAccessor = fileAccessor;
@@ -32,13 +39,19 @@ namespace vs_commitizen.Infrastructure
 
         public async Task<IList<T>> GetCommitTypesAsync<T>() where T : class
         {
-            if (CachedCommitTypes != null) return (IList<T>)CachedCommitTypes;
+            lock (@lock)
+            {
+                if (CachedCommitTypes != null) return (IList<T>)CachedCommitTypes;
+            }
 
             try
             {
                 var configStr = await GetConfigAsync();
                 T[] commitTypes = JsonConvert.DeserializeObject<T[]>(configStr).Where(c => !string.IsNullOrEmpty(c.ToString())).ToArray();
-                CachedCommitTypes = commitTypes;
+                lock (@lock)
+                {
+                    CachedCommitTypes = commitTypes;
+                }
                 return commitTypes;
             }
             catch (InvalidConfigurationFileException ex)
@@ -70,40 +83,81 @@ namespace vs_commitizen.Infrastructure
         internal protected virtual async Task<(bool isLoaded, string path)> GetCurrentSolutionAsync()
         {
             var asyncServiceProvider = serviceProvider.GetService(typeof(SAsyncServiceProvider)) as IAsyncServiceProvider;
-            var dte = await asyncServiceProvider.GetServiceAsync(typeof(SDTE)) as DTE2;
+            var dte = await asyncServiceProvider?.GetServiceAsync(typeof(SDTE)) as DTE2;
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            return (dte?.Solution != null, dte?.Solution.FullName);
+            return ((dte?.Solution?.IsOpen).GetValueOrDefault(false), dte?.Solution.FullName);
+        }
+
+        internal protected virtual async Task<(bool isLoaded, string path)> GetLocalPathAsync()
+        {
+            var repository = IoC.GetInstance<IRepository>();
+            return (repository != null, repository?.RepositoryPath);
+        }
+
+        public async Task<string> TryGetLocalConfigAsync()
+        {
+            var (isRepositoryLoaded, repositoryPath) = await GetLocalPathAsync(); // await GetCurrentSolutionAsync();
+            if (isRepositoryLoaded)
+            {
+                var localConfigPath = Path.Combine(repositoryPath, CONFIGFILE_NAME);
+
+                if (this.fileAccessor.Exists(localConfigPath))
+                    return localConfigPath;
+            }
+
+            return string.Empty;
         }
 
         async Task<string> GetConfigAsync()
         {
-            var (isSolutionLoaded, solutionPath) = await GetCurrentSolutionAsync();
+            await SubscribeToSolutionEventsAsync();
 
-            if (isSolutionLoaded)
+            var localConfig = await TryGetLocalConfigAsync();
+
+            if (!string.IsNullOrWhiteSpace(localConfig))
             {
-                var configFileInSolution = Path.Combine(Path.GetDirectoryName(solutionPath), CONFIGFILE_NAME);
-                if (fileAccessor.Exists(configFileInSolution))
+                if (fileAccessor.Exists(localConfig))
                 {
-                    var (isValid, content) = await TryGetValidConfigFileAsync(configFileInSolution);
+                    var (isValid, content) = await TryGetValidConfigFileAsync(localConfig);
                     if (isValid)
                         return content;
                 }
             }
 
-            var configFileInUserSettings = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), EXTENSION_FOLDER_NAME, CONFIGFILE_NAME);
-            var pathToFolder = Path.GetDirectoryName(configFileInUserSettings);
+            var pathToFolder = Path.GetDirectoryName(ConfigPathUserProfile);
             Directory.CreateDirectory(pathToFolder);
 
-            if (fileAccessor.Exists(configFileInUserSettings))
+            if (fileAccessor.Exists(ConfigPathUserProfile))
             {
-                var (isValid, content) = await TryGetValidConfigFileAsync(configFileInUserSettings);
+                var (isValid, content) = await TryGetValidConfigFileAsync(ConfigPathUserProfile);
                 if (isValid)
                     return content;
             }
 
-            return await GenerateDefaultConfigFileAsync(configFileInUserSettings);
+            return await GenerateDefaultConfigFileAsync(ConfigPathUserProfile);
+        }
+
+        internal protected virtual async System.Threading.Tasks.Task SubscribeToSolutionEventsAsync()
+        {
+            if (!this.init)
+            {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                var asyncServiceProvider = serviceProvider.GetService(typeof(SAsyncServiceProvider)) as IAsyncServiceProvider;
+                var dte = await asyncServiceProvider?.GetServiceAsync(typeof(SDTE)) as DTE2;
+
+                this.solutionEvents = dte.Events.SolutionEvents;
+                this.solutionEvents.BeforeClosing += () =>
+                {
+                    lock (@lock)
+                    {
+                        this.CachedCommitTypes = null;
+                    }
+                };
+
+                this.init = true;
+            }
         }
 
         private async Task<string> GenerateDefaultConfigFileAsync(string configFileInUserSettings)

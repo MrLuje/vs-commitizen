@@ -21,10 +21,16 @@ namespace vs_commitizen.Infrastructure
         bool DirectoryExists(string path);
         string GetTempFileName();
         StreamWriter CreateText(string filePath);
+        void CopyFile(string src, string dest);
     }
 
     public class FileAccessor : IFileAccessor
     {
+        public virtual void CopyFile(string src, string dest)
+        {
+            File.Copy(src, dest);
+        }
+
         public virtual StreamWriter CreateText(string filePath)
         {
             return File.CreateText(filePath);

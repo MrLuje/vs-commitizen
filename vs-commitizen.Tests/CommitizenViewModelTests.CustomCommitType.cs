@@ -22,7 +22,8 @@ namespace vs_commitizen.Tests
     {
         CommitizenViewModel getSut(Fixture fixture, ConfigFileProvider configFileProvider, (bool, string) currentSolution)
         {
-            configFileProvider.Configure().GetCurrentSolutionAsync().Returns(currentSolution);
+            configFileProvider.Configure().SubscribeToSolutionEventsAsync().Returns(Task.CompletedTask);
+            configFileProvider.Configure().GetLocalPathAsync().Returns(currentSolution);
             fixture.Register<IConfigFileProvider>(() => configFileProvider);
             return fixture.Create<CommitizenViewModel>();
         }

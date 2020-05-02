@@ -15,10 +15,10 @@
         defining some of the constants that we will use inside the file. -->
 
   <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
-  <Extern href="stdidcmd.h"/>
+  <Extern href="stdidcmd.h" />
 
   <!--This header contains the command ids for the menus provided by the shell. -->
-  <Extern href="vsshlids.h"/>
+  <Extern href="vsshlids.h" />
 
   <!--The Commands section is where commands, menus, and menu groups are defined.
       This section uses a Guid to identify the package that provides the command defined inside it. -->
@@ -42,11 +42,20 @@
               <CommandFlag>DefaultInvisible</CommandFlag>
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
-      <Button guid="guidVsCommitizenPackageCmdSet" id="ToolWindow1CommandId" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
-        <Icon guid="guidImages" id="bmpPic1" />
+      <Button guid="OpenGenerateLocalConfigCmdSet" id="OpenGenerateLocalConfigCmd" priority="0x0100" type="Button">
+        <Parent guid="guidVsCommitizenPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages2" id="bmpOpen" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultDisabled</CommandFlag>
         <Strings>
-          <ButtonText>ToolWindow1</ButtonText>
+          <ButtonText>Open local configuration file</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="OpenGenerateUserProfileConfigCmdSet" id="OpenGenerateUserProfileConfigCmd" priority="0x0100" type="Button">
+        <Parent guid="guidVsCommitizenPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages2" id="bmpOpen" />
+        <Strings>
+          <ButtonText>Open global configuration file</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -58,26 +67,56 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\ToolWindow1Command.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+      <Bitmap guid="guidImages" href="Resources\ToolWindow1Command.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages2" href="Resources\Open_6529.png" usedList="bmpOpen"/>
     </Bitmaps>
+    <Menus>
+      <Menu guid="guidVsCommitizenPackageCmdSet" id="TopLevelMenu" priority="0x700" type="Menu">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+        <Strings>
+          <ButtonText>vs-commitizen</ButtonText>
+          <CommandName>vs-commitizen</CommandName>
+        </Strings>
+      </Menu>
+    </Menus>
+    <Groups>
+      <Group guid="guidVsCommitizenPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidVsCommitizenPackageCmdSet" id="TopLevelMenu" />
+      </Group>
+    </Groups>
   </Commands>
+  
+  <VisibilityConstraints>
+    <VisibilityItem guid="OpenGenerateLocalConfigCmdSet" id="OpenGenerateLocalConfigCmd" context="UIContextGuid"/>
+  </VisibilityConstraints>
 
   <Symbols>
     <!-- This is the package guid. -->
     <GuidSymbol name="guidVsCommitizenPackage" value="{c4809955-ac8e-41bf-8d86-faa98b6678ad}" />
+    <GuidSymbol name="UIContextGuid" value="{D08D84F8-03D8-418E-A03A-1015ADD01A6F}" />
 
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidVsCommitizenPackageCmdSet" value="{c71925e2-e9ca-4214-9a36-44c8ab847862}">
-      <IDSymbol name="ToolWindow1CommandId" value="0x0100" />
+      <IDSymbol name="TopLevelMenu" value="0x1021"/>
+      <IDSymbol name="MyMenuGroup" value="4128" />
+    </GuidSymbol>
+    <GuidSymbol name="OpenGenerateUserProfileConfigCmdSet" value="{a4975378-1743-4009-a4d5-1654a683e957}">
+      <IDSymbol name="OpenGenerateUserProfileConfigCmd" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="OpenGenerateLocalConfigCmdSet" value="{a4975378-1743-4009-a4d5-1654a683e958}">
+      <IDSymbol name="OpenGenerateLocalConfigCmd" value="0x0101" />
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{4817493b-b1c9-44a5-af4b-a39633f0f4e1}" >
+    <GuidSymbol name="guidImages" value="{4817493b-b1c9-44a5-af4b-a39633f0f4e1}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />
       <IDSymbol name="bmpPicX" value="4" />
       <IDSymbol name="bmpPicArrows" value="5" />
       <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImages2" value="{b8ba0b3c-2fca-4a93-9fda-70276a399b8f}" >
+      <IDSymbol name="bmpOpen" value="1" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>
