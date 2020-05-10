@@ -112,10 +112,7 @@ namespace vs_commitizen.Infrastructure
             var (isRepositoryLoaded, repositoryPath) = await GetLocalPathAsync(); // await GetCurrentSolutionAsync();
             if (isRepositoryLoaded)
             {
-                var localConfigPath = Path.Combine(repositoryPath, CONFIGFILE_NAME);
-
-                if (this.fileAccessor.Exists(localConfigPath))
-                    return localConfigPath;
+                return Path.Combine(repositoryPath, CONFIGFILE_NAME);
             }
 
             return string.Empty;
