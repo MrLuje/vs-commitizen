@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://github.com/MrLuje/vs-commitizen/config-schema.json",
+  "$schema": "https://raw.githubusercontent.com/MrLuje/vs-commitizen/master/config-schema.json",
   "types": [
     {
       "type": "feat",

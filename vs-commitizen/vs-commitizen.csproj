@@ -64,6 +64,7 @@
     <Compile Include="PackageRegistry.cs" />
     <Compile Include="Infrastructure\PopupManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\OpenGenerateLocalConfigViewModel.cs" />
     <Compile Include="VsCommitizenIds.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
