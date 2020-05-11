@@ -181,7 +181,7 @@ namespace vs_commitizen.Infrastructure
                     var defaultConfigFileContent = await reader.ReadToEndAsync();
                     await fileStream.WriteAsync(defaultConfigFileContent);
 
-                    return defaultConfigFileContent;
+                    return JObject.Parse(defaultConfigFileContent).SelectToken("types").ToString();
                 }
             }
         }
