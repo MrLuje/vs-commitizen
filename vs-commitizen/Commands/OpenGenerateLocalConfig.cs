@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using vs_commitizen.Infrastructure;
 using vs_commitizen.Settings;
+using vs_commitizen.ViewModels;
 using Task = System.Threading.Tasks.Task;
 
 namespace vs_commitizen.Commands
@@ -30,6 +31,7 @@ namespace vs_commitizen.Commands
         /// VS Package that provides this command, not null.
         /// </summary>
         private readonly AsyncPackage package;
+        private OpenGenerateLocalConfigViewModel viewModel;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenGenerateLocalConfig"/> class.
@@ -41,6 +43,7 @@ namespace vs_commitizen.Commands
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
+            viewModel = new OpenGenerateLocalConfigViewModel();
 
             var menuCommandID = new CommandID(CommandSet, CommandId);
             var menuItem = new OleMenuCommand(Execute, menuCommandID);
@@ -54,7 +57,7 @@ namespace vs_commitizen.Commands
 
         }
 
-        private static async Task HandleIsCommandVisibleAsync(object sender)
+        private async Task HandleIsCommandVisibleAsync(object sender)
         {
             try
             {
@@ -63,11 +66,7 @@ namespace vs_commitizen.Commands
                 switch (menuCommand.CommandID.ID)
                 {
                     case (int)PackageIds.OpenGenerateLocalConfigCmd:
-                        var configFileProvider = IoC.GetInstance<IConfigFileProvider>();
-                        var fileAccessor = IoC.GetInstance<IFileAccessor>();
-
-                        var localConfigPath = await configFileProvider.TryGetLocalConfigAsync();
-                        menuCommand.Enabled = !string.IsNullOrWhiteSpace(localConfigPath);
+                        menuCommand.Enabled = await this.viewModel.IsCommandEnabledAsync();
                         break;
                 }
             }
@@ -124,30 +123,7 @@ namespace vs_commitizen.Commands
 
         private async Task ProcessAsync()
         {
-            var popupManager = IoC.GetInstance<IPopupManager>();
-
-            try
-            {
-                var configFileProvider = IoC.GetInstance<IConfigFileProvider>();
-                var fileAccessor = IoC.GetInstance<IFileAccessor>();
-
-                var localConfigPath = await configFileProvider.TryGetLocalConfigAsync();
-                if (string.IsNullOrWhiteSpace(localConfigPath)) return;
-
-                if (!fileAccessor.Exists(localConfigPath))
-                {
-                    if (popupManager.Confirm("There is no local configuration file yet, do you want to create it for this repository ?", "Init local config file"))
-                    {
-                        fileAccessor.CopyFile(ConfigFileProvider.ConfigPathUserProfile, localConfigPath);
-                    }
-                }
-
-                await OpenFileInEditorAsync(localConfigPath);
-            }
-            catch (Exception ex)
-            {
-                popupManager.Show(ex.ToString(), "An error occured");
-            }
+            await this.viewModel.ExecuteAsync(OpenFileInEditorAsync);
         }
 
         private async Task OpenFileInEditorAsync(string localConfigPath)

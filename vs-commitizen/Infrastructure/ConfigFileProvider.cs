@@ -107,7 +107,7 @@ namespace vs_commitizen.Infrastructure
             return (repository != null, repository?.RepositoryPath);
         }
 
-        public async Task<string> TryGetLocalConfigAsync()
+        public virtual async Task<string> TryGetLocalConfigAsync()
         {
             var (isRepositoryLoaded, repositoryPath) = await GetLocalPathAsync(); // await GetCurrentSolutionAsync();
             if (isRepositoryLoaded)
