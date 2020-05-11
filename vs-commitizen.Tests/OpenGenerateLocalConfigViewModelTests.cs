@@ -20,8 +20,12 @@ namespace vs_commitizen.Tests
             configFileProvider.Configure().TryGetLocalConfigAsync().Returns(configPath);
             fileAccessor.Exists(Arg.Any<string>()).ReturnsForAnyArgs(fileExists);
 
+            IoC.Container.EjectAllInstancesOf<IConfigFileProvider>();
             IoC.Container.Inject<IConfigFileProvider>(configFileProvider);
+
+            IoC.Container.EjectAllInstancesOf<IFileAccessor>();
             IoC.Container.Inject<IFileAccessor>(fileAccessor);
+
             return fixture.Create<OpenGenerateLocalConfigViewModel>();
         }
 
