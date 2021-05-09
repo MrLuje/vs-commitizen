@@ -88,13 +88,11 @@ namespace vs_commitizen.vs
         {
             this.package.JoinableTaskFactory.RunAsync(async delegate
             {
-                this.package.ShowOptionPage(typeof(VsCommitizenWindow));
-
-                //ToolWindowPane window = await this.package.ShowToolWindowAsync(typeof(VsCommitizenWindow), 0, true, this.package.DisposalToken);
-                //if ((null == window) || (null == window.Frame))
-                //{
-                //    throw new NotSupportedException("Cannot create tool window");
-                //}
+                var window = await this.package.ShowToolWindowAsync(typeof(VsCommitizenWindow), 0, true, this.package.DisposalToken);
+                if ((null == window) || (null == window.Frame))
+                {
+                    throw new NotSupportedException("Cannot create tool window");
+                }
             });
         }
     }
