@@ -6,7 +6,6 @@ using System;
 using System.ComponentModel.Composition;
 using System.Drawing;
 using System.Threading.Tasks;
-using vs_commitizen.Settings;
 using vs_commitizen.vs;
 
 namespace vs_commitizen.vs2015
@@ -22,7 +21,7 @@ namespace vs_commitizen.vs2015
             : base(serviceProvider)
         { 
             this.Text = "VsCommitizen";
-            this.Image = VSPackage.Git_icon_svg;
+            this.Image = VSPackage.Git_icon;
             this.ArgbColor = Color.Red.ToArgb();
 
             gitService = GetService<IGitExt>();

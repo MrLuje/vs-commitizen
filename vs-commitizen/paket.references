@@ -1,9 +1,4 @@
-Microsoft.VSSDK.BuildTools
-Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime
-Microsoft.VisualStudio.Threading redirects: force, copy_local: false
-Newtonsoft.Json copy_local: true
-StructureMap
-
-group vs14
-	Microsoft.VisualStudio.Shell.14.0
-	Microsoft.VisualStudio.Shell.Interop.12.0
+group common
+	Microsoft.VisualStudio.SDK
+	Microsoft.VSSDK.BuildTools
+	StructureMap

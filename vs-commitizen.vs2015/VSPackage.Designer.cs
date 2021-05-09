@@ -99,9 +99,9 @@ namespace vs_commitizen.vs {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Git_icon_svg {
+        public static System.Drawing.Bitmap Git_icon {
             get {
-                object obj = ResourceManager.GetObject("Git_icon_svg", resourceCulture);
+                object obj = ResourceManager.GetObject("Git_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

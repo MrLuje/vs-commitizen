@@ -1,0 +1,10 @@
+﻿<ProjectConfiguration>
+  <Settings>
+    <AdditionalFilesToIncludeForProject>
+      <Value>..\vs-commitizen\Resources\**.*</Value>
+    </AdditionalFilesToIncludeForProject>
+    <IgnoredTests>
+      <AllTestsSelector />
+    </IgnoredTests>
+  </Settings>
+</ProjectConfiguration>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:vs_commitizen.vs"
              xmlns:Controls="clr-namespace:vs_commitizen.vs2015.Controls" 
              xmlns:converters="clr-namespace:vs_commitizen.vs.Converters" 
-             xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.14.0"
+             xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
              x:Class="vs_commitizen.vs.VsCommitizenView" 
              x:Name="CtrlCommitizen"
              mc:Ignorable="d" 
