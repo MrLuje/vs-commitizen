@@ -20,7 +20,7 @@ namespace vs_commitizen.vs2015
         [ImportingConstructor]
         public VsCommitizenNavigationItem([Import(typeof(SVsServiceProvider))] IServiceProvider serviceProvider)
             : base(serviceProvider)
-        {
+        { 
             this.Text = "VsCommitizen";
             this.Image = VSPackage.Git_icon_svg;
             this.ArgbColor = Color.Red.ToArgb();

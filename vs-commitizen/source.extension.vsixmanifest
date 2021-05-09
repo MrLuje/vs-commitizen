@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="vs_commitizen.993809C6-9E90-4438-954E-ECE9D9E80E9B" Version="1.0.0.0" Language="en-US" Publisher="MrLuje" />
+        <Identity Id="vs_commitizen.993809C6-9E90-4438-954E-ECE9D9E80E9B" Version="1.0.0.103" Language="en-US" Publisher="MrLuje" />
         <DisplayName>VsCommitizen</DisplayName>
         <Description xml:space="preserve">This extension adds commitizen support.</Description>
         <MoreInfo>https://github.com/MrLuje/vs-commitizen</MoreInfo>
         <Icon>Resources\Git_icon.svg.png</Icon>
         <Tags>git;commitizen;changelog;conventional-changelog</Tags>
+        <Preview>true</Preview>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,17.0]" />

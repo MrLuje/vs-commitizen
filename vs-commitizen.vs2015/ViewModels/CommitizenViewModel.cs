@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using vs_commitizen.Settings;
@@ -41,6 +42,8 @@ namespace vs_commitizen.vs.ViewModels
                 _selectedCommitType = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(OnProceed));
+                OnPropertyChanged(nameof(OnCopy));
+                OnPropertyChanged(nameof(OnReset));
                 OnPropertyChanged(nameof(SubjectLength));
                 OnPropertyChanged(nameof(SubjectColor));
             }
@@ -147,6 +150,18 @@ namespace vs_commitizen.vs.ViewModels
                 OnPropertyChanged(nameof(OnProceed));
             }
         }
+
+        private bool _teamExplorerMode = true;
+
+        public bool TeamExplorerMode
+        {
+            get { return _teamExplorerMode; }
+            set
+            {
+                _teamExplorerMode = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         public CommitizenViewModel(IUserSettings userSettings, IConfigFileProvider configFileProvider)
@@ -154,6 +169,8 @@ namespace vs_commitizen.vs.ViewModels
             _ = LoadCommitTypesAsync(configFileProvider);
 
             this.OnProceed = new RelayCommand(Proceed, CanProceed);
+            this.OnCopy = new RelayCommand(CopyMessage, CanProceed);
+            this.OnReset = new RelayCommand(Reset, CanReset);
             this.HasGitPendingChanges = true;   //TODO: Correct way to bind this
             this.HighlighBreakingChanges = false;
             this._userSettings = userSettings;
@@ -206,6 +223,34 @@ namespace vs_commitizen.vs.ViewModels
             ProceedExecuted?.Invoke(this, doCommit);
         }
 
+        public bool CanReset(object param)
+        {
+            return this.SelectedCommitType != null || 
+                   !string.IsNullOrWhiteSpace(this.Subject) ||
+                   !string.IsNullOrWhiteSpace(this.Scope) ||
+                   !string.IsNullOrWhiteSpace(this.Body) ||
+                   this.HighlighBreakingChanges ||
+                   !string.IsNullOrWhiteSpace(this.BreakingChanges) ||
+                   !string.IsNullOrWhiteSpace(this.IssuesAffected);
+        }
+
+        public void Reset(object param)
+        {
+            this.SelectedCommitType = null;
+            this.Scope = string.Empty;
+            this.Subject = string.Empty;
+            this.Body = string.Empty;
+            this.HighlighBreakingChanges = false;
+            this.BreakingChanges = string.Empty;
+            this.IssuesAffected = string.Empty;
+        }
+
+        public void CopyMessage(object param)
+        {
+            var comment = GetComment();
+            Clipboard.SetText(comment);
+        }
+
         public string GetComment()
         {
             if (this.SelectedCommitType == null) return string.Empty;
@@ -243,16 +288,37 @@ namespace vs_commitizen.vs.ViewModels
         }
 
         public event EventHandler<bool> ProceedExecuted;
-
-        private ICommand _onProceed;
         private readonly IUserSettings _userSettings;
 
+        private ICommand _onProceed;
         public ICommand OnProceed
         {
             get => _onProceed;
             set
             {
                 _onProceed = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ICommand _onCopy;
+        public ICommand OnCopy
+        {
+            get => _onCopy;
+            set
+            {
+                _onCopy = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ICommand _onReset;
+        public ICommand OnReset
+        {
+            get => _onReset;
+            set
+            {
+                _onReset = value;
                 OnPropertyChanged();
             }
         }

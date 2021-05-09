@@ -40,6 +40,7 @@ namespace vs_commitizen
     {
         public const int TopLevelMenu = 0x1021;
         public const int MyMenuGroup = 0x1020;
+        public const int cmdidVsCommitizenCommand = 0x0100;
         public const int OpenGenerateUserProfileConfigCmd = 0x0100;
         public const int OpenGenerateLocalConfigCmd = 0x0101;
         public const int bmpPic1 = 0x0001;

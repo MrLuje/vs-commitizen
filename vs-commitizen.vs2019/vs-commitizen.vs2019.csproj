@@ -82,6 +82,18 @@
       <Link>Controls\TextBoxWithHint.xaml.cs</Link>
       <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Converters\BooleanConverter.cs">
+      <Link>Converters\BooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Converters\HiddenConverter.cs">
+      <Link>Converters\HiddenConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Converters\MarginConverter.cs">
+      <Link>Converters\MarginConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Converters\VisilibityConverter.cs">
+      <Link>Converters\VisilibityConverter.cs</Link>
+    </Compile>
     <Compile Include="..\vs-commitizen.vs2015\Extensions\StringExtensions.cs">
       <Link>Extensions\StringExtensions.cs</Link>
     </Compile>
@@ -880,6 +892,7 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>

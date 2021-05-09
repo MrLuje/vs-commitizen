@@ -75,6 +75,10 @@
     <Compile Include="Controls\TextBoxWithHint.xaml.cs">
       <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BooleanConverter.cs" />
+    <Compile Include="Converters\HiddenConverter.cs" />
+    <Compile Include="Converters\MarginConverter.cs" />
+    <Compile Include="Converters\VisilibityConverter.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\TeamExplorerPageBaseExtensions.cs" />
     <Compile Include="Interfaces\ICommentBuilder.cs" />
@@ -721,6 +725,7 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>

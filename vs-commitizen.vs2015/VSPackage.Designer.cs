@@ -70,11 +70,29 @@ namespace vs_commitizen.vs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy message.
+        /// </summary>
+        public static string ButtonCopyMessage {
+            get {
+                return ResourceManager.GetString("ButtonCopyMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Proceed.
         /// </summary>
         public static string ButtonProceed {
             get {
                 return ResourceManager.GetString("ButtonProceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string ButtonReset {
+            get {
+                return ResourceManager.GetString("ButtonReset", resourceCulture);
             }
         }
         
@@ -197,6 +215,15 @@ namespace vs_commitizen.vs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate commit message and copy it to clipboard.
+        /// </summary>
+        public static string TooltipCopyMessage {
+            get {
+                return ResourceManager.GetString("TooltipCopyMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Optional ! to draw attention to breaking change. E.g.: &quot;chore!: drop Node 6 from testing matrix&quot;.
         /// </summary>
         public static string TooltipHighlightBreakingChanges {
@@ -211,6 +238,15 @@ namespace vs_commitizen.vs {
         public static string TooltipProceed {
             get {
                 return ResourceManager.GetString("TooltipProceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset all fields.
+        /// </summary>
+        public static string TooltipReset {
+            get {
+                return ResourceManager.GetString("TooltipReset", resourceCulture);
             }
         }
         

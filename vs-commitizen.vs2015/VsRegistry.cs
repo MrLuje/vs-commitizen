@@ -15,6 +15,7 @@ namespace vs_commitizen.vs
                 var gitExt = ServiceProvider.GlobalProvider.GetService(typeof(IGitExt)) as IGitExt;
                 return new Repository(gitExt?.ActiveRepositories.FirstOrDefault()?.RepositoryPath);
             });
+            For<IVsCommitizenView>().Use<VsCommitizenView>();
         }
     }
 }
