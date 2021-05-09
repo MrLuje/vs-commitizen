@@ -66,7 +66,7 @@ namespace vs_commitizen.Tests
         [Theory, TestConventions]
         public void SelectedCommitType_Changes_Should_Trigger_SubjectLength_Color_Change_And_OnProceed(CommitizenViewModel sut)
         {
-            TestPropertyChangedFor(sut, s => s.SelectedCommitType = s.CommitTypes.Last(), new[] { "SelectedCommitType", "SubjectLength", "SubjectColor", "OnProceed" });
+            TestPropertyChangedFor(sut, s => s.SelectedCommitType = s.CommitTypes.Last(), new[] { "SelectedCommitType", "SubjectLength", "SubjectColor", "OnProceed", "OnCopy", "OnReset" });
         }
 
         [Theory, TestConventions]
