@@ -8,6 +8,8 @@ This extension adds [commitizen](https://github.com/commitizen/) support to Visu
 
 ## Features
 
+A nice page to format your comment using commitizen fashion (available under **View > Other windows > VsCommitizen**)
+
 ![xxx](images/commit-cz-tab.png)
 
 - Nice page to format your comment using commitizen fashion.
