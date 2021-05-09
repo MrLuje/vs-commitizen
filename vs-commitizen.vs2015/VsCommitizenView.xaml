@@ -76,7 +76,7 @@
             Command="{Binding ElementName=CtrlCommitizen, Path=DataContext.OnProceed}" CommandParameter="false"
             ToolTip="{x:Static local:VSPackage.TooltipProceed}"
             Visibility="{Binding Path=TeamExplorerMode, Converter={StaticResource BoolToVisible}}"/>
-        <StackPanel Visibility="{Binding Path=TeamExplorerMode, Converter={StaticResource BoolToHidden}}"
+        <StackPanel x:Name="panelToolWindow" Visibility="{Binding Path=TeamExplorerMode, Converter={StaticResource BoolToHidden}}"
                     Orientation="Horizontal">
             <Button x:Name="btnCopy" Content="{x:Static local:VSPackage.ButtonCopyMessage}" 
                 HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="116" 

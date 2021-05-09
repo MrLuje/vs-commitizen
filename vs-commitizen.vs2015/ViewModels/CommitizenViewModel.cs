@@ -155,7 +155,7 @@ namespace vs_commitizen.vs.ViewModels
 
         public bool TeamExplorerMode
         {
-            get { return _teamExplorerMode; }
+            get => _teamExplorerMode;
             set
             {
                 _teamExplorerMode = value;
