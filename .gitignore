@@ -258,3 +258,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+*.v3.ncrunchsolution
+*.v3.ncrunchproject
