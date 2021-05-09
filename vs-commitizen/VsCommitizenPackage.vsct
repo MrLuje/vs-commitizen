@@ -60,7 +60,7 @@
       </Button>
       <Button guid="guidVsCommitizenPackageCmdSet" id="cmdidVsCommitizenCommand" priority="0x0100" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages3" id="gitIcon" />
         <Strings>
           <ButtonText>VsCommitizen</ButtonText>
         </Strings>
@@ -76,6 +76,7 @@
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
       <Bitmap guid="guidImages" href="Resources\ToolWindow1Command.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages2" href="Resources\Open_6529.png" usedList="bmpOpen" />
+      <Bitmap guid="guidImages3" href="Resources\Git_vsicon.png" usedList="gitIcon" />
     </Bitmaps>
     <Menus>
       <Menu guid="guidVsCommitizenPackageCmdSet" id="TopLevelMenu" priority="0x700" type="Menu">
@@ -92,7 +93,7 @@
       </Group>
     </Groups>
   </Commands>
-  
+
   <VisibilityConstraints>
     <VisibilityItem guid="OpenGenerateLocalConfigCmdSet" id="OpenGenerateLocalConfigCmd" context="UIContextGuid" />
   </VisibilityConstraints>
@@ -125,6 +126,9 @@
     </GuidSymbol>
     <GuidSymbol name="guidImages2" value="{b8ba0b3c-2fca-4a93-9fda-70276a399b8f}">
       <IDSymbol name="bmpOpen" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImages3" value="{8851452F-CE33-4455-9345-D17C80586BDB}">
+      <IDSymbol name="gitIcon" value="1" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>
