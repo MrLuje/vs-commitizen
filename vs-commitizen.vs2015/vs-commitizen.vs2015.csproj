@@ -78,7 +78,6 @@
     </Compile>
     <Compile Include="Converters\BooleanConverter.cs" />
     <Compile Include="Converters\HiddenConverter.cs" />
-    <Compile Include="Converters\MarginConverter.cs" />
     <Compile Include="Converters\VisilibityConverter.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\TeamExplorerPageBaseExtensions.cs" />

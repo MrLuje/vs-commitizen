@@ -14,9 +14,28 @@
     <UserControl.Resources>
         <converters:VisilibityConverter x:Key="BoolToVisible" />
         <converters:HiddenConverter x:Key="BoolToHidden" />
-        <converters:MarginConverter x:Key="MarginConverter" />
+        <Style x:Key="GridMarginStyle" TargetType="Grid">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=TeamExplorerMode}" Value="false">
+                    <Setter Property="Margin">
+                        <Setter.Value>
+                            <Thickness Left="10" Top="5" Bottom="0" Right="0"></Thickness>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=TeamExplorerMode}" Value="true">
+                    <Setter Property="Margin">
+                        <Setter.Value>
+                            <Thickness Left="0" Top="0" Bottom="0" Right="0"></Thickness>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </Style.Triggers>
+            
+        </Style>
     </UserControl.Resources>
-    <Grid Margin="{Binding Path=TeamExplorerMode, Converter={StaticResource MarginConverter}}">
+
+    <Grid Style="{DynamicResource GridMarginStyle}">
         <Label Content="{x:Static local:VSPackage.LabelCommitType}" HorizontalAlignment="Left" VerticalAlignment="Top" 
                Foreground="{DynamicResource {x:Static platformUi:CommonControlsColors.CheckBoxTextBrushKey}}" />
         <ComboBox Margin="0,26,25,0" VerticalAlignment="Top" 

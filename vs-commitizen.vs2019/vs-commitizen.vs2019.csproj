@@ -88,9 +88,6 @@
     <Compile Include="..\vs-commitizen.vs2015\Converters\HiddenConverter.cs">
       <Link>Converters\HiddenConverter.cs</Link>
     </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Converters\MarginConverter.cs">
-      <Link>Converters\MarginConverter.cs</Link>
-    </Compile>
     <Compile Include="..\vs-commitizen.vs2015\Converters\VisilibityConverter.cs">
       <Link>Converters\VisilibityConverter.cs</Link>
     </Compile>
