@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using vs_commitizen.Settings;
 using vs_commitizen.Tests.TestAttributes;
 using vs_commitizen.vs.Settings;
@@ -227,6 +228,44 @@ namespace vs_commitizen.Tests
             sut.Body = "test";
             sut.Body += " tenwordsss tenwordsss";
             sut.GetComment().ShouldBe("feat(test): \n\ntest\ntenwordsss\ntenwordsss");
+        }
+
+        [WpfTheory, TestConventions]
+        public void Copy_Should_Contains_Comment_Message(CommitizenViewModel sut)
+        {
+            Clipboard.Clear();
+            var expectedComment = sut.GetComment();
+
+            // Act
+            sut.CopyMessage(null);
+
+            // Assert
+            var comment = Clipboard.GetText();
+            comment.ShouldBe(expectedComment);
+        }
+
+        [WpfTheory, TestConventions]
+        public void Reset_Should_Clear_Form(CommitizenViewModel sut)
+        {
+            sut.Body.ShouldNotBeNullOrWhiteSpace();
+            sut.BreakingChanges.ShouldNotBeNullOrWhiteSpace();
+            sut.IssuesAffected.ShouldNotBeNullOrWhiteSpace();
+            sut.Scope.ShouldNotBeNullOrWhiteSpace();
+            sut.Subject.ShouldNotBeNullOrWhiteSpace();
+            var highlightChanges = sut.HighlighBreakingChanges;
+
+            // Act
+            sut.Reset(null);
+
+            // Assert
+            sut.Body.ShouldBeNullOrWhiteSpace();
+            sut.BreakingChanges.ShouldBeNullOrWhiteSpace();
+            sut.IssuesAffected.ShouldBeNullOrWhiteSpace();
+            sut.Scope.ShouldBeNullOrWhiteSpace();
+            sut.Subject.ShouldBeNullOrWhiteSpace();
+
+            if(highlightChanges)
+                sut.HighlighBreakingChanges.ShouldBeFalse();
         }
     }
 }
