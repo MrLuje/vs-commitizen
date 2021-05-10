@@ -104,7 +104,8 @@ namespace vs_commitizen.Infrastructure
         internal protected virtual async Task<(bool isLoaded, string path)> GetLocalPathAsync()
         {
             var repository = IoC.GetInstance<IRepository>();
-            return (repository != null, repository?.RepositoryPath);
+            var maybePath = repository?.RepositoryPath;
+            return (maybePath != null, maybePath);
         }
 
         public virtual async Task<string> TryGetLocalConfigAsync()

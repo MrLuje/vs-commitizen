@@ -120,12 +120,18 @@
   <data name="ButtonCommit" xml:space="preserve">
     <value>Commit</value>
   </data>
+  <data name="ButtonCopyMessage" xml:space="preserve">
+    <value>Copy message</value>
+  </data>
   <data name="ButtonProceed" xml:space="preserve">
     <value>Proceed</value>
   </data>
+  <data name="ButtonReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Git_icon_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vs-commitizen\Resources\Git_icon.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Git_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vs-commitizen\Resources\git_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="HintBody" xml:space="preserve">
     <value>Provide a longer description of the change (optional)</value>
@@ -163,11 +169,17 @@
   <data name="TooltipCommit" xml:space="preserve">
     <value>Proceed to 'Changes' view and commit</value>
   </data>
+  <data name="TooltipCopyMessage" xml:space="preserve">
+    <value>Generate commit message and copy it to clipboard</value>
+  </data>
   <data name="TooltipHighlightBreakingChanges" xml:space="preserve">
     <value>Optional ! to draw attention to breaking change. E.g.: "chore!: drop Node 6 from testing matrix"</value>
   </data>
   <data name="TooltipProceed" xml:space="preserve">
     <value>Proceed to 'Changes' view</value>
+  </data>
+  <data name="TooltipReset" xml:space="preserve">
+    <value>Reset all fields</value>
   </data>
   <data name="TooltipSubjectCounter" xml:space="preserve">
     <value>Including scope, type and formatting</value>

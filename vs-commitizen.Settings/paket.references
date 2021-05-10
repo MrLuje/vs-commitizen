@@ -1,5 +1,3 @@
-StructureMap
-
-group vs14
-	Microsoft.VisualStudio.Shell.14.0
-	Microsoft.VisualStudio.Shell.Interop.12.0
+group common
+	Microsoft.VisualStudio.SDK
+	StructureMap

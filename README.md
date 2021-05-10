@@ -4,15 +4,13 @@
 
 This extension adds [commitizen](https://github.com/commitizen/) support to VisualStudio.
 
+(If you are still using "classic git experience" or VisualStudio 2015/2017, you can use the [previous integration](./old-git.md))
+
 ## Features
 
-- Add link in _Source control_ menu and _Home_ view
+A nice page to format your comment using commitizen fashion (available under **View > Other windows > VsCommitizen**)
 
-![vs-commitizen_-_home__1.png](images/home.png)
-
-- Add button near to the "Commit" button in _Changes_ view to easily use commitizen
-
-![vs-commitizen_-_commit-cz.png](images/commit-cz.png)
+![xxx](images/commit-cz-tab.png)
 
 - Nice page to format your comment using commitizen fashion.
 
@@ -52,4 +50,30 @@ You can access the configuration file directly from VisualStudio menu (files wil
       "description": "Adding missing tests or correcting existing tests"
     }
 }
+```
+
+## Build from source
+
+- Install paket
+```bash
+dotnet tool install --global Paket
+```
+- Restore nugets dependencies
+```bash
+paket restore
+```
+- Compile with VisualStudio
+
+### Build issues
+
+```
+Could not load file or assembly 'System.Runtime, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The system cannot find the file specified.
+```
+- Check that file *vs-commitizen.Tests\app.config* contains the following redirect 
+```xml
+<dependentAssembly>
+    <Paket>True</Paket>
+    <assemblyIdentity name="System.Runtime" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+    <bindingRedirect oldVersion="0.0.0.0-65535.65535.65535.65535" newVersion="4.0.0.0" />
+</dependentAssembly>
 ```

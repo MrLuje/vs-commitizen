@@ -1,14 +1,20 @@
-AutoFixture.AutoNSubstitute
-AutoFixture.Xunit2
-Shouldly
-StructureMap
-xunit
-xunit.runner.visualstudio
-Xunit.StaFact
+#group common
+#	StructureMap
+#	Microsoft.VisualStudio.SDK
 
-group vs16
+group tests
+	AutoFixture.AutoNSubstitute
+	AutoFixture.Xunit2
+	Shouldly
+	xunit
+	xunit.runner.visualstudio
+	Xunit.StaFact
 	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true, redirects: force
-	Microsoft.VisualStudio.Shell.14.0 copy_local: true
-	Microsoft.VisualStudio.Shell.15.0 copy_local: true
-	Microsoft.VisualStudio.Shell.Interop.12.0
-	Microsoft.VisualStudio.Threading copy_local: true, redirects: on
+	Newtonsoft.Json redirects: on
+	StructureMap
+	Microsoft.VisualStudio.SDK
+	System.Runtime redirects: force
+
+#group vs16
+#	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true, redirects: force
+#	Newtonsoft.Json redirects: on

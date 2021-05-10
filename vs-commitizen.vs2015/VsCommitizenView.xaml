@@ -4,13 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:vs_commitizen.vs"
-             xmlns:Controls="clr-namespace:vs_commitizen.vs2015.Controls" xmlns:ViewModels="clr-namespace:vs_commitizen.vs.ViewModels"
-             xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.14.0"
+             xmlns:Controls="clr-namespace:vs_commitizen.vs2015.Controls" 
+             xmlns:converters="clr-namespace:vs_commitizen.vs.Converters" 
+             xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
              x:Class="vs_commitizen.vs.VsCommitizenView" 
              x:Name="CtrlCommitizen"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="300">
-    <Grid>
+    <UserControl.Resources>
+        <converters:VisilibityConverter x:Key="BoolToVisible" />
+        <converters:HiddenConverter x:Key="BoolToHidden" />
+        <Style x:Key="GridMarginStyle" TargetType="Grid">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=TeamExplorerMode}" Value="false">
+                    <Setter Property="Margin">
+                        <Setter.Value>
+                            <Thickness Left="10" Top="5" Bottom="0" Right="0"></Thickness>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=TeamExplorerMode}" Value="true">
+                    <Setter Property="Margin">
+                        <Setter.Value>
+                            <Thickness Left="0" Top="0" Bottom="0" Right="0"></Thickness>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </Style.Triggers>
+            
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Style="{DynamicResource GridMarginStyle}">
         <Label Content="{x:Static local:VSPackage.LabelCommitType}" HorizontalAlignment="Left" VerticalAlignment="Top" 
                Foreground="{DynamicResource {x:Static platformUi:CommonControlsColors.CheckBoxTextBrushKey}}" />
         <ComboBox Margin="0,26,25,0" VerticalAlignment="Top" 
@@ -63,10 +88,23 @@
         <Button x:Name="btnCommit" Content="{x:Static local:VSPackage.ButtonCommit}" 
                 HorizontalAlignment="Left" Margin="114,386,0,0" VerticalAlignment="Top" Width="74" 
                 Command="{Binding ElementName=CtrlCommitizen, Path=DataContext.OnProceed}" CommandParameter="true"
-                ToolTip="{x:Static local:VSPackage.TooltipCommit}" />
+                ToolTip="{x:Static local:VSPackage.TooltipCommit}"
+                Visibility="{Binding Path=TeamExplorerMode, Converter={StaticResource BoolToVisible}}"/>
         <Button x:Name="btnProceed" Content="{x:Static local:VSPackage.ButtonProceed}" 
             HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="76" 
             Command="{Binding ElementName=CtrlCommitizen, Path=DataContext.OnProceed}" CommandParameter="false"
-            ToolTip="{x:Static local:VSPackage.TooltipProceed}" />
+            ToolTip="{x:Static local:VSPackage.TooltipProceed}"
+            Visibility="{Binding Path=TeamExplorerMode, Converter={StaticResource BoolToVisible}}"/>
+        <StackPanel x:Name="panelToolWindow" Visibility="{Binding Path=TeamExplorerMode, Converter={StaticResource BoolToHidden}}"
+                    Orientation="Horizontal">
+            <Button x:Name="btnCopy" Content="{x:Static local:VSPackage.ButtonCopyMessage}" 
+                HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="116" 
+                Command="{Binding ElementName=CtrlCommitizen, Path=DataContext.OnCopy}" CommandParameter="false"
+                ToolTip="{x:Static local:VSPackage.TooltipCopyMessage}" />
+            <Button x:Name="btnReset" Content="{x:Static local:VSPackage.ButtonReset}" 
+                HorizontalAlignment="Left" Margin="84,386,0,0" VerticalAlignment="Top" Width="116" 
+                Command="{Binding ElementName=CtrlCommitizen, Path=DataContext.OnReset}" CommandParameter="false"
+                ToolTip="{x:Static local:VSPackage.TooltipReset}" />
+        </StackPanel>
     </Grid>
 </UserControl>

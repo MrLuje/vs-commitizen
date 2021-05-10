@@ -59,13 +59,26 @@ namespace vs_commitizen.vs2015
 
         private void AppendButtonToPage(Grid commitGrid, Button commitCzButton)
         {
-            if (isVs2019())
-                commitGrid.Children.OfType<WrapPanel>().First().Children.Insert(0, commitCzButton);
-            else
+            var vsVersion = getVsVersion();
+
+            switch (vsVersion)
             {
-                commitCzButton.Margin = new Thickness(12, 0, 0, 0);
-                commitGrid.Children.Insert(1, commitCzButton);
-                Grid.SetColumn(commitCzButton, 1);
+                case Version v when v.Major >= 16 && v.Minor > 8:
+                    commitCzButton.Margin = new Thickness(12, 0, 0, 0);
+                    commitGrid.Children.OfType<WrapPanel>().First().Children.Insert(0, commitCzButton);
+
+                    break;
+
+                case Version v when v.Major >= 16:
+                    commitGrid.Children.OfType<WrapPanel>().First().Children.Insert(0, commitCzButton);
+                    break;
+
+                default:
+                    commitCzButton.Margin = new Thickness(12, 0, 0, 0);
+                    commitGrid.Children.Insert(1, commitCzButton);
+                    Grid.SetColumn(commitCzButton, 1);
+
+                    break;
             }
         }
 
@@ -78,12 +91,22 @@ namespace vs_commitizen.vs2015
             return commitCzButton;
         }
 
-        private bool isVs2019()
+        private Version getVsVersion()
         {
             var vsAppId = GetService<IVsAppId>();
             vsAppId.GetProperty((int)VSAPropID.VSAPROPID_ProductSemanticVersion, out var semanticVersionObj);
 
-            return (semanticVersionObj?.ToString().StartsWith("16.")).GetValueOrDefault(false);
+            var isVs2019 = (semanticVersionObj?.ToString().StartsWith("16.")).GetValueOrDefault(false);
+
+            try
+            {
+                var version = new Version(semanticVersionObj?.ToString().Split('+')[0]);
+                return version;
+            }
+            catch (Exception)
+            {
+                return new Version(isVs2019 ? 16 : 15, 0);
+            }
         }
 
         private void TeamExplorerPageBasePropertyChanged(object sender, PropertyChangedEventArgs e)

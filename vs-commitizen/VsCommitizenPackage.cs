@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Shell;
+using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell;
 using vs_commitizen.Commands;
 using vs_commitizen.Settings;
 using vs_commitizen.vs.Settings;
@@ -35,17 +33,13 @@ namespace vs_commitizen
     [Guid(PackageGuids.guidVsCommitizenPackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideOptionPage(typeof(SettingsGeneral), "vs-commitizen", "General", 101, 106, true)]
-
-#pragma warning disable VSSDK004 // Use BackgroundLoad flag in ProvideAutoLoad attribute for asynchronous auto load.
     [ProvideAutoLoad(UIContextGuid, PackageAutoLoadFlags.BackgroundLoad)]
-#pragma warning restore VSSDK004 // Use BackgroundLoad flag in ProvideAutoLoad attribute for asynchronous auto load.
     [ProvideUIContextRule(UIContextGuid,
         name: "Test auto load",
         expression: "(RepositoryOpen | SingleProject | MultipleProjects)",
         termNames: new[] { "RepositoryOpen", "SingleProject", "MultipleProjects" },
         termValues: new[] { VSConstants.UICONTEXT.RepositoryOpen_string, VSConstants.UICONTEXT.SolutionHasSingleProject_string, VSConstants.UICONTEXT.SolutionHasMultipleProjects_string })]
-
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
+    [ProvideToolWindow(typeof(VsCommitizenWindow))]
     public sealed class VsCommitizenPackage : AsyncPackage
     {
         public const string UIContextGuid = "D08D84F8-03D8-418E-A03A-1015ADD01A6F";
@@ -72,6 +66,8 @@ namespace vs_commitizen
 
             await OpenGenerateUserProfileConfig.InitializeAsync(this);
             await OpenGenerateLocalConfig.InitializeAsync(this);
+            await vs.VsCommitizenCommand.InitializeAsync(this);
+
             await base.InitializeAsync(cancellationToken, progress);
         }
 

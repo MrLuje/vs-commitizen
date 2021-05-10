@@ -32,6 +32,9 @@ namespace vs_commitizen
 
         public const string guidImages2String = "b8ba0b3c-2fca-4a93-9fda-70276a399b8f";
         public static Guid guidImages2 = new Guid(guidImages2String);
+
+        public const string guidImages3String = "8851452f-ce33-4455-9345-d17c80586bdb";
+        public static Guid guidImages3 = new Guid(guidImages3String);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.
@@ -40,6 +43,7 @@ namespace vs_commitizen
     {
         public const int TopLevelMenu = 0x1021;
         public const int MyMenuGroup = 0x1020;
+        public const int cmdidVsCommitizenCommand = 0x0100;
         public const int OpenGenerateUserProfileConfigCmd = 0x0100;
         public const int OpenGenerateLocalConfigCmd = 0x0101;
         public const int bmpPic1 = 0x0001;
@@ -49,5 +53,6 @@ namespace vs_commitizen
         public const int bmpPicArrows = 0x0005;
         public const int bmpPicStrikethrough = 0x0006;
         public const int bmpOpen = 0x0001;
+        public const int gitIcon = 0x0001;
     }
 }

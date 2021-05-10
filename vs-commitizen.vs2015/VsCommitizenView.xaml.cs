@@ -8,7 +8,7 @@ namespace vs_commitizen.vs
     /// <summary>
     /// Interaction logic for VsCommitizenView.xaml
     /// </summary>
-    public partial class VsCommitizenView : UserControl
+    public partial class VsCommitizenView : UserControl, IVsCommitizenView
     {
         CommitizenViewModel _viewModel = IoC.GetInstance<CommitizenViewModel>();
 
@@ -20,5 +20,10 @@ namespace vs_commitizen.vs
         }
 
         public CommitizenViewModel ViewModel => _viewModel;
+
+        public void SetTeamExplorerMode(bool teamExplorerMode)
+        {
+            ViewModel.TeamExplorerMode = teamExplorerMode;
+        }
     }
 }

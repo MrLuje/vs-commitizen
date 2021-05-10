@@ -1,6 +1,6 @@
-StructureMap
+group common
+	Microsoft.VisualStudio.SDK
+	StructureMap
 
 group vs14
 	Microsoft.TeamFoundationServer.ExtendedClient
-	Microsoft.VisualStudio.Shell.14.0
-	Microsoft.VisualStudio.Shell.Interop.12.0
