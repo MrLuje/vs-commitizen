@@ -88,10 +88,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Git_icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Resources\Git_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </Resource>
+    </Content>
     <Resource Include="Resources\Git_vsicon.png" />
     <Resource Include="Resources\Open_6529.png" />
     <Resource Include="Resources\ToolWindow1Command.png" />
