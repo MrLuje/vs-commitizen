@@ -12,10 +12,6 @@ A nice page to format your comment using commitizen fashion (available under **V
 
 ![xxx](images/commit-cz-tab.png)
 
-- Nice page to format your comment using commitizen fashion.
-
-![vs-commitizen_-_commitizen_view.png](images/commitizen-view.png)
-
 ## Customizations
 
 The list of "Type of changes" can be customized, globally or per repository.
