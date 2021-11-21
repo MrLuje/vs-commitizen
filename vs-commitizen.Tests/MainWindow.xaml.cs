@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using vs_commitizen.Settings;
 using vs_commitizen.vs.Settings;
 
@@ -26,6 +16,7 @@ namespace vs_commitizen.Tests
         {
             IoC.Container.Inject<IUserSettings>(new DummyUserSettings());
             IoC.Container.Inject<IConfigFileProvider>(new DummyConfigFileProvider());
+            IoC.Container.Inject<IServiceProvider>(new DummyServiceProvider());
 
             InitializeComponent();
         }
@@ -33,6 +24,14 @@ namespace vs_commitizen.Tests
         internal class DummyUserSettings : IUserSettings
         {
             public int MaxLineLength { get; set; } = 80;
+        }
+
+        internal class DummyServiceProvider : IServiceProvider
+        {
+            public object GetService(Type serviceType)
+            {
+                return 1;
+            }
         }
 
         internal class DummyConfigFileProvider : IConfigFileProvider

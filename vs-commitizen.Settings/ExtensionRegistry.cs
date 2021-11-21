@@ -33,7 +33,10 @@ namespace vs_commitizen.Settings
             });
 
             this.For<IUserSettings>().Use<UserSettings>();
+
+#if !TESTS
             this.For<IServiceProvider>().Use(ServiceProvider.GlobalProvider);
+#endif
         }
     }
 }
