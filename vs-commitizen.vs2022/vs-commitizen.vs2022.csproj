@@ -71,86 +71,6 @@
     <Reference Include="UIAutomationProvider" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBase.cs">
-      <Link>Base\TeamExplorerBase.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBaseNavigationItem.cs">
-      <Link>Base\TeamExplorerBaseNavigationItem.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBaseNavigationLink.cs">
-      <Link>Base\TeamExplorerBaseNavigationLink.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBasePage.cs">
-      <Link>Base\TeamExplorerBasePage.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBaseSection.cs">
-      <Link>Base\TeamExplorerBaseSection.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Controls\TextBoxWithHint.xaml.cs">
-      <Link>Controls\TextBoxWithHint.xaml.cs</Link>
-      <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Converters\BooleanConverter.cs">
-      <Link>Converters\BooleanConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Converters\HiddenConverter.cs">
-      <Link>Converters\HiddenConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Converters\VisilibityConverter.cs">
-      <Link>Converters\VisilibityConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Extensions\StringExtensions.cs">
-      <Link>Extensions\StringExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Extensions\TeamExplorerPageBaseExtensions.cs">
-      <Link>Extensions\TeamExplorerPageBaseExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\GitChangesSection.cs">
-      <Link>GitChangesSection.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Interfaces\ICommentBuilder.cs">
-      <Link>Interfaces\ICommentBuilder.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Interfaces\IVsAppId.cs">
-      <Link>Interfaces\IVsAppId.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Models\CommitType.cs">
-      <Link>Models\CommitType.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Models\NavigationCommitModel.cs">
-      <Link>Models\NavigationCommitModel.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Models\NavigationDataType.cs">
-      <Link>Models\NavigationDataType.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\Repository.cs">
-      <Link>Repository.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\ViewModels\CommitizenViewModel.cs">
-      <Link>ViewModels\CommitizenViewModel.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenNavigationItem.cs">
-      <Link>VsCommitizenNavigationItem.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenPage.cs">
-      <Link>VsCommitizenPage.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenSection.cs">
-      <Link>VsCommitizenSection.cs</Link>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenView.xaml.cs">
-      <Link>VsCommitizenView.xaml.cs</Link>
-      <DependentUpon>VsCommitizenView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\VSPackage.Designer.cs">
-      <Link>VSPackage.Designer.cs</Link>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VSPackage.resx</DependentUpon>
-    </Compile>
-    <Compile Include="..\vs-commitizen.vs2015\VsRegistry.cs">
-      <Link>VsRegistry.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,26 +79,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\.paket\paket.targets" />
-  <ItemGroup>
-    <Page Include="..\vs-commitizen.vs2015\Controls\TextBoxWithHint.xaml">
-      <Link>Controls\TextBoxWithHint.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="..\vs-commitizen.vs2015\VsCommitizenView.xaml">
-      <Link>VsCommitizenView.xaml</Link>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\vs-commitizen.vs2015\VSPackage.resx">
-      <Link>VSPackage.resx</Link>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vs-commitizen.settings\vs-commitizen.Settings.csproj">
       <Project>{1952d753-dc63-46b4-9561-7d84cf215d6a}</Project>
@@ -1510,6 +1410,7 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
+  <Import Project="..\vs-commitizen.Shared\vs-commitizen.Shared.projitems" Label="Shared" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
