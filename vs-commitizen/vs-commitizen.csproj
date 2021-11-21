@@ -150,14 +150,6 @@
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
-    <ProjectReference Include="..\vs-commitizen.vs2015\vs-commitizen.vs2015.csproj">
-      <Project>{d0418a0a-cb31-47c5-acc7-3493406469cd}</Project>
-      <Name>vs-commitizen.vs2015</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\vs-commitizen.vs2017\vs-commitizen.vs2017.csproj">
-      <Project>{93748016-5aa8-4d74-887e-64959d8d2496}</Project>
-      <Name>vs-commitizen.vs2017</Name>
-    </ProjectReference>
     <ProjectReference Include="..\vs-commitizen.vs2019\vs-commitizen.vs2019.csproj">
       <Project>{c6ecb6ff-d446-499c-b3cc-db5cb6455db7}</Project>
       <Name>vs-commitizen.vs2019</Name>

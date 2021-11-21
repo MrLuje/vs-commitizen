@@ -20,12 +20,6 @@ namespace vs_commitizen.Settings
 
                 switch (productMajorPart)
                 {
-                    case 14:
-                        i.Assembly("vs-commitizen.vs2015");
-                        break;
-                    case 15:
-                        i.Assembly("vs-commitizen.vs2017");
-                        break;
                     case int v when v >= 17:
                         i.Assembly("vs-commitizen.vs2022");
                         break;
