@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D0418A0A-CB31-47C5-ACC7-3493406469CD}</ProjectGuid>
+    <ProjectGuid>{38ED23EE-2ABC-4F64-8602-F42BE05F2578}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>vs_commitizen.vs</RootNamespace>
-    <AssemblyName>vs-commitizen.vs2015</AssemblyName>
+    <AssemblyName>vs-commitizen.vs2022</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,27 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.TeamFoundation.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.Controls.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.TeamFoundation.Controls">
+      <HintPath>..\lib\vs2019\Microsoft.TeamFoundation.Controls.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Git.Controls">
-      <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.Git.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.Git.Provider">
-      <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.TeamFoundation.VersionControl.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\lib\vs2015\Microsoft.TeamFoundation.VersionControl.Controls.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\vs2019\Microsoft.TeamFoundation.Git.Controls.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.TeamFoundation">
-      <HintPath>..\lib\vs2015\Microsoft.VisualStudio.TeamFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.TeamFoundation.VersionControl, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\lib\vs2015\Microsoft.VisualStudio.TeamFoundation.VersionControl.dll</HintPath>
+    <Reference Include="Microsoft.TeamFoundation.Git.Provider">
+      <HintPath>..\lib\vs2019\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -60,74 +50,121 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\TextBoxWithHint.xaml.cs">
+    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBase.cs">
+      <Link>Base\TeamExplorerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBaseNavigationItem.cs">
+      <Link>Base\TeamExplorerBaseNavigationItem.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBaseNavigationLink.cs">
+      <Link>Base\TeamExplorerBaseNavigationLink.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBasePage.cs">
+      <Link>Base\TeamExplorerBasePage.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Base\TeamExplorerBaseSection.cs">
+      <Link>Base\TeamExplorerBaseSection.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Controls\TextBoxWithHint.xaml.cs">
+      <Link>Controls\TextBoxWithHint.xaml.cs</Link>
       <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\BooleanConverter.cs" />
-    <Compile Include="Converters\HiddenConverter.cs" />
-    <Compile Include="Converters\VisilibityConverter.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\TeamExplorerPageBaseExtensions.cs" />
-    <Compile Include="Interfaces\ICommentBuilder.cs" />
-    <Compile Include="Compatibility2017\ITeamExplorerSectionCommand.cs" />
-    <Compile Include="Compatibility2017\ITeamExplorerSectionCommandProvider.cs" />
-    <Compile Include="Interfaces\IVsAppId.cs" />
-    <Compile Include="Models\CommitType.cs" />
-    <Compile Include="Models\NavigationCommitModel.cs" />
-    <Compile Include="Models\NavigationDataType.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Base\TeamExplorerBase.cs" />
-    <Compile Include="Base\TeamExplorerBaseNavigationItem.cs" />
-    <Compile Include="Base\TeamExplorerBaseNavigationLink.cs" />
-    <Compile Include="Base\TeamExplorerBasePage.cs" />
-    <Compile Include="Base\TeamExplorerBaseSection.cs" />
-    <Compile Include="Compatibility2017\TeamExplorerSectionCommand.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="ViewModels\CommitizenViewModel.cs" />
-    <Compile Include="VsCommitizenNavigationItem.cs" />
-    <Compile Include="VsCommitizenPage.cs" />
-    <Compile Include="GitChangesSection.cs" />
-    <Compile Include="VsCommitizenSection.cs" />
-    <Compile Include="VsCommitizenView.xaml.cs">
+    <Compile Include="..\vs-commitizen.vs2015\Converters\BooleanConverter.cs">
+      <Link>Converters\BooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Converters\HiddenConverter.cs">
+      <Link>Converters\HiddenConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Converters\VisilibityConverter.cs">
+      <Link>Converters\VisilibityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Extensions\StringExtensions.cs">
+      <Link>Extensions\StringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Extensions\TeamExplorerPageBaseExtensions.cs">
+      <Link>Extensions\TeamExplorerPageBaseExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\GitChangesSection.cs">
+      <Link>GitChangesSection.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Interfaces\ICommentBuilder.cs">
+      <Link>Interfaces\ICommentBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Interfaces\IVsAppId.cs">
+      <Link>Interfaces\IVsAppId.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Models\CommitType.cs">
+      <Link>Models\CommitType.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Models\NavigationCommitModel.cs">
+      <Link>Models\NavigationCommitModel.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Models\NavigationDataType.cs">
+      <Link>Models\NavigationDataType.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\Repository.cs">
+      <Link>Repository.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\ViewModels\CommitizenViewModel.cs">
+      <Link>ViewModels\CommitizenViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenNavigationItem.cs">
+      <Link>VsCommitizenNavigationItem.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenPage.cs">
+      <Link>VsCommitizenPage.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenSection.cs">
+      <Link>VsCommitizenSection.cs</Link>
+    </Compile>
+    <Compile Include="..\vs-commitizen.vs2015\VsCommitizenView.xaml.cs">
+      <Link>VsCommitizenView.xaml.cs</Link>
       <DependentUpon>VsCommitizenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VSPackage.Designer.cs">
+    <Compile Include="..\vs-commitizen.vs2015\VSPackage.Designer.cs">
+      <Link>VSPackage.Designer.cs</Link>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VSPackage.resx</DependentUpon>
     </Compile>
-    <Compile Include="VsRegistry.cs" />
+    <Compile Include="..\vs-commitizen.vs2015\VsRegistry.cs">
+      <Link>VsRegistry.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="paket.references" />
   </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\.paket\paket.targets" />
   <ItemGroup>
-    <Page Include="Controls\TextBoxWithHint.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="..\vs-commitizen.vs2015\Controls\TextBoxWithHint.xaml">
+      <Link>Controls\TextBoxWithHint.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="VsCommitizenView.xaml">
+    <Page Include="..\vs-commitizen.vs2015\VsCommitizenView.xaml">
+      <Link>VsCommitizenView.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\.paket\paket.targets" />
   <ItemGroup>
-    <EmbeddedResource Include="VSPackage.resx">
+    <EmbeddedResource Include="..\vs-commitizen.vs2015\VSPackage.resx">
+      <Link>VSPackage.resx</Link>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>VSPackage.Designer.cs</LastGenOutput>
@@ -135,10 +172,21 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vs-commitizen.settings\vs-commitizen.Settings.csproj">
-      <Project>{1952D753-DC63-46B4-9561-7D84CF215D6A}</Project>
+      <Project>{1952d753-dc63-46b4-9561-7d84cf215d6a}</Project>
       <Name>vs-commitizen.Settings</Name>
     </ProjectReference>
   </ItemGroup>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="Ben.Demystifier">
+          <HintPath>..\packages\vs17\Ben.Demystifier\lib\net45\Ben.Demystifier.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
@@ -146,7 +194,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="envdte">
-          <HintPath>..\packages\vs14\envdte\lib\net472\envdte.dll</HintPath>
+          <HintPath>..\packages\vs17\envdte\lib\net472\envdte.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -157,7 +205,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="envdte100">
-          <HintPath>..\packages\vs14\EnvDTE100\lib\net472\envdte100.dll</HintPath>
+          <HintPath>..\packages\vs17\EnvDTE100\lib\net472\envdte100.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -168,7 +216,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="envdte80">
-          <HintPath>..\packages\vs14\envdte80\lib\net472\envdte80.dll</HintPath>
+          <HintPath>..\packages\vs17\envdte80\lib\net472\envdte80.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -179,7 +227,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="envdte90">
-          <HintPath>..\packages\vs14\envdte90\lib\net472\envdte90.dll</HintPath>
+          <HintPath>..\packages\vs17\envdte90\lib\net472\envdte90.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -190,7 +238,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="envdte90a">
-          <HintPath>..\packages\vs14\envdte90a\lib\net472\envdte90a.dll</HintPath>
+          <HintPath>..\packages\vs17\envdte90a\lib\net472\envdte90a.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -201,7 +249,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="MessagePack">
-          <HintPath>..\packages\vs14\MessagePack\lib\netstandard2.0\MessagePack.dll</HintPath>
+          <HintPath>..\packages\vs17\MessagePack\lib\netstandard2.0\MessagePack.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -212,7 +260,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="MessagePack.Annotations">
-          <HintPath>..\packages\vs14\MessagePack.Annotations\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
+          <HintPath>..\packages\vs17\MessagePack.Annotations\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -223,7 +271,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Net.Http.Formatting">
-          <HintPath>..\packages\vs14\Microsoft.AspNet.WebApi.Client\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.AspNet.WebApi.Client\lib\net45\System.Net.Http.Formatting.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -234,7 +282,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Web.Http">
-          <HintPath>..\packages\vs14\Microsoft.AspNet.WebApi.Core\lib\net45\System.Web.Http.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.AspNet.WebApi.Core\lib\net45\System.Web.Http.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -244,7 +292,134 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
+        <Reference Include="System.Web.Http.WebHost">
+          <HintPath>..\packages\vs17\Microsoft.AspNet.WebApi.WebHost\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+          <HintPath>..\packages\vs17\Microsoft.Bcl.AsyncInterfaces\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="Microsoft.Build.Framework">
+          <HintPath>..\packages\vs17\Microsoft.Build.Framework\lib\net472\Microsoft.Build.Framework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="System.IdentityModel">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+          <HintPath>..\packages\vs17\Microsoft.IdentityModel.Clients.ActiveDirectory\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="Microsoft.IdentityModel.JsonWebTokens">
+          <HintPath>..\packages\vs17\Microsoft.IdentityModel.JsonWebTokens\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="Microsoft.IdentityModel.Logging">
+          <HintPath>..\packages\vs17\Microsoft.IdentityModel.Logging\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="Microsoft.IdentityModel.Tokens">
+          <HintPath>..\packages\vs17\Microsoft.IdentityModel.Tokens\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <ItemGroup>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\Microsoft.ServiceHub.Analyzers.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\cs\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\de\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\es\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\fr\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\it\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\ja\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\ko\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\pl\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\pt-BR\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\ru\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\tr\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\zh-Hans\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\packages\vs17\Microsoft.ServiceHub.Analyzers\analyzers\zh-Hant\Microsoft.ServiceHub.Analyzers.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+  </ItemGroup>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
         <Reference Include="System.IO">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Net.WebSockets">
           <Paket>True</Paket>
         </Reference>
         <Reference Include="System.Runtime">
@@ -262,155 +437,8 @@
         <Reference Include="System.Security.Cryptography.X509Certificates">
           <Paket>True</Paket>
         </Reference>
-        <Reference Include="Microsoft.Azure.Services.AppAuthentication">
-          <HintPath>..\packages\vs14\Microsoft.Azure.Services.AppAuthentication\lib\net472\Microsoft.Azure.Services.AppAuthentication.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
-          <HintPath>..\packages\vs14\Microsoft.Bcl.AsyncInterfaces\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="Microsoft.Build.Framework">
-          <HintPath>..\packages\vs14\Microsoft.Build.Framework\lib\net472\Microsoft.Build.Framework.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="System.IdentityModel">
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
-          <HintPath>..\packages\vs14\Microsoft.IdentityModel.Clients.ActiveDirectory\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="Microsoft.IdentityModel.JsonWebTokens">
-          <HintPath>..\packages\vs14\Microsoft.IdentityModel.JsonWebTokens\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="Microsoft.IdentityModel.Logging">
-          <HintPath>..\packages\vs14\Microsoft.IdentityModel.Logging\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="Microsoft.IdentityModel.Tokens">
-          <HintPath>..\packages\vs14\Microsoft.IdentityModel.Tokens\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="System.Net">
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="System.Net.Http.WebRequest">
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="System.Runtime.Serialization">
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="Microsoft.Rest.ClientRuntime">
-          <HintPath>..\packages\vs14\Microsoft.Rest.ClientRuntime\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
-          <Private>False</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <ItemGroup>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\Microsoft.ServiceHub.Analyzers.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\cs\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\de\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\es\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\fr\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\it\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\ja\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\ko\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\pl\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\pt-BR\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\ru\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\tr\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\zh-Hans\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.ServiceHub.Analyzers\analyzers\zh-Hant\Microsoft.ServiceHub.Analyzers.resources.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-  </ItemGroup>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="System.Net.WebSockets">
-          <Paket>True</Paket>
-        </Reference>
         <Reference Include="Microsoft.ServiceHub.Client">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Client\lib\net472\Microsoft.ServiceHub.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Client\lib\net472\Microsoft.ServiceHub.Client.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -421,7 +449,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.ServiceHub.Framework">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Framework\lib\netstandard2.0\Microsoft.ServiceHub.Framework.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Framework\lib\netstandard2.0\Microsoft.ServiceHub.Framework.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -432,72 +460,72 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\cs\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\cs\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\de\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\de\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\es\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\es\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\fr\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\fr\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\it\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\it\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\ja\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\ja\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\ko\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\ko\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\pl\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\pl\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\pt-BR\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\pt-BR\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\ru\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\ru\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\tr\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\tr\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\zh-Hans\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\zh-Hans\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.ServiceHub.Resources">
-          <HintPath>..\packages\vs14\Microsoft.ServiceHub.Resources\lib\net472\zh-Hant\Microsoft.ServiceHub.Resources.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.ServiceHub.Resources\lib\net472\zh-Hant\Microsoft.ServiceHub.Resources.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -507,48 +535,84 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
-        <Reference Include="Microsoft.TeamFoundation.Build2.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.Build2.WebApi.dll</HintPath>
+        <Reference Include="Microsoft.TeamFoundation.DistributedTask.Common.Contracts">
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundation.DistributedTask.Common.Contracts\lib\net462\Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
-        <Reference Include="Microsoft.TeamFoundation.Chat.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.Chat.WebApi.dll</HintPath>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="Microsoft.Azure.DevOps.Comments.WebApi">
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.Azure.DevOps.Comments.WebApi.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Microsoft.TeamFoundation.Build2.WebApi">
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.Build2.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Core.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.Core.WebApi.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.Core.WebApi.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Microsoft.TeamFoundation.Dashboards.WebApi">
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.Dashboards.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Policy.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.Policy.WebApi.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.Policy.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.SourceControl.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.SourceControl.WebApi.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.SourceControl.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Test.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.Test.WebApi.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.Test.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.TestManagement.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.TestManagement.WebApi.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.TestManagement.WebApi.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Microsoft.TeamFoundation.Wiki.WebApi">
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.Wiki.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Work.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.Work.WebApi.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.Work.WebApi.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi">
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.Client\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi">
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.Services.TestResults.WebApi">
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.Client\lib\net462\Microsoft.VisualStudio.Services.TestResults.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -559,122 +623,122 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.TeamFoundation.Build.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Build.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Build.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Build.Common">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Build.Common.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Build.Common.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.DeleteTeamProject">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.DeleteTeamProject.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.DeleteTeamProject.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Diff">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Diff.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Diff.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Discussion.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Discussion.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Discussion.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Git.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Git.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Git.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Lab.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Lab.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Lab.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Lab.Common">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Lab.Common.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Lab.Common.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Lab.TestIntegration.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Lab.TestIntegration.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Lab.TestIntegration.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.Lab.WorkflowIntegration.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.ProjectManagement">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.ProjectManagement.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.ProjectManagement.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.SharePointReporting.Integration">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.SharePointReporting.Integration.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.SharePointReporting.Integration.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.TestImpact.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.TestImpact.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.TestImpact.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.TestManagement.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.TestManagement.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.TestManagement.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.TestManagement.Common">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.TestManagement.Common.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.TestManagement.Common.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.VersionControl.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.VersionControl.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.VersionControl.Common">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.VersionControl.Common.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.VersionControl.Common.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.VersionControl.Common.Integration">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.VersionControl.Common.Integration.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Client.DataStoreLoader.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Client.QueryLanguage.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Common">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Common.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Common.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Proxy">
-          <HintPath>..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\lib\net45\Microsoft.TeamFoundation.WorkItemTracking.Proxy.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\lib\net462\Microsoft.TeamFoundation.WorkItemTracking.Proxy.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -685,7 +749,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.CommandBars">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.CommandBars\lib\net472\Microsoft.VisualStudio.CommandBars.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.CommandBars\lib\net472\Microsoft.VisualStudio.CommandBars.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -696,7 +760,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.ComponentModelHost">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.ComponentModelHost\lib\net472\Microsoft.VisualStudio.ComponentModelHost.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.ComponentModelHost\lib\net472\Microsoft.VisualStudio.ComponentModelHost.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -707,7 +771,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.CoreUtility">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.CoreUtility\lib\net472\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.CoreUtility\lib\net472\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -718,7 +782,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Debugger.Interop.10.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Debugger.Interop.10.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.10.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Debugger.Interop.10.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.10.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -729,7 +793,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Debugger.Interop.11.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Debugger.Interop.11.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.11.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Debugger.Interop.11.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.11.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -740,7 +804,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Debugger.Interop.12.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Debugger.Interop.12.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.12.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Debugger.Interop.12.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.12.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -751,7 +815,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Debugger.Interop.14.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Debugger.Interop.14.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.14.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Debugger.Interop.14.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.14.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -762,7 +826,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Debugger.Interop.15.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Debugger.Interop.15.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.15.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Debugger.Interop.15.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.15.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -773,7 +837,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Debugger.Interop.16.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Debugger.Interop.16.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.16.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Debugger.Interop.16.0\lib\net472\Microsoft.VisualStudio.Debugger.Interop.16.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -784,7 +848,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Debugger.InteropA">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Debugger.InteropA\lib\net472\Microsoft.VisualStudio.Debugger.InteropA.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Debugger.InteropA\lib\net472\Microsoft.VisualStudio.Debugger.InteropA.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -795,7 +859,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Designer.Interfaces">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Designer.Interfaces\lib\net472\Microsoft.VisualStudio.Designer.Interfaces.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Designer.Interfaces\lib\net472\Microsoft.VisualStudio.Designer.Interfaces.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -805,8 +869,11 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
+        <Reference Include="WindowsBase">
+          <Paket>True</Paket>
+        </Reference>
         <Reference Include="Microsoft.VisualStudio.Editor">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Editor\lib\net472\Microsoft.VisualStudio.Editor.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Editor\lib\net472\Microsoft.VisualStudio.Editor.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -820,7 +887,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.GraphModel">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.GraphModel\lib\net472\Microsoft.VisualStudio.GraphModel.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.GraphModel\lib\net472\Microsoft.VisualStudio.GraphModel.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -831,7 +898,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.ImageCatalog">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.ImageCatalog\lib\net472\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.ImageCatalog\lib\net472\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -842,7 +909,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Imaging">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Imaging\lib\net472\Microsoft.VisualStudio.Imaging.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Imaging\lib\net472\Microsoft.VisualStudio.Imaging.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -853,7 +920,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime\lib\net472\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime\lib\net472\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -864,7 +931,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Interop">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Interop\lib\net472\Microsoft.VisualStudio.Interop.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Interop\lib\net472\Microsoft.VisualStudio.Interop.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -875,7 +942,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Language">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Language\lib\net472\Microsoft.VisualStudio.Language.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Language\lib\net472\Microsoft.VisualStudio.Language.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -886,7 +953,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Language.Intellisense">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Language.Intellisense\lib\net472\Microsoft.VisualStudio.Language.Intellisense.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Language.Intellisense\lib\net472\Microsoft.VisualStudio.Language.Intellisense.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -897,7 +964,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Language.NavigateTo.Interfaces">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Language.NavigateTo.Interfaces\lib\net472\Microsoft.VisualStudio.Language.NavigateTo.Interfaces.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Language.NavigateTo.Interfaces\lib\net472\Microsoft.VisualStudio.Language.NavigateTo.Interfaces.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -908,7 +975,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Language.StandardClassification">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Language.StandardClassification\lib\net472\Microsoft.VisualStudio.Language.StandardClassification.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Language.StandardClassification\lib\net472\Microsoft.VisualStudio.Language.StandardClassification.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -919,7 +986,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.LanguageServer.Client">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.LanguageServer.Client\lib\net472\Microsoft.VisualStudio.LanguageServer.Client.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.LanguageServer.Client\lib\net472\Microsoft.VisualStudio.LanguageServer.Client.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -930,7 +997,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.OLE.Interop">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.OLE.Interop\lib\net472\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.OLE.Interop\lib\net472\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -941,7 +1008,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Package.LanguageService.15.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Package.LanguageService.15.0\lib\net45\Microsoft.VisualStudio.Package.LanguageService.15.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Package.LanguageService.15.0\lib\net45\Microsoft.VisualStudio.Package.LanguageService.15.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -952,7 +1019,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.ProjectAggregator">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.ProjectAggregator\lib\net472\Microsoft.VisualStudio.ProjectAggregator.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.ProjectAggregator\lib\net472\Microsoft.VisualStudio.ProjectAggregator.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -966,7 +1033,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.RemoteControl">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.RemoteControl\lib\net45\Microsoft.VisualStudio.RemoteControl.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.RemoteControl\lib\net45\Microsoft.VisualStudio.RemoteControl.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -977,7 +1044,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.RpcContracts">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.RpcContracts\lib\netstandard2.0\Microsoft.VisualStudio.RpcContracts.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.RpcContracts\lib\netstandard2.0\Microsoft.VisualStudio.RpcContracts.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -997,17 +1064,17 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.TeamFoundation.Common">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Services.Client\lib\net45\Microsoft.TeamFoundation.Common.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Services.Client\lib\net462\Microsoft.TeamFoundation.Common.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.Services.Common">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Services.Client\lib\net45\Microsoft.VisualStudio.Services.Common.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Services.Client\lib\net462\Microsoft.VisualStudio.Services.Common.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.Services.WebApi">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Services.Client\lib\net45\Microsoft.VisualStudio.Services.WebApi.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Services.Client\lib\net462\Microsoft.VisualStudio.Services.WebApi.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1017,8 +1084,8 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.Services.Client">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Services.InteractiveClient\lib\net45\Microsoft.VisualStudio.Services.Client.dll</HintPath>
+        <Reference Include="Microsoft.VisualStudio.Services.Client.Interactive">
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Services.InteractiveClient\lib\net462\Microsoft.VisualStudio.Services.Client.Interactive.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1029,7 +1096,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Setup.Configuration.Interop">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Setup.Configuration.Interop\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Setup.Configuration.Interop\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1046,7 +1113,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.Shell.15.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.15.0\lib\net472\Microsoft.VisualStudio.Shell.15.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.15.0\lib\net472\Microsoft.VisualStudio.Shell.15.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1057,7 +1124,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Design">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Design\lib\net472\Microsoft.VisualStudio.Shell.Design.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.Design\lib\net472\Microsoft.VisualStudio.Shell.Design.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1068,7 +1135,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Framework">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Framework\lib\net472\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.Framework\lib\net472\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1079,7 +1146,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop\lib\net472\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.Interop\lib\net472\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1090,7 +1157,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.10.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.10.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.Interop.10.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.10.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1101,7 +1168,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.11.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.11.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.Interop.11.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.11.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1112,7 +1179,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.12.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.12.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.12.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.Interop.12.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.12.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1123,7 +1190,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.8.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.Interop.8.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.8.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1134,7 +1201,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Shell.Interop.9.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Shell.Interop.9.0\lib\net472\Microsoft.VisualStudio.Shell.Interop.9.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1145,7 +1212,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TaskRunnerExplorer.14.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TaskRunnerExplorer.14.0\lib\net40\Microsoft.VisualStudio.TaskRunnerExplorer.14.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TaskRunnerExplorer.14.0\lib\net40\Microsoft.VisualStudio.TaskRunnerExplorer.14.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1159,7 +1226,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.VisualStudio.Telemetry">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Telemetry\lib\net45\Microsoft.VisualStudio.Telemetry.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Telemetry\lib\net45\Microsoft.VisualStudio.Telemetry.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1170,7 +1237,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Text.Data">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Text.Data\lib\net472\Microsoft.VisualStudio.Text.Data.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Text.Data\lib\net472\Microsoft.VisualStudio.Text.Data.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1181,7 +1248,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Text.Logic">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Text.Logic\lib\net472\Microsoft.VisualStudio.Text.Logic.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Text.Logic\lib\net472\Microsoft.VisualStudio.Text.Logic.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1192,7 +1259,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Text.UI">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Text.UI\lib\net472\Microsoft.VisualStudio.Text.UI.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Text.UI\lib\net472\Microsoft.VisualStudio.Text.UI.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1203,7 +1270,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Text.UI.Wpf\lib\net472\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Text.UI.Wpf\lib\net472\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1214,7 +1281,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextManager.Interop">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextManager.Interop\lib\net472\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextManager.Interop\lib\net472\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1225,7 +1292,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextManager.Interop.10.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextManager.Interop.10.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.10.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextManager.Interop.10.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.10.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1236,7 +1303,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextManager.Interop.11.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextManager.Interop.11.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.11.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextManager.Interop.11.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.11.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1247,7 +1314,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextManager.Interop.12.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextManager.Interop.12.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.12.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextManager.Interop.12.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.12.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1258,7 +1325,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextManager.Interop.8.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextManager.Interop.8.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.8.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1269,7 +1336,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextManager.Interop.9.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextManager.Interop.9.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.9.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextManager.Interop.9.0\lib\net472\Microsoft.VisualStudio.TextManager.Interop.9.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1280,7 +1347,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextTemplating">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextTemplating\lib\net472\Microsoft.VisualStudio.TextTemplating.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextTemplating\lib\net472\Microsoft.VisualStudio.TextTemplating.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1291,7 +1358,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextTemplating.Interfaces\lib\net472\Microsoft.VisualStudio.TextTemplating.Interfaces.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextTemplating.Interfaces\lib\net472\Microsoft.VisualStudio.TextTemplating.Interfaces.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1302,7 +1369,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0\lib\net472\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0\lib\net472\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1313,7 +1380,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.11.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextTemplating.Interfaces.11.0\lib\net472\Microsoft.VisualStudio.TextTemplating.Interfaces.11.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextTemplating.Interfaces.11.0\lib\net472\Microsoft.VisualStudio.TextTemplating.Interfaces.11.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1324,7 +1391,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.TextTemplating.VSHost">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.TextTemplating.VSHost\lib\net472\Microsoft.VisualStudio.TextTemplating.VSHost.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.TextTemplating.VSHost\lib\net472\Microsoft.VisualStudio.TextTemplating.VSHost.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1335,102 +1402,102 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Threading">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Threading\lib\net472\Microsoft.VisualStudio.Threading.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Threading\lib\net472\Microsoft.VisualStudio.Threading.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets" Condition="Exists('..\packages\vs14\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" Label="Paket" />
-  <Import Project="..\packages\vs14\Microsoft.VisualStudio.Setup.Configuration.Interop\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets" Condition="Exists('..\packages\vs14\Microsoft.VisualStudio.Setup.Configuration.Interop\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" Label="Paket" />
-  <Import Project="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" Label="Paket" />
+  <Import Project="..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets" Condition="Exists('..\packages\vs17\Microsoft.TeamFoundationServer.ExtendedClient\build\Microsoft.TeamFoundationServer.ExtendedClient.targets')" Label="Paket" />
+  <Import Project="..\packages\vs17\Microsoft.VisualStudio.Setup.Configuration.Interop\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets" Condition="Exists('..\packages\vs17\Microsoft.VisualStudio.Setup.Configuration.Interop\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" Label="Paket" />
+  <Import Project="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" Label="Paket" />
   <ItemGroup>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CSharp.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CSharp.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\de\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\de\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\es\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\es\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\fr\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\fr\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\it\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\it\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ja\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ja\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ko\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ko\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\pl\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\pl\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\pt-BR\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\pt-BR\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ru\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\ru\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\tr\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\tr\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hans\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hans\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hant\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\cs\zh-Hant\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\de\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\de\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\es\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\es\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\fr\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\fr\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\it\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\it\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\ja\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\ja\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\ko\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\ko\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\pl\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\pl\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\pt-BR\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\pt-BR\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\ru\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\ru\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\tr\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\tr\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\zh-Hans\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\zh-Hans\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
-    <Analyzer Include="..\packages\vs14\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\zh-Hant\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
+    <Analyzer Include="..\packages\vs17\Microsoft.VisualStudio.Threading.Analyzers\analyzers\vb\zh-Hant\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.resources.dll">
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
@@ -1438,7 +1505,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Utilities">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Utilities\lib\net472\Microsoft.VisualStudio.Utilities.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Utilities\lib\net472\Microsoft.VisualStudio.Utilities.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1449,7 +1516,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Utilities.Internal">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Utilities.Internal\lib\net45\Microsoft.VisualStudio.Utilities.Internal.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Utilities.Internal\lib\net45\Microsoft.VisualStudio.Utilities.Internal.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1460,7 +1527,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Validation">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Validation\lib\netstandard2.0\Microsoft.VisualStudio.Validation.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Validation\lib\netstandard2.0\Microsoft.VisualStudio.Validation.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1471,7 +1538,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.VCProjectEngine">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.VCProjectEngine\lib\net45\Microsoft.VisualStudio.VCProjectEngine.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.VCProjectEngine\lib\net45\Microsoft.VisualStudio.VCProjectEngine.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1482,7 +1549,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.VSHelp">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.VSHelp\lib\net472\Microsoft.VisualStudio.VSHelp.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.VSHelp\lib\net472\Microsoft.VisualStudio.VSHelp.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1493,7 +1560,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.VSHelp80">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.VSHelp80\lib\net472\Microsoft.VisualStudio.VSHelp80.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.VSHelp80\lib\net472\Microsoft.VisualStudio.VSHelp80.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1504,7 +1571,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.WCFReference.Interop">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.WCFReference.Interop\lib\net472\Microsoft.VisualStudio.WCFReference.Interop.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.WCFReference.Interop\lib\net472\Microsoft.VisualStudio.WCFReference.Interop.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1515,7 +1582,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.VisualStudio.Web.BrowserLink.12.0">
-          <HintPath>..\packages\vs14\Microsoft.VisualStudio.Web.BrowserLink.12.0\lib\net40\Microsoft.VisualStudio.Web.BrowserLink.12.0.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.VisualStudio.Web.BrowserLink.12.0\lib\net40\Microsoft.VisualStudio.Web.BrowserLink.12.0.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1529,7 +1596,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="Microsoft.Win32.Primitives">
-          <HintPath>..\packages\vs14\Microsoft.Win32.Primitives\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.Win32.Primitives\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1540,7 +1607,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Microsoft.Win32.Registry">
-          <HintPath>..\packages\vs14\Microsoft.Win32.Registry\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+          <HintPath>..\packages\vs17\Microsoft.Win32.Registry\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1551,7 +1618,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Nerdbank.Streams">
-          <HintPath>..\packages\vs14\Nerdbank.Streams\lib\netstandard2.0\Nerdbank.Streams.dll</HintPath>
+          <HintPath>..\packages\vs17\Nerdbank.Streams\lib\netstandard2.0\Nerdbank.Streams.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1562,7 +1629,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="Newtonsoft.Json">
-          <HintPath>..\packages\vs14\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <HintPath>..\packages\vs17\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1573,7 +1640,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="stdole">
-          <HintPath>..\packages\vs14\stdole\lib\net472\stdole.dll</HintPath>
+          <HintPath>..\packages\vs17\stdole\lib\net472\stdole.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1584,7 +1651,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="StreamJsonRpc">
-          <HintPath>..\packages\vs14\StreamJsonRpc\lib\netstandard2.0\StreamJsonRpc.dll</HintPath>
+          <HintPath>..\packages\vs17\StreamJsonRpc\lib\netstandard2.0\StreamJsonRpc.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1595,7 +1662,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="StructureMap">
-          <HintPath>..\packages\vs14\StructureMap\lib\net45\StructureMap.dll</HintPath>
+          <HintPath>..\packages\vs17\StructureMap\lib\net45\StructureMap.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1606,8 +1673,8 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Buffers">
-          <HintPath>..\packages\vs14\System.Buffers\lib\net461\System.Buffers.dll</HintPath>
-          <Private>True</Private>
+          <HintPath>..\packages\vs17\System.Buffers\lib\net461\System.Buffers.dll</HintPath>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -1617,8 +1684,8 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Collections.Immutable">
-          <HintPath>..\packages\vs14\System.Collections.Immutable\lib\net461\System.Collections.Immutable.dll</HintPath>
-          <Private>True</Private>
+          <HintPath>..\packages\vs17\System.Collections.Immutable\lib\net461\System.Collections.Immutable.dll</HintPath>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -1628,7 +1695,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Diagnostics.DiagnosticSource">
-          <HintPath>..\packages\vs14\System.Diagnostics.DiagnosticSource\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Diagnostics.DiagnosticSource\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1639,7 +1706,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.IdentityModel.Tokens.Jwt">
-          <HintPath>..\packages\vs14\System.IdentityModel.Tokens.Jwt\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+          <HintPath>..\packages\vs17\System.IdentityModel.Tokens.Jwt\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1650,7 +1717,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.IO">
-          <HintPath>..\packages\vs14\System.IO\lib\net462\System.IO.dll</HintPath>
+          <HintPath>..\packages\vs17\System.IO\lib\net462\System.IO.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1661,7 +1728,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.IO.Pipelines">
-          <HintPath>..\packages\vs14\System.IO.Pipelines\lib\net461\System.IO.Pipelines.dll</HintPath>
+          <HintPath>..\packages\vs17\System.IO.Pipelines\lib\net461\System.IO.Pipelines.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1672,8 +1739,19 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Memory">
-          <HintPath>..\packages\vs14\System.Memory\lib\net461\System.Memory.dll</HintPath>
-          <Private>True</Private>
+          <HintPath>..\packages\vs17\System.Memory\lib\net461\System.Memory.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="System.Net.Http">
+          <HintPath>..\packages\vs17\System.Net.Http\lib\net46\System.Net.Http.dll</HintPath>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -1683,7 +1761,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Net.WebSockets">
-          <HintPath>..\packages\vs14\System.Net.WebSockets\lib\net46\System.Net.WebSockets.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Net.WebSockets\lib\net46\System.Net.WebSockets.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1697,8 +1775,19 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="System.Numerics.Vectors">
-          <HintPath>..\packages\vs14\System.Numerics.Vectors\lib\net46\System.Numerics.Vectors.dll</HintPath>
-          <Private>True</Private>
+          <HintPath>..\packages\vs17\System.Numerics.Vectors\lib\net46\System.Numerics.Vectors.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
+      <ItemGroup>
+        <Reference Include="System.Reflection.Metadata">
+          <HintPath>..\packages\vs17\System.Reflection.Metadata\lib\net461\System.Reflection.Metadata.dll</HintPath>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -1708,7 +1797,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Runtime">
-          <HintPath>..\packages\vs14\System.Runtime\lib\net462\System.Runtime.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Runtime\lib\net462\System.Runtime.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1719,8 +1808,8 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Runtime.CompilerServices.Unsafe">
-          <HintPath>..\packages\vs14\System.Runtime.CompilerServices.Unsafe\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-          <Private>True</Private>
+          <HintPath>..\packages\vs17\System.Runtime.CompilerServices.Unsafe\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -1730,7 +1819,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Security.AccessControl">
-          <HintPath>..\packages\vs14\System.Security.AccessControl\lib\net461\System.Security.AccessControl.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Security.AccessControl\lib\net461\System.Security.AccessControl.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1741,7 +1830,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Security.Cryptography.Algorithms">
-          <HintPath>..\packages\vs14\System.Security.Cryptography.Algorithms\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Security.Cryptography.Algorithms\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1752,7 +1841,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Security.Cryptography.Encoding">
-          <HintPath>..\packages\vs14\System.Security.Cryptography.Encoding\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Security.Cryptography.Encoding\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1763,7 +1852,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Security.Cryptography.Primitives">
-          <HintPath>..\packages\vs14\System.Security.Cryptography.Primitives\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Security.Cryptography.Primitives\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1774,7 +1863,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Security.Cryptography.X509Certificates">
-          <HintPath>..\packages\vs14\System.Security.Cryptography.X509Certificates\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Security.Cryptography.X509Certificates\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
           <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1785,7 +1874,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Security.Principal.Windows">
-          <HintPath>..\packages\vs14\System.Security.Principal.Windows\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Security.Principal.Windows\lib\net461\System.Security.Principal.Windows.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1796,7 +1885,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Threading.AccessControl">
-          <HintPath>..\packages\vs14\System.Threading.AccessControl\lib\net461\System.Threading.AccessControl.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Threading.AccessControl\lib\net461\System.Threading.AccessControl.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1807,7 +1896,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Threading.Tasks.Dataflow">
-          <HintPath>..\packages\vs14\System.Threading.Tasks.Dataflow\lib\net461\System.Threading.Tasks.Dataflow.dll</HintPath>
+          <HintPath>..\packages\vs17\System.Threading.Tasks.Dataflow\lib\net461\System.Threading.Tasks.Dataflow.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1818,8 +1907,8 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="System.Threading.Tasks.Extensions">
-          <HintPath>..\packages\vs14\System.Threading.Tasks.Extensions\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-          <Private>True</Private>
+          <HintPath>..\packages\vs17\System.Threading.Tasks.Extensions\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
@@ -1829,7 +1918,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj">
-          <HintPath>..\packages\vs14\VSLangProj\lib\net472\VSLangProj.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj\lib\net472\VSLangProj.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1840,7 +1929,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj100">
-          <HintPath>..\packages\vs14\VSLangProj100\lib\net472\VSLangProj100.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj100\lib\net472\VSLangProj100.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1851,7 +1940,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj110">
-          <HintPath>..\packages\vs14\VSLangProj110\lib\net472\VSLangProj110.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj110\lib\net472\VSLangProj110.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1862,7 +1951,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj140">
-          <HintPath>..\packages\vs14\VSLangProj140\lib\net472\VSLangProj140.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj140\lib\net472\VSLangProj140.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1873,7 +1962,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj150">
-          <HintPath>..\packages\vs14\VSLangProj150\lib\net472\VSLangProj150.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj150\lib\net472\VSLangProj150.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1884,7 +1973,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj157">
-          <HintPath>..\packages\vs14\VSLangProj157\lib\net472\VSLangProj157.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj157\lib\net472\VSLangProj157.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1895,7 +1984,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj158">
-          <HintPath>..\packages\vs14\VSLangProj158\lib\net472\VSLangProj158.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj158\lib\net472\VSLangProj158.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1906,7 +1995,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj165">
-          <HintPath>..\packages\vs14\VSLangProj165\lib\net472\VSLangProj165.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj165\lib\net472\VSLangProj165.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1917,7 +2006,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj2">
-          <HintPath>..\packages\vs14\VSLangProj2\lib\net472\VSLangProj2.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj2\lib\net472\VSLangProj2.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1928,7 +2017,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj80">
-          <HintPath>..\packages\vs14\VSLangProj80\lib\net472\VSLangProj80.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj80\lib\net472\VSLangProj80.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -1939,22 +2028,8 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
         <Reference Include="VSLangProj90">
-          <HintPath>..\packages\vs14\VSLangProj90\lib\net472\VSLangProj90.dll</HintPath>
+          <HintPath>..\packages\vs17\VSLangProj90\lib\net472\VSLangProj90.dll</HintPath>
           <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
-      <ItemGroup>
-        <Reference Include="System.ServiceModel">
-          <Paket>True</Paket>
-        </Reference>
-        <Reference Include="Microsoft.ServiceBus">
-          <HintPath>..\packages\vs14\WindowsAzure.ServiceBus\lib\net462\Microsoft.ServiceBus.dll</HintPath>
-          <Private>False</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>

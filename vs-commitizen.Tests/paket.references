@@ -12,8 +12,7 @@ group tests
 	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true, redirects: force
 	Newtonsoft.Json redirects: on
 	StructureMap
-	Microsoft.VisualStudio.SDK
-	System.Runtime redirects: force
+	Microsoft.VisualStudio.SDK copy_local: true
 
 #group vs16
 #	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true, redirects: force

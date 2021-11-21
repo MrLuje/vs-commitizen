@@ -261,3 +261,5 @@ __pycache__/
 
 *.v3.ncrunchsolution
 *.v3.ncrunchproject
+
+outputs/
