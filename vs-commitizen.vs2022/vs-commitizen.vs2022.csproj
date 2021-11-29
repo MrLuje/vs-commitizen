@@ -85,6 +85,7 @@
       <Name>vs-commitizen.Settings</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\vs-commitizen.Shared\vs-commitizen.Shared.projitems" Label="Shared" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
@@ -1410,7 +1411,6 @@
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
-  <Import Project="..\vs-commitizen.Shared\vs-commitizen.Shared.projitems" Label="Shared" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.8'">
       <ItemGroup>
