@@ -18,11 +18,10 @@ group tests
 	nuget xunit.runner.visualstudio ~> 2.3.1 version_in_path: true
 	nuget Xunit.StaFact ~> 0.2.9
 	
-	nuget Microsoft.TeamFoundationServer.ExtendedClient 16.147.0-preview redirects: force, copy_local: false
+	nuget Microsoft.TeamFoundationServer.ExtendedClient 16.170.0 redirects: force, copy_local: false
 	nuget Newtonsoft.Json ~> 13.0 redirects: on
 	nuget Microsoft.VisualStudio.SDK ~> 17.0
-	nuget Microsoft.VSSDK.BuildTools ~> 17.0	#to debug 2017 exp
-	# nuget Microsoft.VSSDK.BuildTools ~> 14.3   #to debug 2015 exp
+	nuget Microsoft.VSSDK.BuildTools ~> 17.0
 	nuget StructureMap 4.6.1
 
 group vs16
