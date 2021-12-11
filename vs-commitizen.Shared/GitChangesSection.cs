@@ -20,7 +20,7 @@ namespace vs_commitizen.vs2015
     /// Add a CommitCz button on the GitChanges page
     /// </summary>
     [TeamExplorerSection(GitChangeSection.SectionId, TeamExplorerPageIds.GitChanges, 30)]
-    public class GitChangeSection : TeamExplorerBaseSection
+    public partial class GitChangeSection : TeamExplorerBaseSection
     {
         private const string SectionId = "18850AAF-B79F-4522-A7E5-93843AA153DA";
         private Button commitButton;
@@ -107,34 +107,6 @@ namespace vs_commitizen.vs2015
             {
                 return new Version(isVs2019 ? 16 : 15, 0);
             }
-        }
-
-        private void TeamExplorerPageBasePropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            var page = (TeamExplorerPageBase)sender;
-
-            // Wait for section to be not busy
-            if (page.IsBusy)
-                return;
-
-            var commitData = PopNavigationValue<NavigationCommitModel>(NavigationDataType.CommitData);
-            if (commitData == null) return;
-
-            var model = page.Model;
-            var commentProperty = model.GetType().GetProperty("Comment");
-
-            commentProperty.SetValue(model, commitData.Comment);
-
-            if (!commitData.AutoCommit) return;
-
-            var changesExt = GetService<Microsoft.TeamFoundation.Git.Controls.Extensibility.IChangesExt2>();
-            var hasPendingChanges = changesExt.IncludedChanges.Count > 0 || changesExt.UntrackedFiles.Count > 0;
-
-            if (!hasPendingChanges) return;
-
-            var peer = new ButtonAutomationPeer(commitButton);
-            var invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-            invokeProv.Invoke();
         }
     }
 }

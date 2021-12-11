@@ -62,10 +62,10 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Controls">
-      <HintPath>..\lib\vs2019\Microsoft.TeamFoundation.Controls.dll</HintPath>
+      <HintPath>..\lib\vs2022\Microsoft.TeamFoundation.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Git.Provider">
-      <HintPath>..\lib\vs2019\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
+      <HintPath>..\lib\vs2022\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

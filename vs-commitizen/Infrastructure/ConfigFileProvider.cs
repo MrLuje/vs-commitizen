@@ -98,7 +98,8 @@ namespace vs_commitizen.Infrastructure
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            return ((dte?.Solution?.IsOpen).GetValueOrDefault(false), dte?.Solution.FullName);
+            var repoPath = Path.GetDirectoryName(dte?.Solution.FullName);
+            return ((dte?.Solution?.IsOpen).GetValueOrDefault(false), repoPath);
         }
 
         internal protected virtual async Task<(bool isLoaded, string path)> GetLocalPathAsync()
@@ -110,13 +111,42 @@ namespace vs_commitizen.Infrastructure
 
         public virtual async Task<string> TryGetLocalConfigAsync()
         {
-            var (isRepositoryLoaded, repositoryPath) = await GetLocalPathAsync(); // await GetCurrentSolutionAsync();
+            var (isRepositoryLoaded, repositoryPath) = await GetLocalPathAsync();
             if (isRepositoryLoaded)
             {
                 return Path.Combine(repositoryPath, CONFIGFILE_NAME);
             }
+            else
+            {
+                (isRepositoryLoaded, repositoryPath) = await GetCurrentSolutionAsync();
+                if (isRepositoryLoaded)
+                {
+                    return Path.Combine(repositoryPath, CONFIGFILE_NAME);
+                }
+            }
 
             return string.Empty;
+        }
+
+        public virtual async Task<string> GetConfigUserProfilePathAsync()
+        {
+            await EnsureDefaultConfigFileExistAsync();
+            return ConfigFileProvider.ConfigPathUserProfile;
+        }
+
+        async Task<string> EnsureDefaultConfigFileExistAsync()
+        {
+            var pathToFolder = Path.GetDirectoryName(ConfigPathUserProfile);
+            Directory.CreateDirectory(pathToFolder);
+
+            if (fileAccessor.Exists(ConfigPathUserProfile))
+            {
+                var (isValid, content) = await TryGetValidConfigFileAsync(ConfigPathUserProfile);
+                if (isValid)
+                    return content;
+            }
+
+            return await GenerateDefaultConfigFileAsync(ConfigPathUserProfile);
         }
 
         async Task<string> GetConfigAsync()
@@ -135,17 +165,7 @@ namespace vs_commitizen.Infrastructure
                 }
             }
 
-            var pathToFolder = Path.GetDirectoryName(ConfigPathUserProfile);
-            Directory.CreateDirectory(pathToFolder);
-
-            if (fileAccessor.Exists(ConfigPathUserProfile))
-            {
-                var (isValid, content) = await TryGetValidConfigFileAsync(ConfigPathUserProfile);
-                if (isValid)
-                    return content;
-            }
-
-            return await GenerateDefaultConfigFileAsync(ConfigPathUserProfile);
+            return await EnsureDefaultConfigFileExistAsync();
         }
 
         internal protected virtual async System.Threading.Tasks.Task SubscribeToSolutionEventsAsync()

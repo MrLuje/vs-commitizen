@@ -44,7 +44,8 @@ namespace vs_commitizen.ViewModels
                 {
                     if (popupManager.Confirm("There is no local configuration file yet, do you want to create it for this repository ?", "Init local config file"))
                     {
-                        fileAccessor.CopyFile(ConfigFileProvider.ConfigPathUserProfile, localConfigPath);
+                        var defaultConfigFile = await this.configFileProvider.GetConfigUserProfilePathAsync();
+                        fileAccessor.CopyFile(defaultConfigFile, localConfigPath);
                         await openFunc(localConfigPath);
                     }
                 }

@@ -41,6 +41,11 @@ namespace vs_commitizen.Tests
                 throw new NotImplementedException();
             }
 
+            public Task<string> GetConfigUserProfilePathAsync()
+            {
+                throw new NotImplementedException();
+            }
+
             public Task<string> TryGetLocalConfigAsync()
             {
                 throw new NotImplementedException();
