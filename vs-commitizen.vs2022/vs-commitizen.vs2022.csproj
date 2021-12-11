@@ -42,15 +42,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.TeamFoundation.Controls">
-      <HintPath>..\lib\vs2019\Microsoft.TeamFoundation.Controls.dll</HintPath>
+      <HintPath>..\lib\vs2022\Microsoft.TeamFoundation.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Git.Controls">
-      <HintPath>..\lib\vs2019\Microsoft.TeamFoundation.Git.Controls.dll</HintPath>
+      <HintPath>..\lib\vs2022\Microsoft.TeamFoundation.Git.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.TeamFoundation.Git.Provider">
-      <HintPath>..\lib\vs2019\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
+      <HintPath>..\lib\vs2022\Microsoft.TeamFoundation.Git.Provider.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />

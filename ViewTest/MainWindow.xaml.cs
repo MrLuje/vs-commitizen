@@ -41,6 +41,11 @@ namespace ViewTest
                 throw new System.NotImplementedException();
             }
 
+            public Task<string> GetConfigUserProfilePathAsync()
+            {
+                throw new NotImplementedException();
+            }
+
             public Task<string> TryGetLocalConfigAsync()
             {
                 throw new System.NotImplementedException();
