@@ -71,6 +71,7 @@
     <Reference Include="UIAutomationProvider" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GitChangesSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
