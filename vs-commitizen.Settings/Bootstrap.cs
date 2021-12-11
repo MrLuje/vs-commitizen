@@ -9,7 +9,6 @@ namespace vs_commitizen.Settings
         {
             IoC.Container.Configure(c =>
             {
-                c.AddRegistry<ExtensionRegistry>();
                 c.ForSingletonOf<IVsPackage>().Use(package);
             });
         }

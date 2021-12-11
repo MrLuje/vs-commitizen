@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
 using vs_commitizen.Settings;
@@ -15,6 +16,7 @@ namespace ViewTest
         {
             IoC.Container.Inject<IUserSettings>(new DummyUserSettings());
             IoC.Container.Inject<IConfigFileProvider>(new DummyConfigFileProvider());
+            IoC.Container.Inject<IServiceProvider>(new DummyServiceProvider());
 
             InitializeComponent();
         }
@@ -22,6 +24,14 @@ namespace ViewTest
         public class DummyUserSettings : IUserSettings
         {
             public int MaxLineLength { get; set; } = 80;
+        }
+
+        internal class DummyServiceProvider : IServiceProvider
+        {
+            public object GetService(Type serviceType)
+            {
+                return 1;
+            }
         }
 
         internal class DummyConfigFileProvider : IConfigFileProvider

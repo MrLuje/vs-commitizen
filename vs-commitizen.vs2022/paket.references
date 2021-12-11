@@ -1,4 +1,5 @@
-group common
+group vs17
+	Microsoft.TeamFoundationServer.ExtendedClient
 	Microsoft.VisualStudio.SDK
 		exclude EnvDTE80.dll
 	StructureMap

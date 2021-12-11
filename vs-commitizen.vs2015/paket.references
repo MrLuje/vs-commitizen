@@ -1,6 +1,0 @@
-group common
-	Microsoft.VisualStudio.SDK
-	StructureMap
-
-group vs14
-	Microsoft.TeamFoundationServer.ExtendedClient

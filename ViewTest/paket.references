@@ -1,5 +1,3 @@
-﻿group common
-	StructureMap
-
-group vs15
+﻿group vs17
 	Microsoft.TeamFoundationServer.ExtendedClient copy_local: true
+	StructureMap

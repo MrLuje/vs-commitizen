@@ -1,4 +1,5 @@
 group common
 	Microsoft.VisualStudio.SDK
+		exclude EnvDTE80.dll
 	Microsoft.VSSDK.BuildTools
 	StructureMap

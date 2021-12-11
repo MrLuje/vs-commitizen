@@ -4,12 +4,14 @@ using AutoFixture.Xunit2;
 using NSubstitute;
 using NSubstitute.Extensions;
 using Shouldly;
+using System;
 using System.Threading.Tasks;
 using vs_commitizen.Infrastructure;
 using vs_commitizen.Settings;
 using vs_commitizen.Tests.TestAttributes;
 using vs_commitizen.ViewModels;
 using Xunit;
+using static vs_commitizen.Tests.MainWindow;
 
 namespace vs_commitizen.Tests
 {
@@ -25,6 +27,9 @@ namespace vs_commitizen.Tests
 
             IoC.Container.EjectAllInstancesOf<IFileAccessor>();
             IoC.Container.Inject<IFileAccessor>(fileAccessor);
+
+            IoC.Container.EjectAllInstancesOf<IServiceProvider>();
+            IoC.Container.Inject<IServiceProvider>(new DummyServiceProvider());
 
             return fixture.Create<OpenGenerateLocalConfigViewModel>();
         }

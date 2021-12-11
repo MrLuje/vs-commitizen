@@ -56,7 +56,7 @@ dotnet tool install --global Paket
 ```
 - Restore nugets dependencies
 ```bash
-paket restore
+.\restore.ps1
 ```
 - Compile with VisualStudio
 

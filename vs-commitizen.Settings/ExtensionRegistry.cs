@@ -17,17 +17,15 @@ namespace vs_commitizen.Settings
                 i.Assembly("vs-commitizen");
 
                 var productMajorPart = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileVersionInfo.ProductMajorPart;
-                if (productMajorPart == 14)
+
+                switch (productMajorPart)
                 {
-                    i.Assembly("vs-commitizen.vs2015");
-                }
-                else if (productMajorPart == 15)
-                {
-                    i.Assembly("vs-commitizen.vs2017");
-                }
-                else if (productMajorPart >= 16)
-                {
-                    i.Assembly("vs-commitizen.vs2019");
+                    case int v when v >= 17:
+                        i.Assembly("vs-commitizen.vs2022");
+                        break;
+                    case int v when v >= 16:
+                        i.Assembly("vs-commitizen.vs2019");
+                        break;
                 }
 
                 i.WithDefaultConventions();
@@ -35,7 +33,10 @@ namespace vs_commitizen.Settings
             });
 
             this.For<IUserSettings>().Use<UserSettings>();
+
+#if !TESTS
             this.For<IServiceProvider>().Use(ServiceProvider.GlobalProvider);
+#endif
         }
     }
 }

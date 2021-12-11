@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a79c81f6-3b70-4be2-83be-da2e0a8fb67e</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>vs_commitizen.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Base\TeamExplorerBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\TeamExplorerBaseNavigationItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\TeamExplorerBaseNavigationLink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\TeamExplorerBasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\TeamExplorerBaseSection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TextBoxWithHint.xaml.cs">
+      <DependentUpon>TextBoxWithHint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BooleanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\HiddenConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisilibityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\TeamExplorerPageBaseExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GitChangesSection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ICommentBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IVsAppId.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CommitType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationCommitModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationDataType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CommitizenViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VsCommitizenNavigationItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VsCommitizenPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VsCommitizenSection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VsCommitizenView.xaml.cs">
+      <DependentUpon>VsCommitizenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)VSPackage.Designer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VsRegistry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\TextBoxWithHint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)VsCommitizenView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)VSPackage.resx" />
+  </ItemGroup>
+</Project>
