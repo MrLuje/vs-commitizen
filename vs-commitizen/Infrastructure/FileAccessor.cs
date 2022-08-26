@@ -50,9 +50,10 @@ namespace vs_commitizen.Infrastructure
         {
             using (var file = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
             {
-                var buff = new byte[file.Length];
-                await file.ReadAsync(buff, 0, (int)file.Length);
-                return Encoding.Default.GetString(buff);
+                using (var reader = new StreamReader(file))
+                {
+                    return await reader.ReadToEndAsync();
+                }
             }
         }
 
