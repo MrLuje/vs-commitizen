@@ -15,7 +15,7 @@
                    Foreground="LightSteelBlue"
                    Visibility="{Binding ElementName=txtInputBox, Path=Text.IsEmpty, Converter={StaticResource MyBoolToVisibilityConverter}}"
                    HorizontalAlignment="Stretch"
-                   VerticalAlignment="Center" />
+                   VerticalAlignment="Top" />
         <!-- enter term here -->
         <TextBox Name="txtInputBox" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                  AcceptsReturn="{Binding Path=AcceptReturn, RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}"
