@@ -44,7 +44,7 @@ namespace vs_commitizen.Infrastructure
             lock (@lock)
             {
                 var commitTypes = cache.GetCacheItem(cacheKey);
-                if (commitTypes != null) return (IList<T>)commitTypes.Value;
+                // if (commitTypes != null) return (IList<T>)commitTypes.Value;
             }
 
             try
