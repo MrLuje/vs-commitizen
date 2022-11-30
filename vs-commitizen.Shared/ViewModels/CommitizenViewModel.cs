@@ -1,5 +1,10 @@
-﻿using Microsoft.TeamFoundation.MVVM;
+﻿using EnvDTE;
+using EnvDTE80;
+using Microsoft.TeamFoundation.MVVM;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.PlatformUI;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -162,11 +167,22 @@ namespace vs_commitizen.vs.ViewModels
                 OnPropertyChanged();
             }
         }
-        #endregion
 
-        public CommitizenViewModel(IUserSettings userSettings, IConfigFileProvider configFileProvider)
+	    private readonly IServiceProvider serviceProvider;
+		private readonly IConfigFileProvider configFileProvider;
+
+		private SolutionEvents solutionEvents;
+		private bool init;
+
+		#endregion
+
+		public CommitizenViewModel(IServiceProvider serviceProvider, IUserSettings userSettings, IConfigFileProvider configFileProvider)
         {
-            _ = LoadCommitTypesAsync(configFileProvider);
+			this.serviceProvider = serviceProvider;
+			this.configFileProvider = configFileProvider;
+
+			_ = LoadCommitTypesAsync(this.configFileProvider);
+            _ = SubscribeToSolutionEventsAsync();
 
             this.OnProceed = new RelayCommand(Proceed, CanProceed);
             this.OnCopy = new RelayCommand(CopyMessage, CanProceed);
@@ -177,7 +193,25 @@ namespace vs_commitizen.vs.ViewModels
             this.LineLength = this._userSettings.MaxLineLength;
         }
 
-        private async Task LoadCommitTypesAsync(IConfigFileProvider configFileProvider)
+		private async Task SubscribeToSolutionEventsAsync()
+		{
+			if (!this.init)
+			{
+				await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+				var asyncServiceProvider = serviceProvider.GetService(typeof(SAsyncServiceProvider)) as IAsyncServiceProvider;
+				var dte = await asyncServiceProvider?.GetServiceAsync(typeof(SDTE)) as DTE2;
+
+				this.solutionEvents = dte.Events.SolutionEvents;
+                this.solutionEvents.Opened += () =>
+                {
+                    _ = LoadCommitTypesAsync(configFileProvider).ConfigureAwait(true);
+                };
+
+                this.init = true;
+			}
+		}
+
+		private async Task LoadCommitTypesAsync(IConfigFileProvider configFileProvider)
         {
             try
             {
@@ -185,7 +219,7 @@ namespace vs_commitizen.vs.ViewModels
             }
             catch
             {
-                this.CommitTypes = new List<CommitType>
+				this.CommitTypes = new List<CommitType>
                 {
                     new CommitType("feat", "A new feature"),
                     new CommitType("fix", "A bug fix"),

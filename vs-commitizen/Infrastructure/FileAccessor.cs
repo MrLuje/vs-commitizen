@@ -38,38 +38,36 @@ namespace vs_commitizen.Infrastructure
 
         public virtual string ReadFile(string filePath)
         {
-            return File.ReadAllText(filePath);
+            return File.ReadAllText(filePath, Encoding.UTF8);
         }
 
         public virtual string[] ReadFileLines(string filePath)
         {
-            return File.ReadAllLines(filePath);
+            return File.ReadAllLines(filePath, Encoding.UTF8);
         }
 
         public virtual async Task<string> ReadFileAsync(string filePath)
         {
             using (var file = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
+            using (var reader = new StreamReader(file, Encoding.UTF8))
             {
-                var buff = new byte[file.Length];
-                await file.ReadAsync(buff, 0, (int)file.Length);
-                return Encoding.Default.GetString(buff);
+                return await reader.ReadToEndAsync();
             }
         }
 
         public virtual async Task WriteFileAsync(string filePath, string content)
         {
-            var encodedText = Encoding.Default.GetBytes(content);
-
             using (var sourceStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true))
+            using (var writer = new StreamWriter(sourceStream, Encoding.UTF8))
             {
-                await sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
-            };
+                await writer.WriteAsync(content);
+            }
 
         }
 
         public virtual void WriteFile(string filePath, string content)
         {
-            File.WriteAllText(filePath, content);
+            File.WriteAllText(filePath, content, Encoding.UTF8);
         }
 
         public virtual FileAttributes GetAttributes(string filePath)

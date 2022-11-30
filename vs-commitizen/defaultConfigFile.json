@@ -1,49 +1,45 @@
 ﻿{
-  "$schema": "https://raw.githubusercontent.com/MrLuje/vs-commitizen/master/config-schema.json",
-  "types": [
-    {
-      "type": "feat",
-      "description": "A new feature"
-    },
-    {
-      "type": "fix",
-      "description": "A bug fix"
-    },
-    {
-      "type": "docs",
-      "description": "Documentation only changes"
-    },
-    {
-      "type": "style",
-      "description": "Changes that do not affect the meaning of the code (formatting, etc)"
-    },
-    {
-      "type": "refactor",
-      "description": "A code change that neither fixes a bug nor adds a feature"
-    },
-    {
-      "type": "perf",
-      "description": "A code change that improves performance"
-    },
-    {
-      "type": "test",
-      "description": "Adding missing tests or correcting existing tests"
-    },
-    {
-      "type": "build",
-      "description": "Changes that affect the build system or external dependencies (example scopes: gulp, etc)"
-    },
-    {
-      "type": "ci",
-      "description": "Changes to our CI configuration files and scripts (example scopes: Travis, etc)"
-    },
-    {
-      "type": "chore",
-      "description": "Other changes that don't modify src or test files"
-    },
-    {
-      "type": "revert",
-      "description": "Reverts a previous commit"
-    }
-  ]
+    "$schema": "https://raw.githubusercontent.com/MrLuje/vs-commitizen/master/config-schema.json",
+    "types": [
+        {
+            "type": "✨feat",
+            "description": "Select when creating new things"
+        },
+        {
+            "type": "🐞fix",
+            "description": "Select when fixing a bug"
+        },
+        {
+            "type": "📄docs",
+            "description": "Select when editing documentation"
+        },
+        {
+            "type": "🚀ci",
+            "description": "Select when editing CI scripts"
+        },
+        {
+            "type": "🖥️build",
+            "description": "Select when concerning build change or external dependencies"
+        },
+        {
+            "type": "⚙️refactor",
+            "description": "Select when no new performances or no new functionnality"
+        },
+        {
+            "type": "🌈style",
+            "description": "Select when working on code style"
+        },
+        {
+            "type": "⚡perf",
+            "description": "Select when working on performances"
+        },
+        {
+            "type": "⏪revert",
+            "description": "Select when going back"
+        },
+        {
+            "type": "🔵test",
+            "description": "Select when adding or editing tests"
+        }
+    ]
 }
